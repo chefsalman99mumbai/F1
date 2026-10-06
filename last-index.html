@@ -1,0 +1,5020 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, viewport-fit=cover"
+>
+
+<title>F1 ACOUSTIC — Design the Silence.</title>
+
+<meta
+  name="description"
+  content="F1 Acoustic — premium acoustic and soundproofing systems for Mumbai's most ambitious real-estate spaces."
+>
+
+<meta name="theme-color" content="#006A8E">
+
+<style>
+
+/* =========================================================
+   F1 ACOUSTIC
+   MASTER PALETTE
+
+   OCEAN BLUE       55%
+   OFF-WHITE        20%
+   SAGE GREEN       10%
+   CRIMSON RED      10%
+   CHARCOAL BLACK    5%
+========================================================= */
+
+:root{
+
+  --ocean:#006A8E;
+  --ocean-deep:#00465F;
+  --ocean-mid:#087FA4;
+  --ocean-light:#4AAEC7;
+
+  --offwhite:#F5F2E9;
+  --offwhite-soft:#ECE8DC;
+
+  --sage:#A8BFA3;
+  --sage-light:#BDD0B8;
+  --sage-dark:#839B7D;
+
+  --crimson:#C91438;
+  --crimson-dark:#9F102D;
+
+  --charcoal:#111719;
+
+  --white-muted:rgba(245,242,233,.68);
+  --white-soft:rgba(245,242,233,.48);
+
+  --black-muted:rgba(17,23,25,.64);
+
+  --line:rgba(245,242,233,.16);
+  --line-dark:rgba(17,23,25,.15);
+
+  --sans:'Manrope',sans-serif;
+  --serif:'Playfair Display',serif;
+  --mono:'DM Mono',monospace;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  overflow-x:hidden;
+
+  background:var(--ocean);
+  color:var(--offwhite);
+
+  font-family:var(--sans);
+
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+body,
+a,
+button,
+input,
+textarea{
+  -webkit-tap-highlight-color:transparent;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+textarea{
+  font:inherit;
+}
+
+button{
+  border:0;
+}
+
+::selection{
+  background:var(--sage);
+  color:var(--charcoal);
+}
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+#preloader{
+
+  position:fixed;
+  inset:0;
+  z-index:10000;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--ocean-deep);
+}
+
+.loader{
+  width:min(78vw,430px);
+}
+
+.loader-top{
+
+  display:flex;
+  justify-content:space-between;
+
+  color:rgba(245,242,233,.64);
+
+  font:500 10px var(--mono);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.loader-mark{
+
+  margin:12px 0 18px;
+
+  color:var(--offwhite);
+
+  font:
+    800
+    clamp(82px,20vw,170px)
+    / .8
+    var(--sans);
+
+  letter-spacing:-.1em;
+}
+
+.loader-bar{
+
+  height:3px;
+  overflow:hidden;
+
+  background:rgba(245,242,233,.15);
+}
+
+.loader-bar i{
+
+  display:block;
+
+  width:0;
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--sage),
+      var(--sage-light),
+      var(--crimson)
+    );
+}
+
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+.grain{
+
+  position:fixed;
+  inset:0;
+
+  z-index:9000;
+
+  pointer-events:none;
+
+  opacity:.035;
+
+  background-image:url(
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+  );
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.site-nav{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+  right:0;
+
+  z-index:500;
+
+  padding:17px 18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+
+  display:flex;
+  align-items:center;
+  gap:9px;
+
+  font:500 11px var(--mono);
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.brand-dot{
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:var(--sage);
+
+  box-shadow:
+    0 0 0 4px rgba(168,191,163,.10),
+    0 0 24px rgba(168,191,163,.55);
+}
+
+.nav-right{
+
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  font:500 10px var(--mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.nav-right span{
+  color:var(--white-muted);
+}
+
+.nav-cta{
+
+  padding:9px 13px;
+
+  border:
+    1px solid
+    rgba(245,242,233,.24);
+
+  border-radius:999px;
+
+  background:rgba(0,0,0,.08);
+
+  backdrop-filter:blur(12px);
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease;
+}
+
+.nav-cta:hover{
+
+  background:var(--sage);
+
+  border-color:var(--sage);
+
+  color:var(--charcoal);
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.wrap{
+
+  width:min(
+    1240px,
+    calc(100% - 34px)
+  );
+
+  margin:0 auto;
+}
+
+.section{
+
+  position:relative;
+
+  padding:120px 0;
+}
+
+.display{
+
+  font-weight:800;
+
+  letter-spacing:-.085em;
+
+  line-height:.87;
+}
+
+.serif{
+
+  font-family:var(--serif);
+
+  font-weight:500;
+}
+
+.eyebrow{
+
+  color:var(--sage);
+
+  font:
+    500 10px
+    var(--mono);
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+  min-height:100svh;
+
+  position:relative;
+
+  overflow:hidden;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  padding:
+    110px
+    0
+    32px;
+
+  background:var(--ocean);
+}
+
+.hero-atmosphere{
+
+  position:absolute;
+
+  inset:-20%;
+
+  background:
+
+    radial-gradient(
+      circle at 18% 28%,
+      rgba(120,199,216,.42),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      circle at 73% 20%,
+      rgba(168,191,163,.16),
+      transparent 18%
+    ),
+
+    radial-gradient(
+      circle at 83% 78%,
+      rgba(201,20,56,.24),
+      transparent 24%
+    ),
+
+    linear-gradient(
+      145deg,
+      var(--ocean-deep),
+      var(--ocean),
+      var(--ocean-mid)
+    );
+
+  transform:translateZ(0);
+
+  animation:
+    oceanDrift
+    14s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.hero-liquid{
+
+  position:absolute;
+
+  width:75vw;
+  height:75vw;
+
+  max-width:850px;
+  max-height:850px;
+
+  top:-18%;
+  right:-12%;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle at 35% 34%,
+      rgba(245,242,233,.28),
+      transparent 19%
+    ),
+
+    radial-gradient(
+      circle at 46% 50%,
+      rgba(120,199,216,.30),
+      transparent 46%
+    ),
+
+    radial-gradient(
+      circle,
+      rgba(168,191,163,.14),
+      transparent 66%
+    );
+
+  filter:blur(14px);
+
+  mix-blend-mode:screen;
+
+  animation:
+    liquidFloat
+    10s
+    ease-in-out
+    infinite;
+}
+
+.hero-grid{
+
+  position:absolute;
+
+  inset:0;
+
+  opacity:.08;
+
+  background-image:
+
+    linear-gradient(
+      rgba(245,242,233,.23)
+      1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(245,242,233,.23)
+      1px,
+      transparent 1px
+    );
+
+  background-size:84px 84px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 22%,
+      black 66%,
+      transparent
+    );
+}
+
+.hero-content{
+
+  position:relative;
+
+  z-index:2;
+
+  width:100%;
+}
+
+.hero-kicker{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  margin-bottom:22px;
+}
+
+.hero-title{
+
+  margin:0;
+
+  font-size:
+    clamp(
+      76px,
+      20vw,
+      250px
+    );
+
+  color:var(--offwhite);
+}
+
+.hero-title .second{
+  margin-left:9vw;
+}
+
+.hero-title em{
+
+  display:inline-block;
+
+  font-family:var(--serif);
+
+  font-weight:500;
+
+  font-size:.54em;
+
+  color:var(--sage);
+
+  letter-spacing:-.06em;
+
+  transform:
+    translateY(-.16em);
+}
+
+.hero-foot{
+
+  margin-top:28px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+
+  gap:25px;
+}
+
+.hero-copy{
+
+  max-width:620px;
+
+  margin:0;
+
+  color:var(--offwhite);
+
+  font-size:
+    clamp(
+      16px,
+      2.2vw,
+      22px
+    );
+
+  line-height:1.38;
+
+  letter-spacing:-.027em;
+}
+
+.hero-copy strong{
+  color:var(--sage);
+}
+
+.hero-meta{
+
+  text-align:right;
+
+  color:var(--white-muted);
+
+  font:
+    500 10px/1.65
+    var(--mono);
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.scroll-cue{
+
+  margin-top:42px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  color:var(--white-muted);
+
+  font:
+    500 10px
+    var(--mono);
+
+  letter-spacing:.14em;
+
+  text-transform:uppercase;
+}
+
+.scroll-cue i{
+
+  width:45px;
+  height:1px;
+
+  display:block;
+
+  background:var(--sage);
+
+  transform-origin:left;
+
+  animation:
+    linePulse
+    2s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   STATEMENT
+========================================================= */
+
+.statement{
+
+  min-height:125svh;
+
+  display:flex;
+
+  align-items:center;
+
+  background:var(--offwhite);
+
+  color:var(--charcoal);
+}
+
+.statement .eyebrow{
+  color:var(--ocean);
+}
+
+.statement h2{
+
+  max-width:1180px;
+
+  margin:25px 0;
+
+  font-size:
+    clamp(
+      54px,
+      10vw,
+      140px
+    );
+}
+
+.statement h2 .line{
+
+  display:block;
+
+  overflow:hidden;
+}
+
+.statement h2 .line span{
+  display:block;
+}
+
+.statement h2 .serif{
+  color:var(--ocean);
+}
+
+.statement .muted{
+  color:rgba(17,23,25,.48);
+}
+
+.statement-detail{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:50px;
+
+  margin-top:68px;
+
+  padding-top:24px;
+
+  border-top:
+    1px solid
+    var(--line-dark);
+}
+
+.statement-detail p{
+
+  max-width:490px;
+
+  margin:0;
+
+  color:var(--black-muted);
+
+  font-size:15px;
+
+  line-height:1.65;
+}
+
+.statement-detail strong{
+  color:var(--charcoal);
+}
+
+
+/* =========================================================
+   KINETIC TYPOGRAPHY SECTION
+========================================================= */
+
+.kinetic-type{
+
+  height:230svh;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:var(--crimson);
+
+  color:var(--offwhite);
+}
+
+.kinetic-bg{
+
+  position:absolute;
+
+  inset:-20%;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(168,191,163,.20),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      circle at 20% 70%,
+      rgba(0,106,142,.30),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(17,23,25,.22),
+      transparent 28%
+    );
+
+  filter:blur(20px);
+
+  transform:translateZ(0);
+}
+
+.kinetic-noise{
+
+  position:absolute;
+
+  inset:0;
+
+  opacity:.035;
+
+  pointer-events:none;
+
+  background-image:url(
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+  );
+}
+
+.kinetic-stage{
+
+  position:sticky;
+
+  top:0;
+
+  height:100svh;
+
+  overflow:hidden;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.kinetic-line{
+
+  position:absolute;
+
+  left:50%;
+
+  width:max-content;
+
+  font:
+    800
+    clamp(
+      78px,
+      15vw,
+      210px
+    )
+    / .78
+    var(--sans);
+
+  line-height:.78;
+
+  letter-spacing:-.09em;
+
+  white-space:nowrap;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+.kinetic-line span{
+  display:block;
+}
+
+.line-a{
+
+  top:18%;
+
+  color:var(--offwhite);
+}
+
+.line-b{
+
+  top:33%;
+
+  color:var(--sage);
+}
+
+.line-c{
+
+  top:48%;
+
+  color:var(--offwhite);
+}
+
+.line-d{
+
+  top:63%;
+
+  color:var(--charcoal);
+}
+
+.line-a span,
+.line-c span{
+
+  -webkit-text-stroke:
+    1px
+    rgba(245,242,233,.28);
+}
+
+.line-b span{
+
+  -webkit-text-stroke:
+    1px
+    rgba(168,191,163,.16);
+}
+
+.line-d span{
+
+  -webkit-text-stroke:
+    1px
+    rgba(17,23,25,.20);
+}
+
+.kinetic-caption{
+
+  position:absolute;
+
+  left:20px;
+  right:20px;
+  bottom:34px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-end;
+
+  gap:25px;
+
+  font:
+    500
+    10px/1.7
+    var(--mono);
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.kinetic-caption > span:last-child{
+
+  text-align:right;
+
+  color:
+    rgba(245,242,233,.62);
+}
+
+.kinetic-caption .eyebrow{
+  color:var(--sage);
+}
+
+.kinetic-cross{
+
+  position:absolute;
+
+  width:35vw;
+  height:35vw;
+
+  max-width:400px;
+  max-height:400px;
+
+  border:
+    1px solid
+    rgba(245,242,233,.13);
+
+  border-radius:50%;
+
+  pointer-events:none;
+}
+
+.kinetic-cross::before,
+.kinetic-cross::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:50%;
+  left:8%;
+
+  width:84%;
+  height:1px;
+
+  background:
+    rgba(245,242,233,.13);
+}
+
+.kinetic-cross::after{
+
+  transform:
+    rotate(90deg);
+}
+
+.kinetic-cross i{
+
+  position:absolute;
+
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:var(--sage);
+
+  box-shadow:
+    0 0 20px
+    rgba(168,191,163,.5);
+}
+
+.kinetic-cross i:first-child{
+
+  top:12%;
+  left:50%;
+
+  transform:
+    translateX(-50%);
+}
+
+.kinetic-cross i:last-child{
+
+  bottom:12%;
+  left:50%;
+
+  transform:
+    translateX(-50%);
+}
+
+
+/* =========================================================
+   SOLUTIONS
+========================================================= */
+
+.solutions{
+  background:var(--ocean-deep);
+}
+
+.section-head{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-end;
+
+  gap:28px;
+
+  margin-bottom:55px;
+}
+
+.section-head h3{
+
+  max-width:900px;
+
+  margin:10px 0 0;
+
+  font-size:
+    clamp(
+      48px,
+      8vw,
+      100px
+    );
+}
+
+.section-head h3 .serif{
+  color:var(--sage);
+}
+
+.section-head p{
+
+  max-width:300px;
+
+  margin:0;
+
+  color:var(--white-muted);
+
+  font-size:14px;
+
+  line-height:1.6;
+}
+
+.solution-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(12,1fr);
+
+  gap:14px;
+}
+
+.solution{
+
+  min-height:330px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:25px;
+
+  border:
+    1px solid
+    rgba(245,242,233,.15);
+
+  border-radius:23px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(245,242,233,.08),
+      rgba(245,242,233,.018)
+    );
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  transition:
+    border-color .4s ease,
+    transform .4s ease;
+}
+
+.solution:hover{
+
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(168,191,163,.55);
+}
+
+.solution:nth-child(1){
+  grid-column:span 7;
+}
+
+.solution:nth-child(2){
+  grid-column:span 5;
+}
+
+.solution:nth-child(3){
+  grid-column:span 5;
+}
+
+.solution:nth-child(4){
+  grid-column:span 7;
+}
+
+.solution-no{
+
+  color:var(--sage);
+
+  font:
+    500 10px
+    var(--mono);
+
+  letter-spacing:.12em;
+}
+
+.solution h4{
+
+  max-width:570px;
+
+  margin:
+    0
+    0
+    14px;
+
+  font-size:
+    clamp(
+      31px,
+      4vw,
+      56px
+    );
+
+  line-height:.93;
+
+  letter-spacing:-.065em;
+}
+
+.solution p{
+
+  max-width:450px;
+
+  margin:0;
+
+  color:var(--white-muted);
+
+  font-size:13px;
+
+  line-height:1.62;
+}
+
+.solution-orb{
+
+  position:absolute;
+
+  width:230px;
+  height:230px;
+
+  right:-70px;
+  top:-70px;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(168,191,163,.26),
+      rgba(120,199,216,.14) 35%,
+      transparent 67%
+    );
+
+  filter:blur(5px);
+
+  transition:
+    transform .7s ease;
+}
+
+.solution:hover .solution-orb{
+
+  transform:
+    translate(-35px,55px)
+    scale(1.22);
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+
+  background:var(--offwhite);
+
+  color:var(--charcoal);
+}
+
+.projects .eyebrow{
+  color:var(--ocean);
+}
+
+.projects .section-head p{
+  color:var(--black-muted);
+}
+
+.project-wrap{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:16px;
+}
+
+.project{
+
+  min-height:70svh;
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:24px;
+
+  border-radius:28px;
+
+  background:
+    linear-gradient(
+      140deg,
+      #D9E7E4,
+      #A6D1D9
+    );
+
+  display:flex;
+
+  align-items:flex-end;
+}
+
+.project:nth-child(2){
+
+  background:
+    linear-gradient(
+      140deg,
+      #EEE9DB,
+      #D7D0C2
+    );
+}
+
+.project:nth-child(3){
+
+  background:
+    linear-gradient(
+      140deg,
+      #F0D6DC,
+      #D8C7D4
+    );
+}
+
+.project-art{
+
+  position:absolute;
+
+  inset:0;
+}
+
+.project-art::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:80vw;
+  height:80vw;
+
+  max-width:800px;
+  max-height:800px;
+
+  top:-18%;
+  left:7%;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle at 38% 40%,
+      rgba(255,255,255,.95) 0 5%,
+      rgba(120,199,216,.7) 15%,
+      rgba(0,106,142,.22) 38%,
+      transparent 67%
+    );
+
+  mix-blend-mode:multiply;
+}
+
+.project-art::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:50vw;
+  height:50vw;
+
+  max-width:580px;
+  max-height:580px;
+
+  right:-12%;
+  bottom:-15%;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(201,20,56,.42),
+      rgba(168,191,163,.22) 34%,
+      transparent 68%
+    );
+
+  mix-blend-mode:multiply;
+}
+
+.project-copy{
+
+  position:relative;
+
+  z-index:2;
+
+  width:100%;
+
+  display:grid;
+
+  grid-template-columns:
+    1.25fr
+    .75fr;
+
+  gap:25px;
+
+  align-items:end;
+}
+
+.tag{
+
+  display:inline-block;
+
+  margin-bottom:17px;
+
+  padding:8px 10px;
+
+  border:
+    1px solid
+    rgba(17,23,25,.23);
+
+  border-radius:999px;
+
+  font:
+    500 9px
+    var(--mono);
+
+  letter-spacing:.11em;
+
+  text-transform:uppercase;
+}
+
+.project h4{
+
+  margin:0;
+
+  color:var(--charcoal);
+
+  font-size:
+    clamp(
+      52px,
+      9vw,
+      115px
+    );
+
+  line-height:.83;
+
+  letter-spacing:-.085em;
+}
+
+.project p{
+
+  max-width:330px;
+
+  margin:0;
+
+  color:rgba(17,23,25,.7);
+
+  font-size:14px;
+
+  line-height:1.58;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process{
+  background:var(--charcoal);
+}
+
+.process-layout{
+
+  display:grid;
+
+  grid-template-columns:
+    .65fr
+    1.35fr;
+
+  gap:60px;
+}
+
+.process-intro h3{
+
+  margin:18px 0 0;
+
+  font-size:
+    clamp(
+      55px,
+      8vw,
+      112px
+    );
+}
+
+.process-intro h3 .serif{
+  color:var(--sage);
+}
+
+.process-stage{
+
+  position:relative;
+
+  padding-left:48px;
+
+  border-left:
+    1px solid
+    rgba(245,242,233,.13);
+}
+
+.stage-line{
+
+  position:absolute;
+
+  left:-1px;
+  top:0;
+
+  width:2px;
+  height:25%;
+
+  transform-origin:top;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--sage),
+      var(--crimson)
+    );
+}
+
+.steps{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:125px;
+}
+
+.step{
+
+  min-height:140px;
+
+  opacity:.25;
+
+  transition:
+    opacity .4s ease;
+}
+
+.step.active{
+  opacity:1;
+}
+
+.step-index{
+
+  margin-bottom:15px;
+
+  color:var(--sage);
+
+  font:
+    500 10px
+    var(--mono);
+
+  letter-spacing:.12em;
+}
+
+.step h4{
+
+  margin:
+    0
+    0
+    11px;
+
+  font-size:
+    clamp(
+      31px,
+      4vw,
+      55px
+    );
+
+  letter-spacing:-.06em;
+}
+
+.step p{
+
+  max-width:520px;
+
+  margin:0;
+
+  color:var(--white-muted);
+
+  font-size:14px;
+
+  line-height:1.62;
+}
+
+
+/* =========================================================
+   NUMBERS
+========================================================= */
+
+.numbers{
+
+  margin-top:80px;
+
+  padding-top:25px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:20px;
+
+  border-top:
+    1px solid
+    rgba(245,242,233,.13);
+}
+
+.number strong{
+
+  display:block;
+
+  color:var(--offwhite);
+
+  font-size:
+    clamp(
+      52px,
+      8vw,
+      92px
+    );
+
+  line-height:.85;
+
+  letter-spacing:-.09em;
+}
+
+.number:nth-child(2) strong{
+  color:var(--sage);
+}
+
+.number:nth-child(3) strong{
+  color:var(--crimson);
+}
+
+.number span{
+
+  display:block;
+
+  margin-top:10px;
+
+  color:var(--white-muted);
+
+  font:
+    500 9px
+    var(--mono);
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+  background:var(--ocean);
+}
+
+.faq-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    .72fr
+    1.28fr;
+
+  gap:65px;
+}
+
+.faq-grid h3{
+
+  margin:0;
+
+  font-size:
+    clamp(
+      50px,
+      7vw,
+      96px
+    );
+}
+
+.faq-grid h3 .serif{
+  color:var(--sage);
+}
+
+.faq-list{
+
+  border-top:
+    1px solid
+    rgba(245,242,233,.15);
+}
+
+details{
+
+  padding:23px 0;
+
+  border-bottom:
+    1px solid
+    rgba(245,242,233,.15);
+}
+
+summary{
+
+  list-style:none;
+
+  cursor:pointer;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  font-size:19px;
+
+  font-weight:600;
+
+  letter-spacing:-.03em;
+}
+
+summary::-webkit-details-marker{
+  display:none;
+}
+
+.plus{
+
+  color:var(--sage);
+
+  font:
+    500 18px
+    var(--mono);
+}
+
+details p{
+
+  max-width:700px;
+
+  margin:
+    17px
+    0
+    2px;
+
+  color:var(--white-muted);
+
+  font-size:14px;
+
+  line-height:1.65;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+  background:var(--offwhite);
+}
+
+.contact-card{
+
+  min-height:760px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:
+    37px
+    25px
+    28px;
+
+  border-radius:33px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--ocean-deep),
+      var(--ocean) 62%,
+      var(--ocean-mid)
+    );
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+}
+
+.contact-glow{
+
+  position:absolute;
+
+  width:75vw;
+  height:75vw;
+
+  max-width:780px;
+  max-height:780px;
+
+  right:-22%;
+  top:-30%;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle at 34% 35%,
+      rgba(168,191,163,.36),
+      rgba(120,199,216,.19) 32%,
+      rgba(201,20,56,.16) 52%,
+      transparent 68%
+    );
+
+  filter:blur(12px);
+}
+
+.contact-card h3{
+
+  position:relative;
+
+  z-index:1;
+
+  max-width:1100px;
+
+  margin:0;
+
+  font-size:
+    clamp(
+      58px,
+      11vw,
+      155px
+    );
+
+  letter-spacing:-.09em;
+}
+
+.contact-card h3 em{
+
+  font-family:var(--serif);
+
+  font-weight:500;
+
+  color:var(--sage);
+}
+
+.contact-bottom{
+
+  position:relative;
+
+  z-index:1;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  gap:25px;
+
+  align-items:end;
+}
+
+.contact-note{
+
+  max-width:450px;
+
+  margin:0;
+
+  color:
+    rgba(245,242,233,.7);
+
+  font-size:15px;
+
+  line-height:1.6;
+}
+
+.contact-btn{
+
+  padding:15px 18px;
+
+  border:
+    1px solid
+    rgba(245,242,233,.2);
+
+  border-radius:999px;
+
+  background:var(--crimson);
+
+  color:var(--offwhite);
+
+  font:
+    500 10px
+    var(--mono);
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+
+  transition:
+    transform .3s ease,
+    background .3s ease;
+}
+
+.contact-btn:hover{
+
+  transform:
+    translateY(-3px);
+
+  background:
+    var(--crimson-dark);
+}
+
+.contact-form{
+
+  position:relative;
+
+  z-index:1;
+
+  margin-top:30px;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:10px;
+}
+
+.field{
+
+  padding:12px 0;
+
+  border-bottom:
+    1px solid
+    rgba(245,242,233,.2);
+}
+
+.field.full{
+  grid-column:1 / -1;
+}
+
+.field input,
+.field textarea{
+
+  width:100%;
+
+  border:0;
+
+  outline:0;
+
+  background:transparent;
+
+  color:var(--offwhite);
+
+  resize:none;
+
+  font-size:15px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder{
+
+  color:
+    rgba(245,242,233,.47);
+}
+
+.form-submit{
+
+  margin-top:17px;
+
+  padding:14px 18px;
+
+  border:0;
+
+  border-radius:999px;
+
+  background:var(--sage);
+
+  color:var(--charcoal);
+
+  cursor:pointer;
+
+  font:
+    600 10px
+    var(--mono);
+
+  letter-spacing:.11em;
+
+  text-transform:uppercase;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.form-submit:hover{
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 9px 25px
+    rgba(0,0,0,.15);
+}
+
+.form-status{
+
+  position:relative;
+
+  z-index:1;
+
+  min-height:1.2em;
+
+  margin-top:11px;
+
+  color:var(--sage);
+
+  font:
+    500 10px
+    var(--mono);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+  background:var(--charcoal);
+
+  color:var(--offwhite);
+
+  border-top:
+    1px solid
+    rgba(245,242,233,.12);
+
+  padding:
+    25px
+    0
+    28px;
+}
+
+.footer-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  gap:25px;
+
+  align-items:end;
+}
+
+.footer-big{
+
+  margin-top:8px;
+
+  font-size:
+    clamp(
+      48px,
+      10vw,
+      120px
+    );
+
+  font-weight:800;
+
+  line-height:.85;
+
+  letter-spacing:-.09em;
+}
+
+.footer-right{
+
+  text-align:right;
+
+  color:
+    rgba(245,242,233,.5);
+
+  font:
+    500 9px/1.7
+    var(--mono);
+
+  letter-spacing:.11em;
+
+  text-transform:uppercase;
+}
+
+.footer-accent{
+  color:var(--sage);
+}
+
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor{
+
+  display:none;
+
+  position:fixed;
+
+  z-index:9900;
+
+  width:18px;
+  height:18px;
+
+  border:
+    1px solid
+    var(--sage);
+
+  border-radius:50%;
+
+  pointer-events:none;
+
+  transform:
+    translate(-50%,-50%);
+
+  mix-blend-mode:difference;
+}
+
+.cursor-dot{
+
+  display:none;
+
+  position:fixed;
+
+  z-index:9901;
+
+  width:4px;
+  height:4px;
+
+  border-radius:50%;
+
+  background:var(--crimson);
+
+  pointer-events:none;
+
+  transform:
+    translate(-50%,-50%);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes oceanDrift{
+
+  from{
+    transform:
+      scale(1)
+      translate3d(-1%,0,0);
+  }
+
+  to{
+    transform:
+      scale(1.07)
+      translate3d(2%,-1%,0);
+  }
+
+}
+
+@keyframes liquidFloat{
+
+  0%,100%{
+    transform:
+      scale(.94)
+      translate3d(0,0,0);
+  }
+
+  50%{
+    transform:
+      scale(1.06)
+      translate3d(-2%,2%,0);
+  }
+
+}
+
+@keyframes linePulse{
+
+  0%,100%{
+    transform:scaleX(.6);
+    opacity:.65;
+  }
+
+  50%{
+    transform:scaleX(1);
+    opacity:1;
+  }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width:900px){
+
+  .wrap{
+
+    width:min(
+      1240px,
+      calc(100% - 72px)
+    );
+  }
+
+  .site-nav{
+    padding:
+      22px
+      36px;
+  }
+
+  .cursor,
+  .cursor-dot{
+    display:block;
+  }
+
+  .hero{
+    padding-bottom:50px;
+  }
+
+  .section{
+    padding:150px 0;
+  }
+
+  .project{
+
+    min-height:78svh;
+
+    padding:40px;
+  }
+
+  .contact-card{
+
+    padding:
+      54px
+      48px
+      40px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:760px){
+
+  .wrap{
+    width:calc(100% - 30px);
+  }
+
+  .nav-right span{
+    display:none;
+  }
+
+  .hero{
+    padding-top:105px;
+  }
+
+  .hero-kicker{
+    gap:14px;
+  }
+
+  .hero-title{
+    font-size:22vw;
+  }
+
+  .hero-title .second{
+    margin-left:10vw;
+  }
+
+  .hero-foot{
+    display:block;
+  }
+
+  .hero-meta{
+
+    margin-top:21px;
+
+    text-align:left;
+  }
+
+  .scroll-cue{
+    margin-top:34px;
+  }
+
+
+  /* STATEMENT */
+
+  .statement{
+    min-height:112svh;
+  }
+
+  .statement-detail{
+
+    grid-template-columns:1fr;
+
+    gap:17px;
+
+    margin-top:45px;
+  }
+
+
+  /* KINETIC TYPOGRAPHY */
+
+  .kinetic-type{
+    height:205svh;
+  }
+
+  .kinetic-line{
+
+    font-size:24vw;
+
+    left:50%;
+
+    letter-spacing:-.105em;
+  }
+
+  .line-a{
+    top:24%;
+  }
+
+  .line-b{
+    top:37%;
+  }
+
+  .line-c{
+    top:50%;
+  }
+
+  .line-d{
+    top:63%;
+  }
+
+  .kinetic-caption{
+
+    left:15px;
+    right:15px;
+    bottom:22px;
+
+    display:block;
+  }
+
+  .kinetic-caption > span:last-child{
+
+    display:block;
+
+    margin-top:12px;
+
+    text-align:left;
+  }
+
+  .kinetic-cross{
+
+    width:58vw;
+    height:58vw;
+  }
+
+
+  /* SECTION HEAD */
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head p{
+    margin-top:24px;
+  }
+
+
+  /* SOLUTIONS */
+
+  .solution-grid{
+
+    display:flex;
+
+    flex-direction:column;
+  }
+
+  .solution{
+    min-height:290px;
+  }
+
+
+  /* PROJECTS */
+
+  .project{
+
+    min-height:72svh;
+
+    padding:22px;
+  }
+
+  .project-copy{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+  }
+
+  .project p{
+    max-width:365px;
+  }
+
+
+  /* PROCESS */
+
+  .process-layout{
+
+    grid-template-columns:1fr;
+
+    gap:55px;
+  }
+
+  .process-stage{
+    padding-left:24px;
+  }
+
+  .steps{
+    gap:82px;
+  }
+
+
+  /* NUMBERS */
+
+  .numbers{
+
+    grid-template-columns:1fr;
+
+    gap:28px;
+  }
+
+
+  /* FAQ */
+
+  .faq-grid{
+
+    grid-template-columns:1fr;
+
+    gap:46px;
+  }
+
+
+  /* CONTACT */
+
+  .contact-card{
+
+    min-height:760px;
+
+    padding:
+      28px
+      21px;
+  }
+
+  .contact-bottom{
+
+    grid-template-columns:1fr;
+  }
+
+  .contact-btn{
+    justify-self:start;
+  }
+
+  .contact-form{
+
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+
+  /* FOOTER */
+
+  .footer-grid{
+
+    grid-template-columns:1fr;
+  }
+
+  .footer-right{
+
+    text-align:left;
+  }
+
+  .grain{
+    opacity:.025;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  .hero-atmosphere,
+  .hero-liquid,
+  .scroll-cue i{
+    animation:none;
+  }
+
+  .cursor,
+  .cursor-dot{
+    display:none;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     PRELOADER
+======================================================= -->
+
+<div id="preloader">
+
+  <div class="loader">
+
+    <div class="loader-top">
+
+      <span>
+        F1 ACOUSTIC
+      </span>
+
+      <span>
+        MUMBAI / INDIA
+      </span>
+
+    </div>
+
+
+    <div class="loader-mark">
+      F1
+    </div>
+
+
+    <div class="loader-bar">
+      <i></i>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="grain"></div>
+
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+
+<!-- =======================================================
+     NAV
+======================================================= -->
+
+<nav class="site-nav">
+
+  <a
+    class="brand"
+    href="#top"
+  >
+
+    <i class="brand-dot"></i>
+
+    F1 Acoustic
+
+  </a>
+
+
+  <div class="nav-right">
+
+    <span>
+      Mumbai · India
+    </span>
+
+
+    <a
+      class="nav-cta"
+      href="#contact"
+    >
+
+      Start a conversation
+
+    </a>
+
+  </div>
+
+</nav>
+
+
+<main id="top">
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero">
+
+
+  <div class="hero-atmosphere"></div>
+
+  <div class="hero-liquid"></div>
+
+  <div class="hero-grid"></div>
+
+
+  <div class="wrap hero-content">
+
+
+    <div class="hero-kicker">
+
+      <span class="eyebrow">
+        Architectural soundproofing / Mumbai
+      </span>
+
+      <span class="eyebrow">
+        01 / 07
+      </span>
+
+    </div>
+
+
+    <h1 class="display hero-title">
+
+
+      <span>
+        DESIGN
+      </span>
+
+
+      <span class="second">
+
+        <em>
+          the
+        </em>
+
+        SILENCE
+
+      </span>
+
+
+    </h1>
+
+
+    <div class="hero-foot">
+
+
+      <p class="hero-copy">
+
+        F1 Acoustic builds
+        <strong>
+          quiet architecture
+        </strong>
+        for Mumbai's most ambitious
+        residences, hospitality spaces,
+        workspaces and developments.
+
+      </p>
+
+
+      <div class="hero-meta">
+
+        Acoustic engineering
+        <br>
+
+        Soundproofing systems
+        <br>
+
+        Invisible performance
+
+      </div>
+
+
+    </div>
+
+
+    <div class="scroll-cue">
+
+      <i></i>
+
+      Scroll to enter
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     STATEMENT
+======================================================= -->
+
+<section class="section statement">
+
+  <div class="wrap">
+
+
+    <span class="eyebrow">
+      02 / The idea
+    </span>
+
+
+    <h2 class="display">
+
+
+      <span class="line">
+
+        <span>
+          YOUR ROOM
+        </span>
+
+      </span>
+
+
+      <span class="line">
+
+        <span>
+          SHOULD FEEL
+        </span>
+
+      </span>
+
+
+      <span class="line">
+
+        <span>
+
+          <span class="serif">
+            expensive
+          </span>
+
+          <span class="muted">
+            in silence.
+          </span>
+
+        </span>
+
+      </span>
+
+
+    </h2>
+
+
+    <div class="statement-detail">
+
+
+      <p>
+
+        <strong>
+          Acoustic control without visual compromise.
+        </strong>
+
+        F1 Acoustic integrates walls,
+        ceilings, doors and acoustic
+        assemblies into the architecture
+        rather than treating them as
+        afterthoughts.
+
+      </p>
+
+
+      <p>
+
+        In premium real estate,
+        privacy is not merely technical.
+
+        It is part of the experience.
+
+      </p>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     GSAP KINETIC TYPOGRAPHY
+======================================================= -->
+
+<section class="kinetic-type">
+
+
+  <div class="kinetic-bg"></div>
+
+  <div class="kinetic-noise"></div>
+
+
+  <div class="kinetic-stage">
+
+
+    <div class="kinetic-line line-a">
+
+      <span>
+        SOUND
+      </span>
+
+    </div>
+
+
+    <div class="kinetic-line line-b">
+
+      <span>
+        ISOLATED
+      </span>
+
+    </div>
+
+
+    <div class="kinetic-line line-c">
+
+      <span>
+        PRIVACY
+      </span>
+
+    </div>
+
+
+    <div class="kinetic-line line-d">
+
+      <span>
+        DESIGNED
+      </span>
+
+    </div>
+
+
+    <div class="kinetic-caption">
+
+
+      <span class="eyebrow">
+        03 / Acoustic intelligence
+      </span>
+
+
+      <span>
+
+        CONTROL THE UNWANTED.
+        <br>
+        PRESERVE WHAT MATTERS.
+
+      </span>
+
+
+    </div>
+
+
+    <div class="kinetic-cross">
+
+      <i></i>
+      <i></i>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     SOLUTIONS
+======================================================= -->
+
+<section class="section solutions">
+
+
+  <div class="wrap">
+
+
+    <div class="section-head">
+
+
+      <div>
+
+        <span class="eyebrow">
+          04 / What we build
+        </span>
+
+
+        <h3 class="display">
+
+          QUIET,
+
+          <span class="serif">
+            room by room.
+          </span>
+
+        </h3>
+
+
+      </div>
+
+
+      <p>
+
+        Layered systems for impact,
+        speech, music and privacy —
+        designed around the architecture.
+
+      </p>
+
+
+    </div>
+
+
+    <div class="solution-grid">
+
+
+      <article class="solution">
+
+
+        <div class="solution-no">
+          01 / Private residence
+        </div>
+
+
+        <div>
+
+          <h4>
+
+            Bedrooms that
+            disappear from the city.
+
+          </h4>
+
+
+          <p>
+
+            High-performance partitions,
+            ceilings and acoustic doors
+            for residential privacy.
+
+          </p>
+
+        </div>
+
+
+        <i class="solution-orb"></i>
+
+
+      </article>
+
+
+      <article class="solution">
+
+
+        <div class="solution-no">
+          02 / Media & cinema
+        </div>
+
+
+        <div>
+
+          <h4>
+
+            Immersion,
+            contained.
+
+          </h4>
+
+
+          <p>
+
+            Control airborne sound,
+            impact noise and low-frequency
+            energy without sacrificing
+            room character.
+
+          </p>
+
+        </div>
+
+
+        <i class="solution-orb"></i>
+
+
+      </article>
+
+
+      <article class="solution">
+
+
+        <div class="solution-no">
+          03 / Workspace
+        </div>
+
+
+        <div>
+
+          <h4>
+
+            Focus without
+            isolation.
+
+          </h4>
+
+
+          <p>
+
+            Acoustic zoning that keeps
+            collaboration alive while
+            protecting concentration.
+
+          </p>
+
+        </div>
+
+
+        <i class="solution-orb"></i>
+
+
+      </article>
+
+
+      <article class="solution">
+
+
+        <div class="solution-no">
+          04 / Developer scale
+        </div>
+
+
+        <div>
+
+          <h4>
+
+            One standard.
+            Hundreds of doors.
+
+          </h4>
+
+
+          <p>
+
+            Repeatable specifications
+            and site coordination for
+            premium residential and
+            hospitality portfolios.
+
+          </p>
+
+        </div>
+
+
+        <i class="solution-orb"></i>
+
+
+      </article>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     PROJECTS
+======================================================= -->
+
+<section class="section projects">
+
+
+  <div class="wrap">
+
+
+    <div class="section-head">
+
+
+      <div>
+
+        <span class="eyebrow">
+          05 / The feeling
+        </span>
+
+
+        <h3 class="display">
+
+          A ROOM CAN BE
+
+          <span class="serif">
+            FELT
+          </span>
+
+          BEFORE IT IS HEARD.
+
+        </h3>
+
+
+      </div>
+
+
+      <p>
+
+        Three visual worlds.
+        One principle:
+        performance should feel invisible.
+
+      </p>
+
+
+    </div>
+
+
+    <div class="project-wrap">
+
+
+      <article class="project">
+
+
+        <div class="project-art"></div>
+
+
+        <div class="project-copy">
+
+
+          <div>
+
+            <span class="tag">
+              Luxury residential
+            </span>
+
+
+            <h4>
+
+              THE
+              <br>
+              QUIET
+              <br>
+              FLOOR
+
+            </h4>
+
+
+          </div>
+
+
+          <p>
+
+            Acoustic privacy between
+            bedrooms, living zones and
+            service corridors — resolved
+            inside the architecture.
+
+          </p>
+
+
+        </div>
+
+
+      </article>
+
+
+      <article class="project">
+
+
+        <div class="project-art"></div>
+
+
+        <div class="project-copy">
+
+
+          <div>
+
+            <span class="tag">
+              Private cinema
+            </span>
+
+
+            <h4>
+
+              BLACK
+              <br>
+              BOX
+
+            </h4>
+
+
+          </div>
+
+
+          <p>
+
+            Controlled reflections,
+            isolated bass and a room
+            that lets the soundtrack
+            become physical.
+
+          </p>
+
+
+        </div>
+
+
+      </article>
+
+
+      <article class="project">
+
+
+        <div class="project-art"></div>
+
+
+        <div class="project-copy">
+
+
+          <div>
+
+            <span class="tag">
+              Developer amenities
+            </span>
+
+
+            <h4>
+
+              THE
+              <br>
+              CLUB
+              <br>
+              LEVEL
+
+            </h4>
+
+
+          </div>
+
+
+          <p>
+
+            Acoustic zoning across
+            lounges, fitness,
+            entertainment and
+            shared luxury spaces.
+
+          </p>
+
+
+        </div>
+
+
+      </article>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     PROCESS
+======================================================= -->
+
+<section class="section process">
+
+
+  <div class="wrap process-layout">
+
+
+    <div class="process-intro">
+
+
+      <span class="eyebrow">
+        06 / How it works
+      </span>
+
+
+      <h3 class="display">
+
+        ENGINEER
+
+        <br>
+
+        <span class="serif">
+          the calm.
+        </span>
+
+      </h3>
+
+
+    </div>
+
+
+    <div class="process-stage">
+
+
+      <i class="stage-line"></i>
+
+
+      <div class="steps">
+
+
+        <article class="step active">
+
+
+          <div class="step-index">
+            01 — LISTEN
+          </div>
+
+
+          <h4>
+            Measure the room.
+          </h4>
+
+
+          <p>
+
+            We read the site,
+            structure, adjacencies,
+            intended use and
+            unwanted transmission
+            paths before specifying.
+
+          </p>
+
+
+        </article>
+
+
+        <article class="step">
+
+
+          <div class="step-index">
+            02 — ISOLATE
+          </div>
+
+
+          <h4>
+            Stop the transmission.
+          </h4>
+
+
+          <p>
+
+            Walls, ceilings,
+            doors, floors and
+            penetrations are
+            treated as one
+            acoustic system.
+
+          </p>
+
+
+        </article>
+
+
+        <article class="step">
+
+
+          <div class="step-index">
+            03 — TUNE
+          </div>
+
+
+          <h4>
+            Shape the experience.
+          </h4>
+
+
+          <p>
+
+            Absorption, diffusion
+            and reflection are
+            balanced so the room
+            feels natural.
+
+          </p>
+
+
+        </article>
+
+
+        <article class="step">
+
+
+          <div class="step-index">
+            04 — DELIVER
+          </div>
+
+
+          <h4>
+            Coordinate the invisible.
+          </h4>
+
+
+          <p>
+
+            Acoustics meet
+            architecture, MEP and
+            execution details with
+            premium-project finish standards.
+
+          </p>
+
+
+        </article>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <div class="wrap numbers">
+
+
+    <div class="number">
+
+      <strong>
+        01
+      </strong>
+
+      <span>
+        Site-first thinking
+      </span>
+
+    </div>
+
+
+    <div class="number">
+
+      <strong>
+        24/7
+      </strong>
+
+      <span>
+        Privacy mindset
+      </span>
+
+    </div>
+
+
+    <div class="number">
+
+      <strong>
+        ∞
+      </strong>
+
+      <span>
+        Less compromise
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+<!-- =======================================================
+     FAQ
+======================================================= -->
+
+<section class="section faq">
+
+
+  <div class="wrap faq-grid">
+
+
+    <h3 class="display">
+
+      THE
+
+      <br>
+
+      <span class="serif">
+        quiet
+      </span>
+
+      <br>
+
+      DETAILS.
+
+    </h3>
+
+
+    <div class="faq-list">
+
+
+      <details open>
+
+
+        <summary>
+
+          Is F1 Acoustic only for luxury homes?
+
+          <span class="plus">
+            +
+          </span>
+
+        </summary>
+
+
+        <p>
+
+          No. The system thinking scales
+          from a single room to premium
+          developer portfolios, hospitality,
+          offices and amenity floors.
+
+        </p>
+
+
+      </details>
+
+
+      <details>
+
+
+        <summary>
+
+          Can soundproofing be invisible?
+
+          <span class="plus">
+            +
+          </span>
+
+        </summary>
+
+
+        <p>
+
+          That is the objective.
+          Acoustic assemblies can be
+          integrated into walls, ceilings,
+          doors and junction details so
+          acoustic performance supports
+          the visual language.
+
+        </p>
+
+
+      </details>
+
+
+      <details>
+
+
+        <summary>
+
+          Do you work with architects?
+
+          <span class="plus">
+            +
+          </span>
+
+        </summary>
+
+
+        <p>
+
+          Yes. Coordination is critical:
+          acoustic intent needs to survive
+          drawings, MEP services, material
+          transitions and site execution.
+
+        </p>
+
+
+      </details>
+
+
+      <details>
+
+
+        <summary>
+
+          Where do you operate?
+
+          <span class="plus">
+            +
+          </span>
+
+        </summary>
+
+
+        <p>
+
+          F1 Acoustic is Mumbai-based,
+          with a focus on premium
+          real-estate and architectural
+          projects.
+
+        </p>
+
+
+      </details>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+  id="contact"
+  class="section contact"
+>
+
+
+  <div class="wrap">
+
+
+    <div class="contact-card">
+
+
+      <div class="contact-glow"></div>
+
+
+      <div>
+
+
+        <span class="eyebrow">
+          07 / Start a project
+        </span>
+
+
+        <h3 class="display">
+
+          LET'S MAKE
+
+          <br>
+
+          ROOM FOR
+
+          <em>
+            silence.
+          </em>
+
+        </h3>
+
+
+      </div>
+
+
+      <div>
+
+
+        <div class="contact-bottom">
+
+
+          <p class="contact-note">
+
+            Tell us what the space is,
+            who it is for and what you
+            need it to feel like.
+
+          </p>
+
+
+          <a
+            class="contact-btn"
+            href="#enquiry-form"
+          >
+
+            Begin enquiry ↗
+
+          </a>
+
+
+        </div>
+
+
+        <form
+          id="enquiry-form"
+          class="contact-form"
+        >
+
+
+          <div class="field">
+
+            <input
+              required
+              name="name"
+              placeholder="Your name"
+              autocomplete="name"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Email address"
+              autocomplete="email"
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <input
+              name="project"
+              placeholder="Project / company"
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <textarea
+              required
+              rows="3"
+              name="message"
+              placeholder="Tell us about the space..."
+            ></textarea>
+
+          </div>
+
+
+          <button
+            class="form-submit"
+            type="submit"
+          >
+
+            Send enquiry ↗
+
+          </button>
+
+
+        </form>
+
+
+        <div
+          id="form-status"
+          class="form-status"
+          aria-live="polite"
+        ></div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+
+  <div class="wrap footer-grid">
+
+
+    <div>
+
+
+      <div class="eyebrow">
+        F1 Acoustic · Mumbai
+      </div>
+
+
+      <div class="footer-big">
+        F1 / ACOUSTIC
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-right">
+
+      Soundproofing &
+      acoustic systems
+
+      <br>
+
+      Built for serious spaces
+
+      <br>
+
+      <span class="footer-accent">
+        <span id="year"></span>
+      </span>
+
+      · Mumbai, India
+
+    </div>
+
+
+  </div>
+
+
+</footer>
+
+
+<!-- =======================================================
+     GSAP
+======================================================= -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+></script>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+></script>
+
+
+<script>
+
+(() => {
+
+  'use strict';
+
+
+  /* ======================================================
+     GLOBAL
+  ====================================================== */
+
+  const reducedMotion =
+    window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+
+  const preloader =
+    document.getElementById(
+      'preloader'
+    );
+
+
+  const loaderBar =
+    preloader.querySelector(
+      '.loader-bar i'
+    );
+
+
+  const year =
+    document.getElementById(
+      'year'
+    );
+
+
+  const form =
+    document.getElementById(
+      'enquiry-form'
+    );
+
+
+  const formStatus =
+    document.getElementById(
+      'form-status'
+    );
+
+
+  year.textContent =
+    new Date().getFullYear();
+
+
+  let initialized = false;
+
+
+  /* ======================================================
+     FALLBACK
+  ====================================================== */
+
+  function removeLoader(){
+
+    if(!preloader){
+      return;
+    }
+
+    preloader.style.display =
+      'none';
+
+  }
+
+
+  /* ======================================================
+     INITIALIZE
+  ====================================================== */
+
+  function init(){
+
+    if(initialized){
+      return;
+    }
+
+    initialized = true;
+
+
+    if(
+      !window.gsap ||
+      !window.ScrollTrigger
+    ){
+
+      removeLoader();
+
+      return;
+    }
+
+
+    gsap.registerPlugin(
+      ScrollTrigger
+    );
+
+
+    if(reducedMotion){
+
+      preloader.remove();
+
+      return;
+    }
+
+
+    /* ==================================================
+       PRELOADER
+    ================================================== */
+
+    gsap.timeline({
+
+      onComplete(){
+
+        gsap.to(
+          preloader,
+          {
+
+            autoAlpha:0,
+
+            duration:.65,
+
+            ease:'power2.out',
+
+            onComplete(){
+
+              if(preloader){
+                preloader.remove();
+              }
+
+              runAnimations();
+
+            }
+
+          }
+        );
+
+      }
+
+    })
+
+
+    .to(
+      loaderBar,
+      {
+
+        width:'100%',
+
+        duration:1.05,
+
+        ease:'power2.inOut'
+
+      }
+    )
+
+
+    .to(
+      '.loader-mark',
+      {
+
+        y:-12,
+
+        opacity:0,
+
+        duration:.32,
+
+        ease:'power2.in'
+
+      }
+    );
+
+  }
+
+
+  /* ======================================================
+     ANIMATION SYSTEM
+  ====================================================== */
+
+  function runAnimations(){
+
+
+    /* ====================================================
+       NAV
+    ==================================================== */
+
+    gsap.from(
+      '.site-nav',
+      {
+
+        y:-20,
+
+        opacity:0,
+
+        duration:.8,
+
+        ease:'power3.out'
+
+      }
+    );
+
+
+    /* ====================================================
+       HERO MICRO TYPE
+    ==================================================== */
+
+    gsap.from(
+      '.hero-kicker > *, .hero-foot > *, .scroll-cue',
+      {
+
+        y:25,
+
+        opacity:0,
+
+        duration:.9,
+
+        stagger:.08,
+
+        ease:'power3.out',
+
+        delay:.1
+
+      }
+    );
+
+
+    /* ====================================================
+       HERO TYPOGRAPHY
+    ==================================================== */
+
+    gsap.from(
+      '.hero-title > span',
+      {
+
+        yPercent:115,
+
+        opacity:0,
+
+        duration:1.15,
+
+        stagger:.08,
+
+        ease:'power4.out'
+
+      }
+    );
+
+
+    /* ====================================================
+       HERO ATMOSPHERE
+    ==================================================== */
+
+    gsap.to(
+      '.hero-atmosphere',
+      {
+
+        yPercent:12,
+
+        scale:1.08,
+
+        ease:'none',
+
+        scrollTrigger:{
+
+          trigger:'.hero',
+
+          start:'top top',
+
+          end:'bottom top',
+
+          scrub:1.3
+
+        }
+
+      }
+    );
+
+
+    gsap.to(
+      '.hero-liquid',
+      {
+
+        yPercent:36,
+
+        xPercent:-8,
+
+        rotation:18,
+
+        ease:'none',
+
+        scrollTrigger:{
+
+          trigger:'.hero',
+
+          start:'top top',
+
+          end:'bottom top',
+
+          scrub:1.8
+
+        }
+
+      }
+    );
+
+
+    /* ====================================================
+       STATEMENT
+    ==================================================== */
+
+    gsap.from(
+      '.statement .line span',
+      {
+
+        yPercent:110,
+
+        opacity:.2,
+
+        duration:1,
+
+        stagger:.13,
+
+        ease:'power4.out',
+
+        scrollTrigger:{
+
+          trigger:'.statement',
+
+          start:'top 72%',
+
+          once:true
+
+        }
+
+      }
+    );
+
+
+    gsap.from(
+      '.statement-detail p',
+      {
+
+        y:32,
+
+        opacity:0,
+
+        duration:.75,
+
+        stagger:.12,
+
+        ease:'power3.out',
+
+        scrollTrigger:{
+
+          trigger:'.statement-detail',
+
+          start:'top 84%',
+
+          once:true
+
+        }
+
+      }
+    );
+
+
+    /* ====================================================
+       KINETIC TYPOGRAPHY
+    ==================================================== */
+
+    const kinetic =
+      document.querySelector(
+        '.kinetic-type'
+      );
+
+
+    const kineticLines =
+      gsap.utils.toArray(
+        '.kinetic-line'
+      );
+
+
+    const kineticBg =
+      document.querySelector(
+        '.kinetic-bg'
+      );
+
+
+    const kineticCircle =
+      document.querySelector(
+        '.kinetic-cross'
+      );
+
+
+    if(
+      kinetic &&
+      kineticLines.length
+    ){
+
+      const timeline =
+        gsap.timeline({
+
+          scrollTrigger:{
+
+            trigger:kinetic,
+
+            start:'top top',
+
+            end:'bottom bottom',
+
+            scrub:1.15,
+
+            invalidateOnRefresh:true
+
+          }
+
+        });
+
+
+      /* BACKGROUND */
+
+      timeline.to(
+        kineticBg,
+        {
+
+          scale:1.35,
+
+          rotation:8,
+
+          xPercent:-5,
+
+          yPercent:8,
+
+          ease:'none'
+
+        },
+        0
+      );
+
+
+      /* SOUND */
+
+      timeline.to(
+        '.line-a',
+        {
+
+          xPercent:-78,
+
+          rotation:-5,
+
+          scale:1.18,
+
+          opacity:.72,
+
+          ease:'none'
+
+        },
+        0
+      );
+
+
+      /* ISOLATED */
+
+      timeline.to(
+        '.line-b',
+        {
+
+          xPercent:48,
+
+          rotation:4,
+
+          scale:1.38,
+
+          ease:'none'
+
+        },
+        0
+      );
+
+
+      /* PRIVACY */
+
+      timeline.to(
+        '.line-c',
+        {
+
+          xPercent:-105,
+
+          rotation:-3,
+
+          scale:.92,
+
+          opacity:.48,
+
+          ease:'none'
+
+        },
+        0
+      );
+
+
+      /* DESIGNED */
+
+      timeline.to(
+        '.line-d',
+        {
+
+          xPercent:38,
+
+          yPercent:-75,
+
+          rotation:7,
+
+          scale:1.2,
+
+          opacity:.84,
+
+          ease:'none'
+
+        },
+        0
+      );
+
+
+      /* CIRCLE */
+
+      timeline.to(
+        kineticCircle,
+        {
+
+          rotation:180,
+
+          scale:1.8,
+
+          opacity:.45,
+
+          ease:'none'
+
+        },
+        0
+      );
+
+
+      /* CAPTION */
+
+      timeline.fromTo(
+        '.kinetic-caption',
+        {
+
+          opacity:.35,
+
+          y:25
+
+        },
+        {
+
+          opacity:1,
+
+          y:0,
+
+          ease:'none'
+
+        },
+        .15
+      );
+
+
+      /* ADDITIONAL SCROLL SKEW */
+
+      kineticLines.forEach(
+        (
+          line,
+          index
+        ) => {
+
+          const direction =
+            index % 2 === 0
+              ? -1
+              : 1;
+
+
+          gsap.to(
+            line,
+            {
+
+              skewX:
+                direction * 7,
+
+              ease:'none',
+
+              scrollTrigger:{
+
+                trigger:kinetic,
+
+                start:'top bottom',
+
+                end:'bottom top',
+
+                scrub:1.8
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+    }
+
+
+    /* ====================================================
+       SOLUTIONS
+    ==================================================== */
+
+    gsap.utils
+      .toArray(
+        '.solution'
+      )
+      .forEach(
+        (
+          card,
+          index
+        ) => {
+
+          gsap.from(
+            card,
+            {
+
+              y:50,
+
+              opacity:0,
+
+              duration:.8,
+
+              delay:index*.04,
+
+              ease:'power3.out',
+
+              scrollTrigger:{
+
+                trigger:card,
+
+                start:'top 91%',
+
+                once:true
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+    /* ====================================================
+       PROJECTS
+    ==================================================== */
+
+    gsap.utils
+      .toArray(
+        '.project'
+      )
+      .forEach(
+        project => {
+
+          gsap.from(
+            project,
+            {
+
+              y:65,
+
+              opacity:0,
+
+              scale:.975,
+
+              duration:.9,
+
+              ease:'power3.out',
+
+              scrollTrigger:{
+
+                trigger:project,
+
+                start:'top 86%',
+
+                once:true
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+    /* ====================================================
+       DESKTOP PROJECT PARALLAX
+    ==================================================== */
+
+    if(
+      window.innerWidth > 760
+    ){
+
+      gsap.utils
+        .toArray(
+          '.project-art'
+        )
+        .forEach(
+          art => {
+
+            const project =
+              art.closest(
+                '.project'
+              );
+
+
+            gsap.to(
+              art,
+              {
+
+                yPercent:-10,
+
+                ease:'none',
+
+                scrollTrigger:{
+
+                  trigger:project,
+
+                  start:'top bottom',
+
+                  end:'bottom top',
+
+                  scrub:1.1
+
+                }
+
+              }
+            );
+
+          }
+        );
+
+    }
+
+
+    /* ====================================================
+       PROCESS
+    ==================================================== */
+
+    const steps =
+      gsap.utils.toArray(
+        '.step'
+      );
+
+
+    function activateStep(
+      index
+    ){
+
+      if(!steps.length){
+        return;
+      }
+
+
+      const safeIndex =
+        Math.max(
+          0,
+          Math.min(
+            steps.length - 1,
+            index
+          )
+        );
+
+
+      steps.forEach(
+        (
+          step,
+          i
+        ) => {
+
+          step.classList.toggle(
+            'active',
+            i === safeIndex
+          );
+
+        }
+      );
+
+
+      if(
+        steps.length > 1
+      ){
+
+        gsap.to(
+          '.stage-line',
+          {
+
+            height:
+              (
+                safeIndex /
+                (steps.length - 1)
+              ) * 100 + '%',
+
+            duration:.35,
+
+            ease:'power2.out'
+
+          }
+        );
+
+      }
+
+    }
+
+
+    steps.forEach(
+      (
+        step,
+        index
+      ) => {
+
+        ScrollTrigger.create({
+
+          trigger:step,
+
+          start:'top 62%',
+
+          end:'bottom 38%',
+
+          onEnter(){
+
+            activateStep(
+              index
+            );
+
+          },
+
+          onEnterBack(){
+
+            activateStep(
+              index
+            );
+
+          },
+
+          onLeave(){
+
+            activateStep(
+              index + 1
+            );
+
+          },
+
+          onLeaveBack(){
+
+            activateStep(
+              index - 1
+            );
+
+          }
+
+        });
+
+      }
+    );
+
+
+    activateStep(0);
+
+
+    /* ====================================================
+       NUMBERS
+    ==================================================== */
+
+    gsap.from(
+      '.number strong',
+      {
+
+        y:38,
+
+        opacity:0,
+
+        duration:.8,
+
+        stagger:.1,
+
+        ease:'power3.out',
+
+        scrollTrigger:{
+
+          trigger:'.numbers',
+
+          start:'top 85%',
+
+          once:true
+
+        }
+
+      }
+    );
+
+
+    /* ====================================================
+       FAQ
+    ==================================================== */
+
+    gsap.from(
+      '.faq-grid > *',
+      {
+
+        y:35,
+
+        opacity:0,
+
+        duration:.8,
+
+        stagger:.1,
+
+        ease:'power3.out',
+
+        scrollTrigger:{
+
+          trigger:'.faq-grid',
+
+          start:'top 84%',
+
+          once:true
+
+        }
+
+      }
+    );
+
+
+    /* ====================================================
+       CONTACT
+    ==================================================== */
+
+    gsap.from(
+      '.contact-card',
+      {
+
+        y:60,
+
+        opacity:0,
+
+        scale:.98,
+
+        duration:1,
+
+        ease:'power3.out',
+
+        scrollTrigger:{
+
+          trigger:'.contact-card',
+
+          start:'top 88%',
+
+          once:true
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* ======================================================
+     BOOT
+  ====================================================== */
+
+  window.addEventListener(
+    'load',
+    init,
+    {
+      once:true
+    }
+  );
+
+
+  /*
+     Never leave the visitor trapped
+     behind the preloader.
+  */
+
+  setTimeout(
+    () => {
+
+      if(!initialized){
+
+        removeLoader();
+
+      }
+
+    },
+    3500
+  );
+
+
+  /* ======================================================
+     CUSTOM DESKTOP CURSOR
+  ====================================================== */
+
+  const cursor =
+    document.querySelector(
+      '.cursor'
+    );
+
+
+  const cursorDot =
+    document.querySelector(
+      '.cursor-dot'
+    );
+
+
+  if(
+    cursor &&
+    cursorDot &&
+    window.matchMedia(
+      '(pointer:fine)'
+    ).matches &&
+    window.gsap
+  ){
+
+    let x =
+      window.innerWidth / 2;
+
+    let y =
+      window.innerHeight / 2;
+
+    let cx = x;
+    let cy = y;
+
+
+    window.addEventListener(
+      'pointermove',
+      event => {
+
+        x =
+          event.clientX;
+
+        y =
+          event.clientY;
+
+
+        cursorDot.style.left =
+          x + 'px';
+
+
+        cursorDot.style.top =
+          y + 'px';
+
+      },
+      {
+        passive:true
+      }
+    );
+
+
+    gsap.ticker.add(
+      () => {
+
+        cx +=
+          (x - cx) * .16;
+
+        cy +=
+          (y - cy) * .16;
+
+
+        cursor.style.left =
+          cx + 'px';
+
+
+        cursor.style.top =
+          cy + 'px';
+
+      }
+    );
+
+  }
+
+
+  /* ======================================================
+     ANCHOR SCROLL
+  ====================================================== */
+
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach(
+      link => {
+
+        link.addEventListener(
+          'click',
+          event => {
+
+            const href =
+              link.getAttribute(
+                'href'
+              );
+
+
+            if(
+              !href ||
+              href === '#'
+            ){
+              return;
+            }
+
+
+            const target =
+              document.querySelector(
+                href
+              );
+
+
+            if(!target){
+              return;
+            }
+
+
+            event.preventDefault();
+
+
+            target.scrollIntoView({
+
+              behavior:'smooth',
+
+              block:'start'
+
+            });
+
+          }
+        );
+
+      }
+    );
+
+
+  /* ======================================================
+     FORM
+  ====================================================== */
+
+  if(form){
+
+    form.addEventListener(
+      'submit',
+      event => {
+
+        event.preventDefault();
+
+
+        if(formStatus){
+
+          formStatus.textContent =
+            'ENQUIRY RECEIVED — CONNECT THIS FORM TO YOUR EMAIL OR CRM ENDPOINT.';
+
+        }
+
+
+        form.reset();
+
+      }
+    );
+
+  }
+
+
+})();
+
+</script>
+
+</body>
+</html>
