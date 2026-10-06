@@ -11,7 +11,10 @@
   content="F1 Acoustic creates premium acoustic and soundproofing environments for Mumbai's most ambitious spaces."
 >
 
-<meta name="theme-color" content="#006A8E">
+<meta
+  name="theme-color"
+  content="#006A8E"
+>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +25,11 @@
 >
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
   --ocean:#006A8E;
   --ocean-deep:#00465F;
@@ -45,10 +53,30 @@
 
   --line-dark:rgba(17,23,25,.14);
 
-  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --serif:"Playfair Display",Georgia,serif;
-  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --sans:
+    "Manrope",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
+  --serif:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  --mono:
+    "DM Mono",
+    ui-monospace,
+    Menlo,
+    monospace;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
   box-sizing:border-box;
@@ -62,11 +90,17 @@ html{
 
 body{
   margin:0;
+
   overflow-x:hidden;
+
   background:var(--ocean);
+
   color:var(--offwhite);
+
   font-family:var(--sans);
+
   -webkit-font-smoothing:antialiased;
+
   text-rendering:optimizeLegibility;
 }
 
@@ -86,8 +120,12 @@ a{
   color:var(--charcoal);
 }
 
+
+/* =========================================================
+   SHARED TYPE
+========================================================= */
+
 .eyebrow,
-.brand,
 .nav-right,
 .hero-meta,
 .hero-scroll,
@@ -99,125 +137,44 @@ a{
 .process-footer,
 .number-label,
 .footer-meta,
-.contact-action,
-.preloader-meta{
+.contact-action{
   font-family:var(--mono);
+
   font-weight:500;
+
   font-size:9px;
+
   letter-spacing:.12em;
+
   text-transform:uppercase;
 }
 
 .display{
   margin:0;
+
   font-weight:800;
+
   letter-spacing:-.09em;
+
   line-height:.86;
 }
 
 .serif{
   font-family:var(--serif);
+
   font-weight:500;
 }
 
 .eyebrow{
   color:var(--sage);
+
   letter-spacing:.15em;
 }
 
 .wrap{
   width:min(1240px,calc(100% - 30px));
+
   margin:0 auto;
-}
-
-
-/* =========================================================
-   CSS PRELOADER
-========================================================= */
-
-#preloader{
-  position:fixed;
-  inset:0;
-  z-index:10000;
-
-  display:grid;
-  place-items:center;
-
-  background:var(--ocean-deep);
-
-  animation:
-    preloader-out
-    .45s
-    ease
-    1s
-    forwards;
-}
-
-.preloader-inner{
-  width:min(82vw,440px);
-}
-
-.preloader-meta{
-  display:flex;
-  justify-content:space-between;
-  color:var(--w45);
-}
-
-.preloader-brand{
-  margin:12px 0 18px;
-
-  font:
-    800
-    clamp(85px,21vw,175px)
-    /.78
-    var(--sans);
-
-  letter-spacing:-.105em;
-
-  animation:
-    preloader-brand-out
-    .4s
-    ease
-    .65s
-    forwards;
-}
-
-.preloader-line{
-  height:3px;
-  overflow:hidden;
-
-  background:rgba(245,242,233,.12);
-}
-
-.preloader-fill{
-  width:100%;
-  height:100%;
-
-  transform:scaleX(1);
-  transform-origin:left;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--sage),
-      var(--sage-light),
-      var(--crimson)
-    );
-}
-
-@keyframes preloader-out{
-  to{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-  }
-}
-
-@keyframes preloader-brand-out{
-  to{
-    transform:translateY(-12px);
-    opacity:.2;
-  }
 }
 
 
@@ -227,9 +184,13 @@ a{
 
 .grain{
   position:fixed;
+
   inset:0;
+
   z-index:9000;
+
   pointer-events:none;
+
   opacity:.025;
 
   background-image:
@@ -243,12 +204,15 @@ a{
 
 .scroll-rail{
   position:fixed;
+
   z-index:750;
 
   right:10px;
+
   top:50%;
 
   width:2px;
+
   height:84px;
 
   transform:translateY(-50%);
@@ -258,17 +222,19 @@ a{
 
 .scroll-rail-fill{
   width:100%;
+
   height:100%;
 
   background:var(--sage);
 
   transform:scaleY(0);
+
   transform-origin:top;
 }
 
 
 /* =========================================================
-   NAV
+   HEADER
 ========================================================= */
 
 .site-nav{
@@ -280,40 +246,81 @@ a{
 
   z-index:600;
 
+  min-height:64px;
+
   padding:16px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
+  pointer-events:none;
 }
 
-.brand{
+
+/* CENTER PNG LOGO */
+
+.header-logo{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  width:150px;
+
+  height:64px;
+
   display:flex;
+
   align-items:center;
 
-  gap:9px;
+  justify-content:center;
 
-  font-size:10px;
-  letter-spacing:.13em;
+  z-index:5;
+
+  pointer-events:auto;
+
+  background:transparent !important;
 }
 
-.brand-dot{
-  width:8px;
-  height:8px;
+.header-logo img{
+  display:block;
 
-  border-radius:50%;
+  width:100%;
 
-  background:var(--sage);
+  height:100%;
 
-  box-shadow:
-    0 0 25px
-    rgba(168,191,163,.55);
+  object-fit:contain;
+
+  background:transparent !important;
+
+  border:0;
+
+  mix-blend-mode:normal;
 }
+
+
+/* RIGHT SIDE */
 
 .nav-right{
+  margin-left:auto;
+
   display:flex;
+
   align-items:center;
+
   gap:12px;
+
+  position:relative;
+
+  z-index:6;
+
+  pointer-events:auto;
 }
 
 .nav-location{
@@ -321,7 +328,9 @@ a{
 }
 
 .nav-button{
-  padding:9px 12px;
+  padding:
+    9px
+    12px;
 
   border:
     1px solid
@@ -333,6 +342,7 @@ a{
     rgba(0,70,95,.5);
 
   -webkit-backdrop-filter:blur(14px);
+
   backdrop-filter:blur(14px);
 }
 
@@ -343,12 +353,15 @@ a{
 
 .hero{
   height:230svh;
+
   position:relative;
+
   background:var(--ocean);
 }
 
 .hero-pin{
   position:sticky;
+
   top:0;
 
   height:100svh;
@@ -356,6 +369,7 @@ a{
   overflow:hidden;
 
   display:flex;
+
   align-items:flex-end;
 
   padding:
@@ -366,6 +380,7 @@ a{
 
 .hero-bg{
   position:absolute;
+
   inset:-25%;
 
   background:
@@ -405,6 +420,7 @@ a{
 .hero-grid,
 .kinetic-grid{
   position:absolute;
+
   inset:0;
 
   opacity:.07;
@@ -469,7 +485,8 @@ a{
   top:7%;
   left:50%;
 
-  transform:translateX(-50%);
+  transform:
+    translateX(-50%);
 
   border-radius:50%;
 
@@ -514,6 +531,7 @@ a{
   display:flex;
 
   justify-content:space-between;
+
   align-items:center;
 
   margin-bottom:20px;
@@ -534,6 +552,7 @@ a{
 
 .hero-title-line{
   display:block;
+
   overflow:hidden;
 }
 
@@ -549,6 +568,7 @@ a{
   color:var(--sage);
 
   font-family:var(--serif);
+
   font-weight:500;
 
   font-size:.54em;
@@ -557,11 +577,11 @@ a{
 }
 
 
-/* CSS HERO ENTRANCE — NO GSAP */
+/* CSS HERO INTRO */
 
 .hero-title-line span{
   animation:
-    hero-title-in
+    heroTitleIn
     .8s
     cubic-bezier(.16,1,.3,1)
     both;
@@ -575,7 +595,7 @@ a{
 .hero-copy-row > *,
 .hero-scroll{
   animation:
-    hero-meta-in
+    heroMetaIn
     .6s
     cubic-bezier(.16,1,.3,1)
     .2s
@@ -590,7 +610,7 @@ a{
   animation-delay:.4s;
 }
 
-@keyframes hero-title-in{
+@keyframes heroTitleIn{
 
   from{
     transform:translateY(110%);
@@ -604,7 +624,7 @@ a{
 
 }
 
-@keyframes hero-meta-in{
+@keyframes heroMetaIn{
 
   from{
     transform:translateY(18px);
@@ -618,13 +638,13 @@ a{
 
 }
 
-
 .hero-copy-row{
   margin-top:28px;
 
   display:flex;
 
   justify-content:space-between;
+
   align-items:flex-end;
 
   gap:30px;
@@ -675,6 +695,7 @@ a{
 
 .hero-scroll-line{
   width:45px;
+
   height:1px;
 
   background:var(--sage);
@@ -747,6 +768,7 @@ a{
 
 .manifesto-line{
   display:block;
+
   overflow:hidden;
 }
 
@@ -759,7 +781,13 @@ a{
 }
 
 .manifesto-muted{
-  color:rgba(17,23,25,.45);
+  color:
+    rgba(
+      17,
+      23,
+      25,
+      .45
+    );
 }
 
 .manifesto-detail{
@@ -860,7 +888,11 @@ a{
 
   font:
     800
-    clamp(78px,15vw,215px)
+    clamp(
+      78px,
+      15vw,
+      215px
+    )
     /.78
     var(--sans);
 
@@ -977,6 +1009,7 @@ a{
   display:flex;
 
   justify-content:space-between;
+
   align-items:flex-end;
 
   gap:25px;
@@ -996,7 +1029,7 @@ a{
 
 /* =========================================================
    ACOUSTIC FIELD
-   STATIC / CSS ONLY
+   STATIC / NO GSAP
 ========================================================= */
 
 .field-section{
@@ -1004,22 +1037,27 @@ a{
 
   min-height:100svh;
 
-  background:var(--ocean-deep);
+  height:100svh;
 
   overflow:hidden;
+
+  background:var(--ocean-deep);
 }
 
 .field-pin{
   position:relative;
 
-  height:100svh;
+  width:100%;
+
+  height:100%;
+
+  overflow:hidden;
 
   display:flex;
 
   align-items:center;
-  justify-content:center;
 
-  overflow:hidden;
+  justify-content:center;
 }
 
 .field-word{
@@ -1035,7 +1073,11 @@ a{
 
   font:
     800
-    clamp(70px,18vw,220px)
+    clamp(
+      70px,
+      18vw,
+      220px
+    )
     /.8
     var(--sans);
 
@@ -1232,7 +1274,11 @@ a{
 
   font:
     800
-    clamp(34px,7vw,68px)
+    clamp(
+      34px,
+      7vw,
+      68px
+    )
     /.88
     var(--sans);
 
@@ -1290,7 +1336,6 @@ a{
 
 /* =========================================================
    PROJECT JOURNEY
-   ONE HORIZONTAL TRACK ONLY
 ========================================================= */
 
 .project-journey{
@@ -1487,7 +1532,11 @@ a{
 
   font:
     800
-    clamp(52px,10vw,120px)
+    clamp(
+      52px,
+      10vw,
+      120px
+    )
     /.82
     var(--sans);
 
@@ -1525,6 +1574,7 @@ a{
 
 .project-progress-fill{
   height:100%;
+
   width:100%;
 
   background:var(--crimson);
@@ -1537,7 +1587,7 @@ a{
 
 
 /* =========================================================
-   PROCESS — STATIC FLOW
+   PROCESS
 ========================================================= */
 
 .process{
@@ -1570,7 +1620,11 @@ a{
 
   font:
     800
-    clamp(55px,9vw,118px)
+    clamp(
+      55px,
+      9vw,
+      118px
+    )
     /.82
     var(--sans);
 
@@ -1585,6 +1639,7 @@ a{
   position:absolute;
 
   left:min(45%,600px);
+
   right:20px;
 
   top:12%;
@@ -1599,6 +1654,7 @@ a{
   position:absolute;
 
   left:-2px;
+
   top:0;
 
   width:3px;
@@ -1656,7 +1712,11 @@ a{
 
   font:
     800
-    clamp(32px,5vw,58px)
+    clamp(
+      32px,
+      5vw,
+      58px
+    )
     /.90
     var(--sans);
 
@@ -1680,6 +1740,7 @@ a{
 
   left:15px;
   right:15px;
+
   bottom:23px;
 
   display:flex;
@@ -1712,7 +1773,10 @@ a{
   display:grid;
 
   grid-template-columns:
-    repeat(3,1fr);
+    repeat(
+      3,
+      1fr
+    );
 
   gap:25px;
 }
@@ -1730,7 +1794,11 @@ a{
 .number-value{
   font:
     800
-    clamp(60px,9vw,100px)
+    clamp(
+      60px,
+      9vw,
+      100px
+    )
     /.85
     var(--sans);
 
@@ -1785,7 +1853,11 @@ a{
 
   font:
     800
-    clamp(54px,8vw,105px)
+    clamp(
+      54px,
+      8vw,
+      105px
+    )
     /.84
     var(--sans);
 
@@ -1892,6 +1964,7 @@ details p{
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 }
 
@@ -1967,7 +2040,11 @@ details p{
 
   font:
     800
-    clamp(56px,12vw,158px)
+    clamp(
+      56px,
+      12vw,
+      158px
+    )
     /.82
     var(--sans);
 
@@ -2069,16 +2146,38 @@ footer{
   align-items:end;
 }
 
-.footer-logo{
-  margin-top:8px;
+.footer-logo-wrap{
+  display:flex;
 
-  font:
-    800
-    clamp(48px,10vw,120px)
-    /.84
-    var(--sans);
+  flex-direction:column;
 
-  letter-spacing:-.09em;
+  align-items:flex-start;
+}
+
+.footer-logo-image{
+  display:block;
+
+  width:
+    min(
+      240px,
+      55vw
+    );
+
+  height:auto;
+
+  max-height:100px;
+
+  object-fit:contain;
+
+  object-position:left center;
+
+  background:transparent !important;
+
+  margin-top:10px;
+
+  border:0;
+
+  mix-blend-mode:normal;
 }
 
 .footer-meta{
@@ -2113,9 +2212,17 @@ footer{
   }
 
   .site-nav{
+    min-height:80px;
+
     padding:
       21px
       34px;
+  }
+
+  .header-logo{
+    width:170px;
+
+    height:70px;
   }
 
   .hero-pin{
@@ -2186,7 +2293,7 @@ footer{
 
 
 /* =========================================================
-   MOBILE
+   MOBILE / TOUCH
 ========================================================= */
 
 @media(max-width:760px),(pointer:coarse){
@@ -2197,6 +2304,7 @@ footer{
 
   .nav-button{
     -webkit-backdrop-filter:none;
+
     backdrop-filter:none;
 
     min-height:40px;
@@ -2231,7 +2339,6 @@ footer{
   }
 
   .eyebrow,
-  .brand,
   .nav-right,
   .hero-meta,
   .hero-scroll,
@@ -2258,12 +2365,25 @@ footer{
 
   .scroll-rail{
     right:7px;
+
     height:70px;
+  }
+
+
+  /* HEADER */
+
+  .header-logo{
+    width:108px;
+
+    height:52px;
   }
 
   .nav-location{
     display:none;
   }
+
+
+  /* HERO */
 
   .hero-title{
     font-size:22vw;
@@ -2275,12 +2395,16 @@ footer{
 
   .hero-meta{
     margin-top:20px;
+
     text-align:left;
   }
 
   .hero-scroll{
     margin-top:30px;
   }
+
+
+  /* MANIFESTO */
 
   .manifesto{
     height:175svh;
@@ -2293,6 +2417,9 @@ footer{
 
     margin-top:43px;
   }
+
+
+  /* KINETIC */
 
   .kinetic{
     height:230svh;
@@ -2333,34 +2460,28 @@ footer{
 
   .kinetic-caption-right{
     margin-top:9px;
+
     text-align:left;
   }
 
 
-  /* =====================================================
-     MOBILE ACOUSTIC FIELD
-     ===================================================== */
+  /* ACOUSTIC FIELD */
 
   .field-section{
     height:78svh !important;
-    min-height:78svh !important;
 
-    display:block;
+    min-height:78svh !important;
   }
 
   .field-pin{
     height:78svh !important;
+
     min-height:78svh !important;
-
-    position:relative !important;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
   }
 
   .field-word{
+    width:100%;
+
     padding:
       0
       14px;
@@ -2385,28 +2506,34 @@ footer{
 
   .ripple:nth-child(1){
     width:22vw;
+
     height:22vw;
   }
 
   .ripple:nth-child(2){
     width:43vw;
+
     height:43vw;
   }
 
   .ripple:nth-child(3){
     width:66vw;
+
     height:66vw;
   }
 
   .ripple:nth-child(4){
     width:92vw;
+
     height:92vw;
   }
 
   .field-meta{
     left:14px;
+
     right:14px;
-    bottom:16px;
+
+    bottom:16px !important;
   }
 
 
@@ -2442,7 +2569,9 @@ footer{
 
   .project-progress{
     left:22px;
+
     right:22px;
+
     top:22px;
   }
 
@@ -2450,6 +2579,7 @@ footer{
   /* PROCESS */
 
   .process{
+
     height:auto !important;
 
     min-height:0 !important;
@@ -2461,7 +2591,10 @@ footer{
   }
 
   .process-pin{
+
     position:relative !important;
+
+    top:auto !important;
 
     height:auto !important;
 
@@ -2471,6 +2604,7 @@ footer{
   }
 
   .process-heading{
+
     position:relative !important;
 
     left:auto !important;
@@ -2487,13 +2621,19 @@ footer{
         15vw,
         72px
       ) !important;
+
+    line-height:.86 !important;
+
+    letter-spacing:-.085em !important;
   }
 
   .process-list{
+
     position:relative !important;
 
     left:auto !important;
     right:auto !important;
+
     top:auto !important;
     bottom:auto !important;
 
@@ -2506,6 +2646,10 @@ footer{
       0
       0
       18px !important;
+
+    border-left:
+      1px solid
+      rgba(245,242,233,.14) !important;
   }
 
   .process-progress{
@@ -2546,6 +2690,7 @@ footer{
   }
 
   .process-item:last-of-type{
+
     margin-bottom:0 !important;
 
     padding-bottom:0 !important;
@@ -2554,19 +2699,27 @@ footer{
   }
 
   .process-index{
+
     margin:
       0
       0
       11px !important;
 
+    color:var(--sage) !important;
+
     font-size:8px !important;
+
+    letter-spacing:.11em !important;
   }
 
   .process-title{
+
     margin:
       0
       0
       10px !important;
+
+    max-width:100% !important;
 
     font-size:
       clamp(
@@ -2574,17 +2727,33 @@ footer{
         8.7vw,
         39px
       ) !important;
+
+    line-height:.94 !important;
+
+    letter-spacing:-.06em !important;
   }
 
   .process-description{
+
     max-width:100% !important;
+
+    margin:0 !important;
 
     font-size:12px !important;
 
     line-height:1.62 !important;
+
+    color:
+      rgba(
+        245,
+        242,
+        233,
+        .56
+      ) !important;
   }
 
   .process-footer{
+
     position:relative !important;
 
     left:auto !important;
@@ -2601,6 +2770,14 @@ footer{
     gap:10px !important;
 
     flex-wrap:wrap !important;
+
+    color:
+      rgba(
+        245,
+        242,
+        233,
+        .42
+      ) !important;
   }
 
 
@@ -2659,6 +2836,16 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .footer-logo-image{
+    width:
+      min(
+        210px,
+        62vw
+      );
+
+    max-height:90px;
+  }
+
   .footer-meta{
     text-align:left;
   }
@@ -2666,7 +2853,9 @@ footer{
 }
 
 
-/* REDUCED MOTION */
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -2674,53 +2863,54 @@ footer{
   *::before,
   *::after{
     animation:none !important;
+
     transition:none !important;
   }
 
 }
+
 </style>
 </head>
 
+
 <body>
-
-
-<div id="preloader">
-
-  <div class="preloader-inner">
-
-    <div class="preloader-meta">
-      <span>F1 ACOUSTIC</span>
-      <span>MUMBAI</span>
-    </div>
-
-    <div class="preloader-brand">
-      F1
-    </div>
-
-    <div class="preloader-line">
-      <div class="preloader-fill"></div>
-    </div>
-
-  </div>
-
-</div>
 
 
 <div class="grain"></div>
 
 
+<!-- =======================================================
+     SCROLL RAIL
+======================================================= -->
+
 <div class="scroll-rail">
-  <div class="scroll-rail-fill"></div>
+
+  <div
+    class="scroll-rail-fill"
+  ></div>
+
 </div>
 
 
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
 <nav class="site-nav">
 
-  <a href="#top" class="brand">
+  <a
+    href="#top"
+    class="header-logo"
+    aria-label="F1 Acoustic home"
+  >
 
-    <span class="brand-dot"></span>
-
-    F1 Acoustic
+    <img
+      src="f1-logo.png"
+      alt="F1 Acoustic"
+      width="170"
+      height="70"
+      decoding="async"
+    >
 
   </a>
 
@@ -2730,6 +2920,7 @@ footer{
     <span class="nav-location">
       Mumbai · India
     </span>
+
 
     <a
       href="#contact"
@@ -2746,9 +2937,14 @@ footer{
 <main id="top">
 
 
+<!-- =======================================================
+     HERO
+======================================================= -->
+
 <section class="hero">
 
   <div class="hero-pin">
+
 
     <div class="hero-bg"></div>
 
@@ -2768,6 +2964,7 @@ footer{
           Architectural soundproofing / Mumbai
         </span>
 
+
         <span class="eyebrow">
           01 / 09
         </span>
@@ -2777,30 +2974,46 @@ footer{
 
       <h1 class="display hero-title">
 
+
         <span class="hero-title-line">
+
           <span>
             DESIGN
           </span>
+
         </span>
 
+
         <span class="hero-title-line">
+
           <span>
-            <em>the</em>
+
+            <em>
+              the
+            </em>
+
             SILENCE
+
           </span>
+
         </span>
+
 
       </h1>
 
 
       <div class="hero-copy-row">
 
+
         <p class="hero-description">
 
           F1 Acoustic creates
-          <strong>quiet architecture</strong>
-          for Mumbai's most ambitious residences,
-          hospitality spaces, workspaces and developments.
+          <strong>
+            quiet architecture
+          </strong>
+          for Mumbai's most ambitious
+          residences, hospitality spaces,
+          workspaces and developments.
 
         </p>
 
@@ -2808,10 +3021,13 @@ footer{
         <div class="hero-meta">
 
           Acoustic engineering<br>
+
           Soundproofing systems<br>
+
           Invisible performance
 
         </div>
+
 
       </div>
 
@@ -2824,42 +3040,60 @@ footer{
 
       </div>
 
+
     </div>
+
 
   </div>
 
 </section>
 
 
+<!-- =======================================================
+     MANIFESTO
+======================================================= -->
+
 <section class="manifesto">
 
   <div class="manifesto-pin">
+
 
     <div class="manifesto-orbit"></div>
 
 
     <div class="wrap manifesto-content">
 
+
       <span class="eyebrow">
+
         02 / The idea
+
       </span>
 
 
       <h2 class="display manifesto-title">
 
+
         <span class="manifesto-line">
+
           <span>
             YOUR ROOM
           </span>
+
         </span>
 
+
         <span class="manifesto-line">
+
           <span>
             SHOULD FEEL
           </span>
+
         </span>
 
+
         <span class="manifesto-line">
+
           <span>
 
             <span class="serif">
@@ -2871,12 +3105,15 @@ footer{
             </span>
 
           </span>
+
         </span>
+
 
       </h2>
 
 
       <div class="manifesto-detail">
+
 
         <p>
 
@@ -2884,31 +3121,41 @@ footer{
             Acoustic control without visual compromise.
           </strong>
 
-          Soundproofing becomes part of the architectural
-          logic, not an afterthought attached to the finished room.
+          Soundproofing becomes part of the
+          architectural logic, not an afterthought
+          attached to the finished room.
 
         </p>
 
 
         <p>
 
-          In premium real estate, privacy is not merely
-          a technical requirement. It is part of the experience.
+          In premium real estate, privacy is not
+          merely a technical requirement.
+          It is part of the experience.
 
         </p>
 
+
       </div>
 
+
     </div>
+
 
   </div>
 
 </section>
 
 
+<!-- =======================================================
+     KINETIC
+======================================================= -->
+
 <section class="kinetic">
 
   <div class="kinetic-pin">
+
 
     <div class="kinetic-bg"></div>
 
@@ -2946,6 +3193,7 @@ footer{
 
     <div class="kinetic-caption">
 
+
       <span class="eyebrow">
         03 / Acoustic intelligence
       </span>
@@ -2959,14 +3207,21 @@ footer{
 
       </span>
 
+
     </div>
+
 
   </div>
 
 </section>
 
 
+<!-- =======================================================
+     ACOUSTIC FIELD — STATIC
+======================================================= -->
+
 <section class="field-section">
+
 
   <div class="field-pin">
 
@@ -2982,13 +3237,16 @@ footer{
 
     <div class="field-word">
 
+
       <span>
         SOUND
       </span>
 
+
       <span>
         BECOMES SPACE
       </span>
+
 
     </div>
 
@@ -3005,10 +3263,16 @@ footer{
 
     </div>
 
+
   </div>
+
 
 </section>
 
+
+<!-- =======================================================
+     SOLUTIONS
+======================================================= -->
 
 <section class="solutions">
 
@@ -3016,6 +3280,7 @@ footer{
 
 
     <div class="solutions-head">
+
 
       <span class="eyebrow">
         05 / What we build
@@ -3041,6 +3306,7 @@ footer{
 
       </p>
 
+
     </div>
 
 
@@ -3049,139 +3315,191 @@ footer{
 
       <article class="solution-card">
 
+
         <span class="solution-card-label">
+
           01 / Private residence
+
         </span>
 
 
         <div>
 
+
           <h3 class="solution-card-title">
+
             Bedrooms that disappear from the city.
+
           </h3>
 
 
           <p>
+
             High-performance partitions,
-            ceilings, doors and junctions designed
-            around residential comfort and privacy.
+            ceilings, doors and junctions
+            designed around residential
+            comfort and privacy.
+
           </p>
+
 
         </div>
 
 
         <div class="solution-glow"></div>
+
 
         <div class="solution-index">
           01
         </div>
 
+
       </article>
 
 
       <article class="solution-card">
 
+
         <span class="solution-card-label">
+
           02 / Media &amp; cinema
+
         </span>
 
 
         <div>
 
+
           <h3 class="solution-card-title">
+
             Immersion, contained.
+
           </h3>
 
 
           <p>
-            Control airborne sound, impact noise
-            and low-frequency energy without
-            sacrificing room character.
+
+            Control airborne sound, impact
+            noise and low-frequency energy
+            without sacrificing room character.
+
           </p>
+
 
         </div>
 
 
         <div class="solution-glow"></div>
+
 
         <div class="solution-index">
           02
         </div>
 
+
       </article>
 
 
       <article class="solution-card">
 
+
         <span class="solution-card-label">
+
           03 / Workspace
+
         </span>
 
 
         <div>
 
+
           <h3 class="solution-card-title">
+
             Focus without isolation.
+
           </h3>
 
 
           <p>
-            Acoustic zoning that protects concentration
-            while preserving the energy of collaboration.
+
+            Acoustic zoning that protects
+            concentration while preserving
+            the energy of collaboration.
+
           </p>
+
 
         </div>
 
 
         <div class="solution-glow"></div>
+
 
         <div class="solution-index">
           03
         </div>
 
+
       </article>
 
 
       <article class="solution-card">
 
+
         <span class="solution-card-label">
+
           04 / Developer scale
+
         </span>
 
 
         <div>
 
+
           <h3 class="solution-card-title">
+
             One standard. Hundreds of doors.
+
           </h3>
 
 
           <p>
+
             Repeatable systems, specifications
             and site coordination for premium
             project portfolios.
+
           </p>
+
 
         </div>
 
 
         <div class="solution-glow"></div>
 
+
         <div class="solution-index">
           04
         </div>
+
 
       </article>
 
 
     </div>
 
+
   </div>
 
 </section>
 
 
+<!-- =======================================================
+     PROJECT JOURNEY
+======================================================= -->
+
 <section class="project-journey">
+
 
   <div class="project-pin">
 
@@ -3196,7 +3514,10 @@ footer{
     <div class="project-track">
 
 
-      <article class="project-panel project-panel-one">
+      <article
+        class="project-panel project-panel-one"
+      >
+
 
         <div class="project-art"></div>
 
@@ -3207,6 +3528,7 @@ footer{
 
 
           <div>
+
 
             <span class="project-tag">
               Luxury residential
@@ -3220,6 +3542,7 @@ footer{
               FLOOR
 
             </h3>
+
 
           </div>
 
@@ -3235,10 +3558,14 @@ footer{
 
         </div>
 
+
       </article>
 
 
-      <article class="project-panel project-panel-two">
+      <article
+        class="project-panel project-panel-two"
+      >
+
 
         <div class="project-art"></div>
 
@@ -3249,6 +3576,7 @@ footer{
 
 
           <div>
+
 
             <span class="project-tag">
               Private cinema
@@ -3261,6 +3589,7 @@ footer{
               BOX
 
             </h3>
+
 
           </div>
 
@@ -3276,10 +3605,14 @@ footer{
 
         </div>
 
+
       </article>
 
 
-      <article class="project-panel project-panel-three">
+      <article
+        class="project-panel project-panel-three"
+      >
+
 
         <div class="project-art"></div>
 
@@ -3290,6 +3623,7 @@ footer{
 
 
           <div>
+
 
             <span class="project-tag">
               Developer amenities
@@ -3304,31 +3638,40 @@ footer{
 
             </h3>
 
+
           </div>
 
 
           <p class="project-description">
 
             Acoustic zoning across lounges,
-            fitness, entertainment and shared
-            luxury spaces.
+            fitness, entertainment and
+            shared luxury spaces.
 
           </p>
 
 
         </div>
 
+
       </article>
 
 
     </div>
 
+
   </div>
+
 
 </section>
 
 
+<!-- =======================================================
+     PROCESS
+======================================================= -->
+
 <section class="process">
+
 
   <div class="process-pin">
 
@@ -3346,18 +3689,22 @@ footer{
 
     <div class="process-list">
 
+
       <div class="process-progress"></div>
 
 
       <article class="process-item">
 
+
         <div class="process-index">
           06.01 — LISTEN
         </div>
 
+
         <h3 class="process-title">
           Measure the room.
         </h3>
+
 
         <p class="process-description">
 
@@ -3368,18 +3715,22 @@ footer{
 
         </p>
 
+
       </article>
 
 
       <article class="process-item">
 
+
         <div class="process-index">
           06.02 — ISOLATE
         </div>
 
+
         <h3 class="process-title">
           Stop the transmission.
         </h3>
+
 
         <p class="process-description">
 
@@ -3389,18 +3740,22 @@ footer{
 
         </p>
 
+
       </article>
 
 
       <article class="process-item">
 
+
         <div class="process-index">
           06.03 — TUNE
         </div>
 
+
         <h3 class="process-title">
           Shape the experience.
         </h3>
+
 
         <p class="process-description">
 
@@ -3410,18 +3765,22 @@ footer{
 
         </p>
 
+
       </article>
 
 
       <article class="process-item">
 
+
         <div class="process-index">
           06.04 — DELIVER
         </div>
 
+
         <h3 class="process-title">
           Coordinate the invisible.
         </h3>
+
 
         <p class="process-description">
 
@@ -3431,6 +3790,7 @@ footer{
 
         </p>
 
+
       </article>
 
 
@@ -3439,71 +3799,95 @@ footer{
 
     <div class="process-footer">
 
+
       <span>
         F1 ACOUSTIC
       </span>
+
 
       <span>
         Precision · Privacy · Performance
       </span>
 
+
     </div>
+
 
   </div>
 
 </section>
 
 
+<!-- =======================================================
+     NUMBERS
+======================================================= -->
+
 <section class="numbers">
+
 
   <div class="wrap numbers-grid">
 
 
     <div class="number">
 
+
       <div class="number-value">
         01
       </div>
+
 
       <span class="number-label">
         Site-first thinking
       </span>
 
+
     </div>
 
 
     <div class="number">
+
 
       <div class="number-value">
         24/7
       </div>
 
+
       <span class="number-label">
         Privacy mindset
       </span>
+
 
     </div>
 
 
     <div class="number">
 
+
       <div class="number-value">
         ∞
       </div>
 
+
       <span class="number-label">
         Less compromise
       </span>
+
 
     </div>
 
 
   </div>
 
+
 </section>
 
 
+<!-- =======================================================
+     FAQ
+======================================================= -->
+
 <section class="faq">
+
 
   <div class="wrap faq-inner">
 
@@ -3526,6 +3910,7 @@ footer{
 
       <details open>
 
+
         <summary>
 
           Is F1 Acoustic only for luxury homes?
@@ -3546,10 +3931,12 @@ footer{
 
         </p>
 
+
       </details>
 
 
       <details>
+
 
         <summary>
 
@@ -3571,10 +3958,12 @@ footer{
 
         </p>
 
+
       </details>
 
 
       <details>
+
 
         <summary>
 
@@ -3595,10 +3984,12 @@ footer{
 
         </p>
 
+
       </details>
 
 
       <details>
+
 
         <summary>
 
@@ -3620,22 +4011,30 @@ footer{
 
         </p>
 
+
       </details>
 
 
     </div>
+
 
   </div>
 
 </section>
 
 
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
 <section
   class="contact"
   id="contact"
 >
 
+
   <div class="contact-pin">
+
 
     <div class="contact-bg"></div>
 
@@ -3696,9 +4095,12 @@ footer{
 
       </div>
 
+
     </div>
 
+
   </div>
+
 
 </section>
 
@@ -3706,21 +4108,36 @@ footer{
 </main>
 
 
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
 <footer>
+
 
   <div class="wrap footer-grid">
 
 
-    <div>
+    <div class="footer-logo-wrap">
+
 
       <div class="eyebrow">
+
         09 / F1 Acoustic · Mumbai
+
       </div>
 
 
-      <div class="footer-logo">
-        F1 / ACOUSTIC
-      </div>
+      <img
+        class="footer-logo-image"
+        src="f1-logo.png"
+        alt="F1 Acoustic"
+        width="240"
+        height="100"
+        loading="lazy"
+        decoding="async"
+      >
+
 
     </div>
 
@@ -3732,20 +4149,30 @@ footer{
       Built for serious spaces<br>
 
       <strong>
+
         <span id="year"></span>
+
       </strong>
 
       · Mumbai, India
 
     </div>
 
+
   </div>
+
 
 </footer>
 
 
+<!-- =======================================================
+     GSAP
+======================================================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+
 
 <script>
 (() => {
@@ -3753,43 +4180,58 @@ footer{
   "use strict";
 
 
-  if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-  }
-
-  window.scrollTo(0, 0);
-
+  /*
+    =====================================================
+    NEVER BLOCK THE PAGE ON GSAP
+    =====================================================
+  */
 
   const reduce =
-    matchMedia(
+    window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
 
   const mobile =
-    matchMedia(
+    window.matchMedia(
       "(max-width:760px), (pointer:coarse)"
     ).matches;
 
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+  const year =
+    document.getElementById("year");
+
+
+  if(year){
+
+    year.textContent =
+      new Date().getFullYear();
+
+  }
 
 
   /*
-    The preloader is CSS-only.
-    The hero entrance is CSS-only.
-    The acoustic field is CSS-only.
+    =====================================================
+    GSAP INIT
+    =====================================================
   */
 
-  function initGSAP() {
+  function initGSAP(){
 
-    if (
+    /*
+      GSAP is an enhancement.
+      If CDN fails, the HTML/CSS site remains
+      fully visible and usable.
+    */
+
+    if(
       reduce ||
       !window.gsap ||
       !window.ScrollTrigger
-    ) {
+    ){
+
       return;
+
     }
 
 
@@ -3799,55 +4241,69 @@ footer{
 
 
     ScrollTrigger.config({
+
       ignoreMobileResize:true,
+
       limitCallbacks:true
+
     });
 
 
     const S =
       value =>
         mobile
-          ? Math.min(value, .4)
+          ? Math.min(
+              value,
+              .4
+            )
           : value;
 
 
     /*
-      Scene helper.
+      ===================================================
+      SCENE HELPER
+      ===================================================
     */
 
-    const scene = (
-      trigger,
-      scrub
-    ) =>
+    const scene =
+      (
+        trigger,
+        scrub
+      ) =>
 
-      gsap.timeline({
+        gsap.timeline({
 
-        scrollTrigger:{
+          scrollTrigger:{
 
-          trigger,
+            trigger,
 
-          start:"top top",
+            start:
+              "top top",
 
-          end:"bottom bottom",
+            end:
+              "bottom bottom",
 
-          scrub:S(scrub),
+            scrub:
+              S(scrub),
 
-          invalidateOnRefresh:true
+            invalidateOnRefresh:
+              true
 
-        }
+          }
 
-      });
+        });
 
 
     /*
-      =====================================================
-      1. GLOBAL SCROLL RAIL
-      Tiny transform-only animation.
-      =====================================================
+      ===================================================
+      1 — GLOBAL SCROLL RAIL
+      ===================================================
     */
 
     gsap.to(
+
       ".scroll-rail-fill",
+
       {
 
         scaleY:1,
@@ -3856,30 +4312,34 @@ footer{
 
         scrollTrigger:{
 
-          trigger:document.body,
+          trigger:
+            document.body,
 
-          start:"top top",
+          start:
+            "top top",
 
-          end:"bottom bottom",
+          end:
+            "bottom bottom",
 
           scrub:.2
 
         }
 
       }
+
     );
 
 
     /*
-      =====================================================
-      2. HERO CINEMATIC SCROLL
-      =====================================================
+      ===================================================
+      2 — HERO
+      ===================================================
     */
 
     const heroTL =
       scene(
         ".hero",
-        1.0
+        1
       );
 
 
@@ -3890,9 +4350,13 @@ footer{
       {
 
         xPercent:-18,
+
         yPercent:-15,
+
         rotation:-4,
+
         scale:.84,
+
         opacity:.34,
 
         ease:"none"
@@ -3911,9 +4375,13 @@ footer{
       {
 
         xPercent:18,
+
         yPercent:14,
+
         rotation:5,
+
         scale:1.10,
+
         opacity:.30,
 
         ease:"none"
@@ -3932,8 +4400,11 @@ footer{
       {
 
         scale:1.18,
+
         xPercent:3,
+
         yPercent:13,
+
         rotation:2,
 
         ease:"none"
@@ -3952,9 +4423,13 @@ footer{
       {
 
         rotation:105,
+
         scale:1.5,
+
         xPercent:-18,
+
         yPercent:20,
+
         opacity:.48,
 
         ease:"none"
@@ -3973,8 +4448,11 @@ footer{
       {
 
         scale:1.8,
+
         xPercent:-20,
+
         yPercent:30,
+
         opacity:.35,
 
         ease:"none"
@@ -4010,6 +4488,7 @@ footer{
       {
 
         yPercent:-65,
+
         opacity:.22,
 
         ease:"none"
@@ -4028,6 +4507,7 @@ footer{
       {
 
         y:-40,
+
         opacity:0,
 
         ease:"none"
@@ -4040,15 +4520,15 @@ footer{
 
 
     /*
-      =====================================================
-      3. MANIFESTO
-      =====================================================
+      ===================================================
+      3 — MANIFESTO
+      ===================================================
     */
 
     const manifestoTL =
       scene(
         ".manifesto",
-        1.0
+        1
       );
 
 
@@ -4057,8 +4537,11 @@ footer{
       ".manifesto-line:nth-child(1) span",
 
       {
+
         xPercent:5,
+
         ease:"none"
+
       },
 
       0
@@ -4071,8 +4554,11 @@ footer{
       ".manifesto-line:nth-child(2) span",
 
       {
+
         xPercent:-5,
+
         ease:"none"
+
       },
 
       0
@@ -4085,8 +4571,11 @@ footer{
       ".manifesto-line:nth-child(3) span",
 
       {
+
         xPercent:7,
+
         ease:"none"
+
       },
 
       0
@@ -4101,8 +4590,11 @@ footer{
       {
 
         rotation:100,
+
         scale:1.28,
+
         xPercent:-12,
+
         yPercent:12,
 
         ease:"none"
@@ -4132,9 +4624,9 @@ footer{
 
 
     /*
-      =====================================================
-      4. KINETIC TYPOGRAPHY
-      =====================================================
+      ===================================================
+      4 — KINETIC TYPOGRAPHY
+      ===================================================
     */
 
     const kineticTL =
@@ -4151,8 +4643,11 @@ footer{
       {
 
         scale:1.45,
+
         xPercent:-7,
+
         yPercent:8,
+
         rotation:7,
 
         ease:"none"
@@ -4171,6 +4666,7 @@ footer{
       {
 
         yPercent:20,
+
         rotation:-2,
 
         ease:"none"
@@ -4189,9 +4685,13 @@ footer{
       {
 
         xPercent:-70,
+
         yPercent:-14,
+
         rotation:-6,
+
         scale:1.18,
+
         opacity:.70,
 
         ease:"none"
@@ -4210,9 +4710,13 @@ footer{
       {
 
         xPercent:-18,
+
         yPercent:7,
+
         rotation:5,
+
         scale:1.34,
+
         opacity:.88,
 
         ease:"none"
@@ -4231,9 +4735,13 @@ footer{
       {
 
         xPercent:-72,
+
         yPercent:17,
+
         rotation:-4,
+
         scale:.88,
+
         opacity:.46,
 
         ease:"none"
@@ -4252,9 +4760,13 @@ footer{
       {
 
         xPercent:-26,
+
         yPercent:-80,
+
         rotation:7,
+
         scale:1.20,
+
         opacity:.80,
 
         ease:"none"
@@ -4273,9 +4785,13 @@ footer{
       {
 
         rotation:220,
+
         scale:1.65,
+
         xPercent:-44,
+
         yPercent:-34,
+
         opacity:.48,
 
         ease:"none"
@@ -4294,6 +4810,7 @@ footer{
       {
 
         yPercent:-70,
+
         opacity:.35,
 
         ease:"none"
@@ -4306,11 +4823,18 @@ footer{
 
 
     /*
-      =====================================================
-      5. PROJECT JOURNEY
-      ONLY THE MAIN HORIZONTAL TRACK.
-      NO ARTWORK PARALLAX.
-      =====================================================
+      ===================================================
+      5 — ACOUSTIC FIELD
+      STATIC
+      ===================================================
+    */
+
+
+    /*
+      ===================================================
+      6 — PROJECT JOURNEY
+      ONLY HORIZONTAL TRACK
+      ===================================================
     */
 
     const projectTL =
@@ -4326,7 +4850,8 @@ footer{
 
       {
 
-        xPercent:-66.6666667,
+        xPercent:
+          -66.6666667,
 
         ease:"none"
 
@@ -4355,9 +4880,9 @@ footer{
 
 
     /*
-      =====================================================
-      6. CONTACT
-      =====================================================
+      ===================================================
+      7 — CONTACT
+      ===================================================
     */
 
     const contactTL =
@@ -4374,8 +4899,11 @@ footer{
       {
 
         scale:1.45,
+
         xPercent:-6,
+
         yPercent:8,
+
         rotation:5,
 
         ease:"none"
@@ -4394,9 +4922,13 @@ footer{
       {
 
         rotation:190,
+
         scale:1.5,
+
         xPercent:-6,
+
         yPercent:4,
+
         opacity:.7,
 
         ease:"none"
@@ -4415,6 +4947,7 @@ footer{
       {
 
         yPercent:-45,
+
         opacity:.5,
 
         ease:"none"
@@ -4433,6 +4966,7 @@ footer{
       {
 
         yPercent:-55,
+
         opacity:.42,
 
         ease:"none"
@@ -4451,8 +4985,11 @@ footer{
       {
 
         scale:.78,
+
         yPercent:18,
+
         rotation:-3,
+
         opacity:.62
 
       },
@@ -4460,8 +4997,11 @@ footer{
       {
 
         scale:1.02,
+
         yPercent:-6,
+
         rotation:1,
+
         opacity:1,
 
         ease:"none"
@@ -4474,9 +5014,9 @@ footer{
 
 
     /*
-      =====================================================
-      ANCHOR SCROLLING
-      =====================================================
+      ===================================================
+      ANCHORS
+      ===================================================
     */
 
     document
@@ -4488,20 +5028,29 @@ footer{
         link => {
 
           link.addEventListener(
+
             "click",
+
             event => {
 
               const href =
-                link.getAttribute("href");
+                link.getAttribute(
+                  "href"
+                );
+
 
               const target =
                 href &&
                 href !== "#" &&
-                document.querySelector(href);
+                document.querySelector(
+                  href
+                );
 
-              if (!target) {
+
+              if(!target){
                 return;
               }
+
 
               event.preventDefault();
 
@@ -4509,15 +5058,19 @@ footer{
               window.scrollTo({
 
                 top:
-                  target.getBoundingClientRect().top
+                  target
+                    .getBoundingClientRect()
+                    .top
                   +
                   window.scrollY,
 
-                behavior:"smooth"
+                behavior:
+                  "smooth"
 
               });
 
             }
+
           );
 
         }
@@ -4526,9 +5079,9 @@ footer{
 
 
     /*
-      =====================================================
+      ===================================================
       SAFE REFRESH
-      =====================================================
+      ===================================================
     */
 
     let resizeTimer;
@@ -4539,14 +5092,23 @@ footer{
 
     function refresh(){
 
-      clearTimeout(resizeTimer);
+      clearTimeout(
+        resizeTimer
+      );
+
 
       resizeTimer =
         setTimeout(
 
           () => {
 
-            ScrollTrigger.refresh();
+            if(
+              window.ScrollTrigger
+            ){
+
+              ScrollTrigger.refresh();
+
+            }
 
           },
 
@@ -4564,7 +5126,9 @@ footer{
       () => {
 
         if(
-          window.innerWidth !== lastWidth
+          window.innerWidth
+          !==
+          lastWidth
         ){
 
           lastWidth =
@@ -4604,35 +5168,34 @@ footer{
 
 
   /*
-    Give the CSS preloader enough time
-    to finish before activating ScrollTrigger.
+    =====================================================
+    START GSAP WITHOUT USING WINDOW.LOAD
+    =====================================================
   */
 
-  window.addEventListener(
+  if(
+    document.readyState ===
+    "loading"
+  ){
 
-    "load",
+    document.addEventListener(
+      "DOMContentLoaded",
+      initGSAP,
+      {
+        once:true
+      }
+    );
 
-    () => {
+  }else{
 
-      setTimeout(
+    initGSAP();
 
-        initGSAP,
-
-        1100
-
-      );
-
-    },
-
-    {
-      once:true
-    }
-
-  );
+  }
 
 
 })();
 </script>
+
 
 </body>
 </html>
