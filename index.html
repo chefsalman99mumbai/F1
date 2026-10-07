@@ -234,10 +234,6 @@
       box-shadow:0 0 25px rgba(168,191,163,.55);
     }
 
-    /*
-      CENTERED BRAND LOGO
-      Transparent PNG only.
-    */
     .header-logo{
       position:absolute;
       left:50%;
@@ -969,8 +965,6 @@
 
     /* =========================================================
        PROJECT JOURNEY
-       MAIN HORIZONTAL TRACK ONLY
-       NO ARTWORK PARALLAX
        ========================================================= */
 
     .project-journey{
@@ -2094,10 +2088,6 @@
         letter-spacing:.09em;
       }
 
-      /* ---------------------------------------------
-         HERO
-         --------------------------------------------- */
-
       .hero{
         height:210svh;
       }
@@ -2109,10 +2099,6 @@
           26px;
       }
 
-      /*
-        Extra vertical clearance so the centered header logo
-        and hero eyebrow can never visually collide.
-      */
       .hero-content{
         transform:translate3d(0,38px,0);
       }
@@ -2166,10 +2152,6 @@
         font-size:8px;
       }
 
-      /* ---------------------------------------------
-         MANIFESTO
-         --------------------------------------------- */
-
       .manifesto{
         height:165svh;
       }
@@ -2202,10 +2184,6 @@
         font-size:12px;
         line-height:1.65;
       }
-
-      /* ---------------------------------------------
-         KINETIC
-         --------------------------------------------- */
 
       .kinetic{
         height:190svh;
@@ -2254,10 +2232,6 @@
       .kinetic-caption-right{
         max-width:150px;
       }
-
-      /* ---------------------------------------------
-         SOLUTIONS
-         --------------------------------------------- */
 
       .solutions{
         padding:76px 0 86px;
@@ -2318,10 +2292,6 @@
         top:-100px;
       }
 
-      /* ---------------------------------------------
-         PROJECT JOURNEY
-         --------------------------------------------- */
-
       .project-journey{
         height:405svh;
       }
@@ -2360,11 +2330,6 @@
         font-size:11px;
         line-height:1.6;
       }
-
-      /* ---------------------------------------------
-         PROCESS
-         NORMAL DOCUMENT FLOW ON MOBILE
-         --------------------------------------------- */
 
       .process{
         height:auto;
@@ -2499,10 +2464,6 @@
         color:rgba(245,242,233,.42);
       }
 
-      /* ---------------------------------------------
-         NUMBERS
-         --------------------------------------------- */
-
       .numbers{
         padding:78px 0;
       }
@@ -2523,10 +2484,6 @@
       .number-label{
         margin-top:8px;
       }
-
-      /* ---------------------------------------------
-         FAQ
-         --------------------------------------------- */
 
       .faq{
         padding:90px 0;
@@ -2559,10 +2516,6 @@
         line-height:1.65;
       }
 
-      /* ---------------------------------------------
-         CONTACT
-         --------------------------------------------- */
-
       .contact{
         height:190svh;
       }
@@ -2570,10 +2523,6 @@
       .contact-content{
         width:min(1200px,calc(100% - 28px));
 
-        /*
-          Large safe top clearance for fixed centered logo.
-          The entire contact composition sits lower on phones.
-        */
         padding-top:clamp(105px,16vh,155px);
 
         transform:translate3d(0,24px,0);
@@ -2622,10 +2571,6 @@
 
         font-size:8px;
       }
-
-      /* ---------------------------------------------
-         FOOTER
-         --------------------------------------------- */
 
       .footer-shell{
         width:min(100% - 28px,1240px);
@@ -2749,9 +2694,12 @@
     }
 
 
-    /* FOOTER — FINAL VISUAL TREATMENT */
+    /* =========================================================
+       FOOTER — FINAL VISUAL TREATMENT
+       ========================================================= */
+
     footer{
-      background:#C91438; !important;
+      background:var(--crimson);
       color:var(--offwhite);
     }
 
@@ -2785,15 +2733,26 @@
 
     /* ---------------------------------------------------------
        REFINED STUDIO FOOTER
-       Footer-only enhancement: editorial hierarchy,
-       restrained iconography and a small GSAP reveal.
+
+       FIX: base background is now crimson (var(--crimson))
+       with subtle decorative gradients layered on top.
+       The previous dark charcoal gradient rule has been
+       removed so the crimson actually shows through.
        --------------------------------------------------------- */
 
     footer{
       background:
-        radial-gradient(circle at 82% 0%, rgba(168,191,163,.14), transparent 28%),
-        radial-gradient(circle at 8% 100%, rgba(0,106,142,.18), transparent 30%),
-        linear-gradient(135deg,#0A1012 0%,#111719 52%,#0B1214 100%);
+        radial-gradient(
+          circle at 82% 0%,
+          rgba(245,242,233,.08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 8% 100%,
+          rgba(0,0,0,.16),
+          transparent 30%
+        ),
+        var(--crimson);
     }
 
     footer::before{
@@ -2803,8 +2762,13 @@
       right:0;
       top:0;
       height:1px;
-      background:linear-gradient(90deg,transparent,var(--sage),transparent);
-      opacity:.65;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(245,242,233,.65),
+        transparent
+      );
+      opacity:.7;
     }
 
     footer .footer-shell{
@@ -2830,7 +2794,7 @@
       bottom:0;
       font:500 8px/1 var(--mono);
       letter-spacing:.18em;
-      color:rgba(245,242,233,.28);
+      color:rgba(245,242,233,.42);
     }
 
     footer .footer-logo-image{
@@ -2841,12 +2805,13 @@
     footer .footer-brand-line{
       width:72px;
       margin-bottom:0;
+      background:rgba(245,242,233,.65);
     }
 
     footer .footer-heading{
       position:relative;
       margin-bottom:23px;
-      color:rgba(245,242,233,.46);
+      color:rgba(245,242,233,.62);
       font-size:8px;
       letter-spacing:.20em;
     }
@@ -2857,14 +2822,14 @@
       width:20px;
       height:1px;
       margin:0 9px 3px 0;
-      background:var(--sage);
-      opacity:.75;
+      background:rgba(245,242,233,.75);
+      opacity:.85;
     }
 
     footer .footer-address{
       font-size:13px;
       line-height:1.9;
-      color:rgba(245,242,233,.67);
+      color:rgba(245,242,233,.82);
     }
 
     footer .footer-address strong{
@@ -2885,14 +2850,14 @@
       width:max-content;
       max-width:100%;
       font-size:13px;
-      color:rgba(245,242,233,.72);
+      color:rgba(245,242,233,.85);
       transition:color .25s ease,transform .25s ease;
     }
 
     footer .footer-contact a::after{
       content:"↗";
       margin-left:7px;
-      color:var(--sage);
+      color:var(--offwhite);
       opacity:0;
       transform:translate(-4px,2px);
       display:inline-block;
@@ -2918,26 +2883,29 @@
       position:relative;
       width:43px;
       height:43px;
-      border:1px solid rgba(245,242,233,.18);
+      border:1px solid rgba(245,242,233,.28);
       border-radius:14px;
-      background:rgba(245,242,233,.035);
+      background:rgba(245,242,233,.06);
       overflow:hidden;
-      transition:background .3s ease,border-color .3s ease,transform .3s ease,color .3s ease;
+      transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease,
+        color .3s ease;
     }
 
     footer .footer-social a::before{
       content:"";
       position:absolute;
       inset:0;
-      background:var(--sage);
+      background:var(--offwhite);
       transform:translateY(105%);
       transition:transform .35s cubic-bezier(.16,1,.3,1);
     }
 
     footer .footer-social a:hover{
-      color:var(--charcoal);
-      border-color:var(--sage);
-      background:var(--sage);
+      color:var(--crimson);
+      border-color:var(--offwhite);
       transform:translateY(-4px);
     }
 
@@ -2959,11 +2927,11 @@
 
     footer .footer-bottom{
       padding-top:22px;
-      color:rgba(245,242,233,.35);
+      color:rgba(245,242,233,.55);
     }
 
     footer .footer-bottom-right{
-      color:rgba(245,242,233,.48);
+      color:rgba(245,242,233,.72);
     }
 
     @media(max-width:760px){
@@ -3009,19 +2977,11 @@
 
 <body>
 
-  <!-- =======================================================
-       GLOBAL UI
-       ======================================================= -->
-
   <div class="grain"></div>
 
   <div class="scroll-rail" aria-hidden="true">
     <div class="scroll-rail-fill"></div>
   </div>
-
-  <!-- =======================================================
-       HEADER
-       ======================================================= -->
 
   <nav class="site-nav">
 
@@ -3034,7 +2994,6 @@
       F1 Acoustic
     </a>
 
-    <!-- CENTERED TRANSPARENT LOGO -->
     <a
       href="#top"
       class="header-logo"
@@ -3066,15 +3025,7 @@
 
   </nav>
 
-  <!-- =======================================================
-       MAIN
-       ======================================================= -->
-
   <main id="top">
-
-    <!-- =====================================================
-         HERO
-         ===================================================== -->
 
     <section class="hero">
 
@@ -3137,10 +3088,6 @@
 
     </section>
 
-    <!-- =====================================================
-         MANIFESTO
-         ===================================================== -->
-
     <section class="manifesto">
 
       <div class="manifesto-pin">
@@ -3197,10 +3144,6 @@
 
     </section>
 
-    <!-- =====================================================
-         KINETIC TYPOGRAPHY
-         ===================================================== -->
-
     <section class="kinetic">
 
       <div class="kinetic-pin">
@@ -3247,10 +3190,6 @@
       </div>
 
     </section>
-
-    <!-- =====================================================
-         SOLUTIONS
-         ===================================================== -->
 
     <section
       class="solutions"
@@ -3395,10 +3334,6 @@
 
     </section>
 
-    <!-- =====================================================
-         PROJECT JOURNEY
-         ===================================================== -->
-
     <section class="project-journey">
 
       <div class="project-pin">
@@ -3408,8 +3343,6 @@
         </div>
 
         <div class="project-track">
-
-          <!-- PROJECT ONE -->
 
           <article class="project-panel project-panel-one">
 
@@ -3449,8 +3382,6 @@
 
           </article>
 
-          <!-- PROJECT TWO -->
-
           <article class="project-panel project-panel-two">
 
             <div
@@ -3487,8 +3418,6 @@
             </div>
 
           </article>
-
-          <!-- PROJECT THREE -->
 
           <article class="project-panel project-panel-three">
 
@@ -3528,8 +3457,6 @@
 
           </article>
 
-          <!-- PROJECT FOUR -->
-
           <article class="project-panel project-panel-four">
 
             <div
@@ -3566,8 +3493,6 @@
             </div>
 
           </article>
-
-          <!-- PROJECT FIVE -->
 
           <article class="project-panel project-panel-five">
 
@@ -3611,10 +3536,6 @@
       </div>
 
     </section>
-
-    <!-- =====================================================
-         PROCESS
-         ===================================================== -->
 
     <section class="process">
 
@@ -3724,10 +3645,6 @@
 
     </section>
 
-    <!-- =====================================================
-         NUMBERS
-         ===================================================== -->
-
     <section class="numbers">
 
       <div class="wrap numbers-grid">
@@ -3771,10 +3688,6 @@
       </div>
 
     </section>
-
-    <!-- =====================================================
-         FAQ
-         ===================================================== -->
 
     <section class="faq">
 
@@ -3858,10 +3771,6 @@
 
     </section>
 
-    <!-- =====================================================
-         CONTACT
-         ===================================================== -->
-
     <section
       class="contact"
       id="contact"
@@ -3881,7 +3790,6 @@
 
         <div class="contact-content">
 
-          <!-- INTENTIONALLY LOWERED ON MOBILE -->
           <span class="eyebrow contact-eyebrow">
             START A CONVERSATION
           </span>
@@ -3923,17 +3831,11 @@
 
   </main>
 
-  <!-- =======================================================
-       PREMIUM FOOTER
-       ======================================================= -->
-
   <footer>
 
     <div class="footer-shell">
 
       <div class="footer-top">
-
-        <!-- BRAND -->
 
         <div class="footer-brand-block">
 
@@ -3950,8 +3852,6 @@
           <div class="footer-brand-line"></div>
 
         </div>
-
-        <!-- STUDIO / ADDRESS -->
 
         <div>
 
@@ -3976,8 +3876,6 @@
           </p>
 
         </div>
-
-        <!-- CONTACT / SOCIAL -->
 
         <div>
 
@@ -4049,11 +3947,6 @@
 
   </footer>
 
-  <!-- =======================================================
-       GSAP
-       Optional enhancement — page remains usable without CDN.
-       ======================================================= -->
-
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 
@@ -4061,31 +3954,6 @@
     (() => {
 
       "use strict";
-
-      /*
-       * -------------------------------------------------------
-       * F1 ACOUSTIC MOTION SYSTEM
-       * -------------------------------------------------------
-       *
-       * Removed:
-       * - blocking preloader
-       * - GSAP hero intro
-       * - GSAP acoustic field
-       * - project artwork parallax systems
-       * - solution card GSAP
-       * - process choreography
-       * - numbers parallax
-       * - FAQ animation
-       * - velocity ticker
-       *
-       * Retained:
-       * - global scroll progress
-       * - hero cinematic scroll
-       * - manifesto movement
-       * - kinetic typography
-       * - project horizontal journey
-       * - contact movement
-       */
 
       if ("scrollRestoration" in history){
         history.scrollRestoration = "manual";
@@ -4105,37 +3973,14 @@
 
       let booted = false;
 
-      /*
-       * Mobile scrub is intentionally tighter.
-       * This keeps the animation attached to the finger
-       * instead of feeling delayed.
-       */
       const S = value =>
         mobile
           ? Math.min(value,0.45)
           : value;
 
-      /*
-       * -------------------------------------------------------
-       * STATIC FALLBACK
-       * -------------------------------------------------------
-       */
-
       function staticMode(){
-
         root.classList.add("static");
-
-        /*
-         * Guarantee that the page remains usable even when
-         * GSAP/CDN is unavailable.
-         */
       }
-
-      /*
-       * -------------------------------------------------------
-       * INITIALIZE
-       * -------------------------------------------------------
-       */
 
       function init(){
 
@@ -4145,9 +3990,6 @@
 
         booted = true;
 
-        /*
-         * No dependency on GSAP for visibility.
-         */
         if (
           !window.gsap ||
           !window.ScrollTrigger ||
@@ -4162,531 +4004,123 @@
         build();
       }
 
-      /*
-       * -------------------------------------------------------
-       * SCENE HELPERS
-       * -------------------------------------------------------
-       */
-
-      function scene(
-        trigger,
-        scrub,
-        extra
-      ){
-
+      function scene(trigger, scrub, extra){
         return gsap.timeline({
-
           scrollTrigger:Object.assign({
-
             trigger:trigger,
-
             start:"top top",
-
             end:"bottom bottom",
-
             scrub:S(scrub),
-
             invalidateOnRefresh:true
-
           },extra || {})
-
         });
-
       }
 
-      function add(
-        timeline,
-        list
-      ){
-
-        list.forEach(
-          ([selector,vars,position]) => {
-
-            timeline.to(
-
-              selector,
-
-              Object.assign(
-                {
-                  ease:"none"
-                },
-                vars
-              ),
-
-              position || 0
-
-            );
-
-          }
-        );
-
+      function add(timeline, list){
+        list.forEach(([selector,vars,position]) => {
+          timeline.to(
+            selector,
+            Object.assign({ ease:"none" }, vars),
+            position || 0
+          );
+        });
       }
-
-      /*
-       * -------------------------------------------------------
-       * BUILD ALL RETAINED MOTION
-       * -------------------------------------------------------
-       */
 
       function build(){
 
         ScrollTrigger.config({
-
           ignoreMobileResize:true,
-
           limitCallbacks:true
-
         });
 
-        /*
-         * -----------------------------------------------------
-         * CENTRE KINETIC WORDS
-         * -----------------------------------------------------
-         */
+        gsap.set(".kinetic-word", { xPercent:-50 });
 
-        gsap.set(
-          ".kinetic-word",
-          {
-            xPercent:-50
+        gsap.to(".scroll-rail-fill", {
+          scaleY:1,
+          ease:"none",
+          scrollTrigger:{
+            trigger:document.body,
+            start:"top top",
+            end:"bottom bottom",
+            scrub:.15
           }
-        );
-
-        /*
-         * -----------------------------------------------------
-         * GLOBAL SCROLL RAIL
-         * -----------------------------------------------------
-         */
-
-        gsap.to(
-          ".scroll-rail-fill",
-          {
-
-            scaleY:1,
-
-            ease:"none",
-
-            scrollTrigger:{
-
-              trigger:document.body,
-
-              start:"top top",
-
-              end:"bottom bottom",
-
-              scrub:.15
-
-            }
-
-          }
-        );
-
-        /*
-         * -----------------------------------------------------
-         * HERO
-         * -----------------------------------------------------
-         */
+        });
 
         add(
-
-          scene(
-            ".hero",
-            1.15
-          ),
-
+          scene(".hero", 1.15),
           [
-
-            [
-              ".hero-title-line:nth-child(1) span",
-
-              {
-                xPercent:-18,
-                yPercent:-15,
-                rotation:-4,
-                scale:.84,
-                opacity:.34
-              }
-            ],
-
-            [
-              ".hero-title-line:nth-child(2) span",
-
-              {
-                xPercent:18,
-                yPercent:14,
-                rotation:5,
-                scale:1.10,
-                opacity:.30
-              }
-            ],
-
-            [
-              ".hero-bg",
-
-              {
-                scale:1.18,
-                xPercent:3,
-                yPercent:13,
-                rotation:2
-              }
-            ],
-
-            [
-              ".hero-ring",
-
-              {
-                rotation:105,
-                scale:1.5,
-                xPercent:-18,
-                yPercent:20,
-                opacity:.48
-              }
-            ],
-
-            [
-              ".hero-glow",
-
-              {
-                scale:1.8,
-                xPercent:-20,
-                yPercent:30,
-                opacity:.35
-              }
-            ],
-
-            [
-              ".hero-grid",
-
-              {
-                yPercent:22
-              }
-            ],
-
-            [
-              ".hero-copy-row",
-
-              {
-                yPercent:-65,
-                opacity:.22
-              },
-
-              .08
-            ],
-
-            [
-              ".hero-scroll",
-
-              {
-                y:-40,
-                opacity:0
-              }
-            ]
-
+            [".hero-title-line:nth-child(1) span",
+              { xPercent:-18, yPercent:-15, rotation:-4, scale:.84, opacity:.34 }],
+            [".hero-title-line:nth-child(2) span",
+              { xPercent:18, yPercent:14, rotation:5, scale:1.10, opacity:.30 }],
+            [".hero-bg", { scale:1.18, xPercent:3, yPercent:13, rotation:2 }],
+            [".hero-ring", { rotation:105, scale:1.5, xPercent:-18, yPercent:20, opacity:.48 }],
+            [".hero-glow", { scale:1.8, xPercent:-20, yPercent:30, opacity:.35 }],
+            [".hero-grid", { yPercent:22 }],
+            [".hero-copy-row", { yPercent:-65, opacity:.22 }, .08],
+            [".hero-scroll", { y:-40, opacity:0 }]
           ]
-
         );
 
-        /*
-         * -----------------------------------------------------
-         * MANIFESTO
-         * -----------------------------------------------------
-         */
+        const manifestoTimeline = scene(".manifesto", 1.05);
 
-        const manifestoTimeline =
-          scene(
-            ".manifesto",
-            1.05
+        [[-28,5],[25,-5],[-18,7]].forEach(([fromX,toX],index) => {
+          manifestoTimeline.fromTo(
+            `.manifesto-line:nth-child(${index + 1}) span`,
+            { xPercent:fromX },
+            { xPercent:toX, ease:"none" },
+            0
           );
-
-        [
-          [-28,5],
-          [25,-5],
-          [-18,7]
-
-        ].forEach(
-          ([fromX,toX],index) => {
-
-            manifestoTimeline.fromTo(
-
-              `.manifesto-line:nth-child(${index + 1}) span`,
-
-              {
-                xPercent:fromX
-              },
-
-              {
-                xPercent:toX,
-                ease:"none"
-              },
-
-              0
-
-            );
-
-          }
-        );
+        });
 
         add(
-
           manifestoTimeline,
-
           [
-
-            [
-              ".manifesto-orbit",
-
-              {
-                rotation:160,
-                scale:1.4,
-                xPercent:-20,
-                yPercent:18
-              }
-            ],
-
-            [
-              ".manifesto-detail",
-
-              {
-                yPercent:-28
-              }
-            ]
-
+            [".manifesto-orbit", { rotation:160, scale:1.4, xPercent:-20, yPercent:18 }],
+            [".manifesto-detail", { yPercent:-28 }]
           ]
-
         );
 
-        /*
-         * -----------------------------------------------------
-         * KINETIC TYPOGRAPHY
-         * -----------------------------------------------------
-         */
-
         add(
-
-          scene(
-            ".kinetic",
-            1,
-            {scrub:mobile ? 0.2 : 1}
-          ),
-
+          scene(".kinetic", 1, {scrub:mobile ? 0.2 : 1}),
           [
-
-            [
-              ".kinetic-bg",
-
-              {
-                scale:1.65,
-                xPercent:-9,
-                yPercent:11,
-                rotation:10
-              }
-            ],
-
-            [
-              ".kinetic-grid",
-
-              {
-                yPercent:24,
-                rotation:-3
-              }
-            ],
-
-            [
-              ".kinetic-one",
-
-              {
-                xPercent:-80,
-                yPercent:-18,
-                rotation:-7,
-                scale:1.25,
-                opacity:.68
-              }
-            ],
-
-            [
-              ".kinetic-two",
-
-              {
-                xPercent:-20,
-                yPercent:8,
-                rotation:6,
-                scale:1.42,
-                opacity:.86
-              }
-            ],
-
-            [
-              ".kinetic-three",
-
-              {
-                xPercent:-85,
-                yPercent:19,
-                rotation:-4,
-                scale:.84,
-                opacity:.42
-              }
-            ],
-
-            [
-              ".kinetic-four",
-
-              {
-                xPercent:-30,
-                yPercent:-88,
-                rotation:8,
-                scale:1.26,
-                opacity:.78
-              }
-            ],
-
-            [
-              ".kinetic-orb",
-
-              {
-                rotation:270,
-                scale:1.9,
-                xPercent:-56,
-                yPercent:-45,
-                opacity:.42
-              }
-            ],
-
-            [
-              ".kinetic-caption",
-
-              {
-                yPercent:-90,
-                opacity:.32
-              }
-            ]
-
+            [".kinetic-bg", { scale:1.65, xPercent:-9, yPercent:11, rotation:10 }],
+            [".kinetic-grid", { yPercent:24, rotation:-3 }],
+            [".kinetic-one", { xPercent:-80, yPercent:-18, rotation:-7, scale:1.25, opacity:.68 }],
+            [".kinetic-two", { xPercent:-20, yPercent:8, rotation:6, scale:1.42, opacity:.86 }],
+            [".kinetic-three", { xPercent:-85, yPercent:19, rotation:-4, scale:.84, opacity:.42 }],
+            [".kinetic-four", { xPercent:-30, yPercent:-88, rotation:8, scale:1.26, opacity:.78 }],
+            [".kinetic-orb", { rotation:270, scale:1.9, xPercent:-56, yPercent:-45, opacity:.42 }],
+            [".kinetic-caption", { yPercent:-90, opacity:.32 }]
           ]
-
         );
 
-        
-
         add(
-
-          scene(
-            ".project-journey",
-            1
-          ),
-
+          scene(".project-journey", 1),
           [
-
-            [
-              ".project-track",
-
-              {
-                xPercent:-80
-              }
-            ],
-
-            [
-              ".project-progress-fill",
-
-              {
-                scaleX:1
-              }
-            ]
-
+            [".project-track", { xPercent:-80 }],
+            [".project-progress-fill", { scaleX:1 }]
           ]
-
         );
 
-        /*
-         * -----------------------------------------------------
-         * CONTACT
-         * -----------------------------------------------------
-         */
-
-        const contactTimeline =
-          scene(
-            ".contact",
-            1.05
-          );
+        const contactTimeline = scene(".contact", 1.05);
 
         add(
-
           contactTimeline,
-
           [
-
-            [
-              ".contact-bg",
-
-              {
-                scale:1.55,
-                xPercent:-7,
-                yPercent:10,
-                rotation:7
-              }
-            ],
-
-            [
-              ".contact-ring",
-
-              {
-                rotation:230,
-                scale:1.65,
-                xPercent:-8,
-                yPercent:5,
-                opacity:.65
-              }
-            ],
-
-            [
-              ".contact-sub",
-
-              {
-                yPercent:-55,
-                opacity:.42
-              }
-            ],
-
-            [
-              ".contact-actions",
-
-              {
-                yPercent:-70,
-                opacity:.30
-              }
-            ]
-
+            [".contact-bg", { scale:1.55, xPercent:-7, yPercent:10, rotation:7 }],
+            [".contact-ring", { rotation:230, scale:1.65, xPercent:-8, yPercent:5, opacity:.65 }],
+            [".contact-sub", { yPercent:-55, opacity:.42 }],
+            [".contact-actions", { yPercent:-70, opacity:.30 }]
           ]
-
         );
 
         contactTimeline.fromTo(
-
           ".contact-title",
-
-          {
-            scale:.72,
-            yPercent:22,
-            rotation:-4,
-            opacity:.55
-          },
-
-          {
-            scale:1.04,
-            yPercent:-7,
-            rotation:2,
-            opacity:1,
-            ease:"none"
-          },
-
+          { scale:.72, yPercent:22, rotation:-4, opacity:.55 },
+          { scale:1.04, yPercent:-7, rotation:2, opacity:1, ease:"none" },
           0
-
         );
-
-        /*
-         * -----------------------------------------------------
-         * FOOTER STUDIO REVEAL
-         * -----------------------------------------------------
-         * Small editorial reveal only; the footer remains fully
-         * usable without GSAP and is intentionally subtle.
-         */
 
         const footerTimeline = gsap.timeline({
           scrollTrigger:{
@@ -4719,182 +4153,63 @@
           .22
         );
 
-        /*
-         * -----------------------------------------------------
-         * ANCHOR SCROLL
-         * -----------------------------------------------------
-         */
-
         document
-          .querySelectorAll(
-            'a[href^="#"]'
-          )
-          .forEach(
-            link => {
-
-              link.addEventListener(
-                "click",
-                event => {
-
-                  const href =
-                    link.getAttribute("href");
-
-                  const target =
-                    href &&
-                    href !== "#" &&
-                    document.querySelector(href);
-
-                  if (!target){
-                    return;
-                  }
-
-                  event.preventDefault();
-
-                  window.scrollTo({
-
-                    top:
-                      target.getBoundingClientRect().top +
-                      window.scrollY,
-
-                    behavior:"smooth"
-
-                  });
-
-                }
-              );
-
-            }
-          );
-
-        /*
-         * -----------------------------------------------------
-         * SAFE RESIZE
-         *
-         * Prevents ScrollTrigger.refresh() from constantly
-         * firing because of mobile browser chrome changes.
-         * -----------------------------------------------------
-         */
+          .querySelectorAll('a[href^="#"]')
+          .forEach(link => {
+            link.addEventListener("click", event => {
+              const href = link.getAttribute("href");
+              const target = href && href !== "#" && document.querySelector(href);
+              if (!target){ return; }
+              event.preventDefault();
+              window.scrollTo({
+                top: target.getBoundingClientRect().top + window.scrollY,
+                behavior:"smooth"
+              });
+            });
+          });
 
         let timer;
         let lastWidth = window.innerWidth;
 
         function refresh(){
-
           clearTimeout(timer);
-
-          timer = setTimeout(
-            () => {
-
-              if (
-                window.ScrollTrigger
-              ){
-                ScrollTrigger.refresh();
-              }
-
-            },
-            250
-          );
-
+          timer = setTimeout(() => {
+            if (window.ScrollTrigger){
+              ScrollTrigger.refresh();
+            }
+          }, 250);
         }
 
-        window.addEventListener(
-
-          "resize",
-
-          () => {
-
-            if (
-              window.innerWidth !== lastWidth
-            ){
-
-              lastWidth =
-                window.innerWidth;
-
-              refresh();
-
-            }
-
-          },
-
-          {
-            passive:true
+        window.addEventListener("resize", () => {
+          if (window.innerWidth !== lastWidth){
+            lastWidth = window.innerWidth;
+            refresh();
           }
+        }, { passive:true });
 
-        );
+        window.addEventListener("orientationchange", refresh);
 
-        window.addEventListener(
-          "orientationchange",
-          refresh
-        );
-
-        /*
-         * Wait for webfonts before final measurements.
-         */
-        if (
-          document.fonts &&
-          document.fonts.ready
-        ){
-
-          document.fonts.ready.then(
-            () => {
-
-              if (
-                window.ScrollTrigger
-              ){
-                ScrollTrigger.refresh();
-              }
-
+        if (document.fonts && document.fonts.ready){
+          document.fonts.ready.then(() => {
+            if (window.ScrollTrigger){
+              ScrollTrigger.refresh();
             }
-          );
-
+          });
         }
 
       }
 
-      /*
-       * -------------------------------------------------------
-       * INITIALIZE
-       *
-       * Since the scripts are at the bottom, DOM is already
-       * available. The slight delay lets the CDN finish while
-       * never blocking the page itself.
-       * -------------------------------------------------------
-       */
-
-      if (
-        document.readyState === "loading"
-      ){
-
-        document.addEventListener(
-          "DOMContentLoaded",
-          init,
-          {
-            once:true
-          }
-        );
-
-      }else{
-
+      if (document.readyState === "loading"){
+        document.addEventListener("DOMContentLoaded", init, { once:true });
+      } else {
         init();
-
       }
 
-
-
-      /*
-       * Absolute safety:
-       * if GSAP fails to load, switch to normal static mode.
-       */
-      setTimeout(
-        () => {
-
-          if (!booted){
-            staticMode();
-          }
-
-        },
-        3500
-      );
+      setTimeout(() => {
+        if (!booted){
+          staticMode();
+        }
+      }, 3500);
 
     })();
   </script>
