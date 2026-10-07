@@ -2152,37 +2152,95 @@
         font-size:8px;
       }
 
+      /* =====================================================
+         MANIFESTO — MOBILE (rebuilt detail block)
+         ===================================================== */
+
       .manifesto{
-        height:165svh;
+        height:100svh; /* Changed from 148svh to eliminate empty space */
       }
 
       .manifesto-pin{
         align-items:center;
+
+        padding:78px 0 42px;
       }
 
       .manifesto-title{
-        margin-top:19px;
+        margin-top:18px;
 
-        font-size:clamp(48px,13.2vw,76px);
+        font-size:clamp(46px,12.6vw,72px);
 
-        line-height:.86;
+        line-height:.87;
       }
 
       .manifesto-detail{
-        display:block;
+        display:grid;
 
-        margin-top:38px;
+        grid-template-columns:1fr;
 
-        padding-top:18px;
+        gap:0;
+
+        margin-top:26px;
+
+        padding-top:0;
+
+        border-top:0;
       }
 
       .manifesto-detail p{
+        position:relative;
+
         max-width:100%;
 
-        margin-bottom:17px;
+        margin:0;
+
+        padding:13px 0 14px 30px;
+
+        border-top:1px solid rgba(17,23,25,.13);
+
+        color:rgba(17,23,25,.68);
 
         font-size:12px;
-        line-height:1.65;
+        line-height:1.62;
+
+        letter-spacing:-.004em;
+      }
+
+      .manifesto-detail p:last-child{
+        border-bottom:1px solid rgba(17,23,25,.13);
+      }
+
+      .manifesto-detail p::before{
+        content:"";
+
+        position:absolute;
+
+        left:0;
+        top:20px;
+
+        width:15px;
+        height:1px;
+
+        background:var(--ocean);
+
+        opacity:.55;
+      }
+
+      .manifesto-detail p strong{
+        display:block;
+
+        margin-bottom:5px;
+
+        color:var(--ocean);
+
+        font-family:var(--serif);
+        font-weight:500;
+
+        font-size:16px;
+        line-height:1.24;
+
+        letter-spacing:-.022em;
       }
 
       .kinetic{
@@ -2664,6 +2722,14 @@
 
       .contact-content{
         padding-top:120px;
+      }
+
+      .manifesto-detail p{
+        padding-left:26px;
+      }
+
+      .manifesto-detail p strong{
+        font-size:15px;
       }
     }
 
@@ -4215,7 +4281,17 @@
           ]
         );
 
-        const manifestoTimeline = scene(".manifesto", 1.05);
+        /* 
+         * Fixed manifesto timeline for mobile.
+         * Since the section height is 100svh, we add a small
+         * scroll buffer (end: "+=50%") so the animation still 
+         * has room to scrub without creating an empty gap.
+         */
+        const manifestoTimeline = scene(
+          ".manifesto", 
+          1.05, 
+          mobile ? { end: "+=50%" } : {}
+        );
 
         [[-28,5],[25,-5],[-18,7]].forEach(([fromX,toX],index) => {
           manifestoTimeline.fromTo(
