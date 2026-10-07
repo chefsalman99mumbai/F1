@@ -57,7 +57,7 @@
     .scroll-rail-fill{width:100%;height:100%;background:var(--sage);transform:scaleY(0);transform-origin:top;will-change:transform;}
 
     .site-nav{position:fixed;top:0;left:0;right:0;z-index:600;min-height:64px;padding:16px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;isolation:isolate;}
-    .header-logo{position:absolute;left:50%;top:50%;width:150px;height:64px;transform:translate3d(-50%,-50%,0);display:flex;align-items:center;justify-content:center;z-index:20;pointer-events:auto;background:transparent!important;isolation:isolate;}
+    .header-logo{position:absolute;left:50%;top:50%;width:200px;height:84px;transform:translate3d(-50%,-50%,0);display:flex;align-items:center;justify-content:center;z-index:20;pointer-events:auto;background:transparent!important;isolation:isolate;}
     .header-logo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent!important;border:0;outline:0;box-shadow:none;mix-blend-mode:normal;isolation:isolate;}
     .nav-right{display:flex;align-items:center;gap:12px;pointer-events:auto;margin-left:auto;}
     .nav-location{color:var(--w45);}
@@ -291,7 +291,7 @@
       :root{--w45:rgba(245,242,233,.64);}
 
       .site-nav{min-height:64px;padding:10px 14px;}
-      .header-logo{width:108px;height:52px;}
+      .header-logo{width:140px;height:66px;}
       .nav-right{gap:7px;}
       .nav-location{display:none;}
       .nav-button{padding:9px 11px;font-size:8px;letter-spacing:.09em;}
@@ -397,7 +397,7 @@
        ========================================================= */
 
     @media(max-width:390px){
-      .header-logo{width:96px;height:48px;}
+      .header-logo{width:125px;height:60px;}
       .nav-button{padding-left:9px;padding-right:9px;}
       .hero-title{font-size:clamp(55px,19.5vw,76px);}
       .contact-title{font-size:clamp(46px,13.5vw,68px);}
@@ -518,6 +518,61 @@
 
     @media(max-width:760px){
       footer .footer-top{grid-template-columns:1fr;gap:38px;}
+    }
+
+    /* =========================================================
+       LOGO PARTICLE DISSOLVE  —  header logo effect
+       ========================================================= */
+
+    .logo-particles{
+      position:fixed;
+      left:0;
+      top:0;
+      width:100vw;
+      height:100vh;
+      z-index:800;
+      pointer-events:none;
+      opacity:0;
+      will-change:opacity;
+    }
+
+    /* =========================================================
+       TEMPORARY LOGO UPLOADER  —  remove before launch
+       ========================================================= */
+
+    .logo-uploader{
+      position:fixed;
+      left:14px;
+      bottom:14px;
+      z-index:9500;
+      display:inline-flex;
+      align-items:center;
+      gap:11px;
+      padding:11px 16px 11px 13px;
+      border:1px solid rgba(245,242,233,.28);
+      border-radius:999px;
+      background:rgba(11,17,19,.74);
+      -webkit-backdrop-filter:blur(16px);
+      backdrop-filter:blur(16px);
+      color:var(--offwhite);
+      font-family:var(--mono);
+      font-weight:500;
+      font-size:9px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:border-color .25s ease,transform .25s ease,background .25s ease;
+    }
+    .logo-uploader:hover{border-color:rgba(245,242,233,.58);background:rgba(11,17,19,.88);transform:translateY(-2px);}
+    .logo-uploader:active{transform:translateY(0);}
+    .logo-uploader input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+    .logo-uploader-icon{font-size:14px;line-height:1;color:var(--sage);}
+    .logo-uploader-text{display:block;line-height:1.35;}
+    .logo-uploader-text em{display:block;margin-top:3px;font-style:normal;font-size:7px;letter-spacing:.11em;color:rgba(245,242,233,.48);}
+
+    @media(max-width:760px){
+      .logo-uploader{left:10px;bottom:10px;padding:10px 13px 10px 11px;font-size:8px;}
+      .logo-uploader-text em{display:none;}
     }
   </style>
 </head>
@@ -890,7 +945,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 F1 Acoustic. All rights reserved.</span>
-        <span class="footer-bottom-right">MUMBAI · ACOUSTICS · SOUNDPROOF</span>
+        <span class="footer-bottom-right">MUMBAI · ACOUSTICS · SOUNDPROOFING</span>
       </div>
 
       <div class="footer-sponsored">
@@ -904,6 +959,18 @@
     </div>
 
   </footer>
+
+  <!-- =========================================================
+       TEMPORARY — LOGO PREVIEW UPLOADER (remove before launch)
+       ========================================================= -->
+  <label class="logo-uploader" for="logoUpload">
+    <input type="file" id="logoUpload" accept="image/png,image/svg+xml,image/webp,image/jpeg,image/*">
+    <span class="logo-uploader-icon" aria-hidden="true">↑</span>
+    <span class="logo-uploader-text">
+      Preview your logo
+      <em>Temporary control · remove before launch</em>
+    </span>
+  </label>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
@@ -1045,6 +1112,403 @@
       }
 
       setTimeout(() => { if (!booted) staticMode(); }, 3500);
+    })();
+  </script>
+
+  <!-- =========================================================
+       LOGO DISSOLVE  —  particles on first scroll
+       ========================================================= -->
+  <script>
+    (() => {
+      "use strict";
+
+      const box = document.querySelector(".header-logo");
+      const img = box && box.querySelector("img");
+      if (!box || !img || !window.gsap) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const DPR = Math.min(window.devicePixelRatio || 1, 2);
+      const TRIGGER_AT = 12;      // px of scroll before the dissolve fires
+      const DISSOLVE_MS = 1.5;    // seconds
+      const TARGET_DOTS = 3600;   // max particle count
+
+      /* ---------- canvas ---------- */
+      const canvas = document.createElement("canvas");
+      canvas.className = "logo-particles";
+      canvas.setAttribute("aria-hidden", "true");
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext("2d");
+
+      /* ---------- state ---------- */
+      let vw = 0, vh = 0;
+      let buckets = [];
+      let dotSize = 1.4;
+      let ready = false;
+      let fallback = false;   // logo image could not be sampled → draw wordmark
+      let gone = false;       // logo is currently dissolved
+      let tween = null;
+      let resizeTimer = null;
+      let lastWidth = window.innerWidth;
+      const state = { p: 0 };
+      const objUrls = [];
+
+      /* ---------- helpers ---------- */
+
+      // Rendered rect of the logo artwork (respects object-fit: contain)
+      function logoRect() {
+        const r = img.getBoundingClientRect();
+        const nw = img.naturalWidth || 0;
+        const nh = img.naturalHeight || 0;
+
+        if (!r.width || !r.height) {
+          const b = box.getBoundingClientRect();
+          return { x: b.left, y: b.top, w: b.width, h: b.height };
+        }
+        if (!nw || !nh) return { x: r.left, y: r.top, w: r.width, h: r.height };
+
+        const s = Math.min(r.width / nw, r.height / nh);
+        const w = nw * s;
+        const h = nh * s;
+        return {
+          x: r.left + (r.width - w) / 2,
+          y: r.top + (r.height - h) / 2,
+          w, h
+        };
+      }
+
+      function drawWordmark(c, w, h) {
+        c.clearRect(0, 0, w, h);
+        const label = "F1 ACOUSTIC";
+        let size = h * 0.5;
+        c.textAlign = "center";
+        c.textBaseline = "middle";
+        c.fillStyle = "#F5F2E9";
+        c.font = "800 " + size + "px Manrope, system-ui, sans-serif";
+        const tw = c.measureText(label).width;
+        if (tw > w * 0.92) {
+          size *= (w * 0.92) / tw;
+          c.font = "800 " + size + "px Manrope, system-ui, sans-serif";
+        }
+        c.fillText(label, w / 2, h / 2);
+      }
+
+      /* ---------- build particle field ---------- */
+      function build(retry) {
+        const rect = logoRect();
+        if (!rect.w || !rect.h) return false;
+
+        vw = window.innerWidth;
+        vh = window.innerHeight;
+        canvas.width = Math.round(vw * DPR);
+        canvas.height = Math.round(vh * DPR);
+        canvas.style.width = vw + "px";
+        canvas.style.height = vh + "px";
+
+        /* sample the artwork at device resolution */
+        const off = document.createElement("canvas");
+        off.width = Math.max(1, Math.round(rect.w * DPR));
+        off.height = Math.max(1, Math.round(rect.h * DPR));
+        const octx = off.getContext("2d");
+
+        let useFallback = fallback || !(img.naturalWidth > 0 && img.naturalHeight > 0);
+        if (!useFallback) {
+          try {
+            octx.drawImage(img, 0, 0, off.width, off.height);
+          } catch (e) {
+            useFallback = true;
+          }
+        }
+        if (useFallback) {
+          fallback = true;
+          drawWordmark(octx, off.width, off.height);
+        }
+
+        let data;
+        try {
+          data = octx.getImageData(0, 0, off.width, off.height).data;
+        } catch (e) {
+          return false;
+        }
+
+        /* particle grid */
+        const total = off.width * off.height;
+        const step = Math.max(1, Math.round(Math.sqrt(total / TARGET_DOTS)));
+        dotSize = (step / DPR) * 1.02;
+
+        const centreX = rect.x + rect.w / 2;
+        const centreY = rect.y + rect.h / 2;
+
+        const map = new Map();
+
+        for (let y = 0; y < off.height; y += step) {
+          for (let x = 0; x < off.width; x += step) {
+            const i = (y * off.width + x) * 4;
+            if (data[i + 3] < 28) continue;
+
+            const px = rect.x + (x + step * 0.5) / DPR;
+            const py = rect.y + (y + step * 0.5) / DPR;
+
+            const dx = px - centreX;
+            const dy = py - centreY;
+            const ang = Math.atan2(dy, dx) + (Math.random() - 0.5) * 1.4;
+            const force = 26 + Math.random() * 150;
+
+            const qr = (data[i] >> 4) << 4;
+            const qg = (data[i + 1] >> 4) << 4;
+            const qb = (data[i + 2] >> 4) << 4;
+            const key = (qr << 16) | (qg << 8) | qb;
+
+            const p = {
+              x0: px,
+              y0: py,
+              vx: Math.cos(ang) * force + (Math.random() - 0.5) * 70,
+              vy: Math.sin(ang) * force - 18 - Math.random() * 70,
+              wx: 18 + Math.random() * 95,
+              ph: Math.random() * 6.283,
+              d: Math.random() * 0.38
+            };
+
+            let b = map.get(key);
+            if (!b) {
+              b = { c: "rgb(" + qr + "," + qg + "," + qb + ")", l: [] };
+              map.set(key, b);
+            }
+            b.l.push(p);
+          }
+        }
+
+        buckets = Array.from(map.values());
+        let count = 0;
+        for (let i = 0; i < buckets.length; i++) count += buckets[i].l.length;
+
+        if (count === 0) {
+          if (!fallback && !retry) {
+            fallback = true;
+            return build(true);
+          }
+          ready = false;
+          return false;
+        }
+
+        ready = true;
+        return true;
+      }
+
+      /* ---------- render ---------- */
+      function render(t) {
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        ctx.clearRect(0, 0, vw, vh);
+
+        const alpha = 1 - Math.pow(t, 2.2);
+        if (alpha <= 0.002) return;
+
+        ctx.globalAlpha = alpha;
+
+        for (let bi = 0; bi < buckets.length; bi++) {
+          const bucket = buckets[bi];
+          const list = bucket.l;
+          ctx.fillStyle = bucket.c;
+
+          for (let i = 0; i < list.length; i++) {
+            const p = list[i];
+
+            let raw = (t - p.d) / (1 - p.d);
+            if (raw < 0) raw = 0;
+            else if (raw > 1) raw = 1;
+
+            const e = raw * raw * (3 - 2 * raw);   // smoothstep
+            const e2 = e * e;
+            const wob = Math.sin(e * 7 + p.ph) * 6 * e;
+
+            ctx.fillRect(
+              p.x0 + p.vx * e + p.wx * e2 + wob,
+              p.y0 + p.vy * e + 80 * e2 + wob * 0.5,
+              dotSize,
+              dotSize
+            );
+          }
+        }
+
+        ctx.globalAlpha = 1;
+      }
+
+      /* ---------- rest / dissolve / reform ---------- */
+      function setRest() {
+        if (fallback) {
+          img.style.visibility = "hidden";
+          img.style.opacity = "0";
+          canvas.style.opacity = "1";
+          state.p = 0;
+          render(0);
+        } else {
+          img.style.visibility = "visible";
+          img.style.opacity = "1";
+          img.style.filter = "";
+          img.style.transform = "";
+          canvas.style.opacity = "0";
+        }
+      }
+
+      function dissolve() {
+        if (!ready) return;
+        if (tween) tween.kill();
+        gsap.killTweensOf(img);
+
+        img.style.filter = "";
+        img.style.transform = "";
+        img.style.opacity = "0";
+        img.style.visibility = "hidden";
+
+        canvas.style.opacity = "1";
+        state.p = 0;
+        render(0);
+
+        tween = gsap.to(state, {
+          p: 1,
+          duration: DISSOLVE_MS,
+          ease: "none",
+          onUpdate() { render(state.p); },
+          onComplete() { canvas.style.opacity = "0"; }
+        });
+      }
+
+      function reform() {
+        if (!ready) return;
+        if (tween) tween.kill();
+        gsap.killTweensOf(img);
+
+        if (fallback) {
+          canvas.style.opacity = "1";
+          tween = gsap.to(state, {
+            p: 0,
+            duration: 1.0,
+            ease: "power2.out",
+            onUpdate() { render(state.p); }
+          });
+          return;
+        }
+
+        canvas.style.opacity = "0";
+        img.style.visibility = "visible";
+
+        gsap.fromTo(img,
+          { opacity: 0, filter: "blur(10px)", scale: 1.12 },
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            scale: 1,
+            duration: 0.75,
+            ease: "power2.out",
+            onComplete() {
+              img.style.filter = "";
+              img.style.transform = "";
+            }
+          }
+        );
+      }
+
+      /* ---------- scroll trigger ---------- */
+      function onScroll() {
+        const atTop = window.scrollY <= TRIGGER_AT;
+        if (!atTop && !gone) {
+          gone = true;
+          dissolve();
+        } else if (atTop && gone) {
+          gone = false;
+          reform();
+        }
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      /* ---------- boot ---------- */
+      function start() {
+        if (build()) {
+          setRest();
+          onScroll();
+        }
+      }
+
+      function whenFontsReady(fn) {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(fn).catch(fn);
+        } else {
+          fn();
+        }
+      }
+
+      if (img.complete) {
+        whenFontsReady(() => requestAnimationFrame(start));
+      } else {
+        img.addEventListener("load", () => whenFontsReady(() => requestAnimationFrame(start)), { once: true });
+        img.addEventListener("error", () => {
+          fallback = true;
+          whenFontsReady(() => requestAnimationFrame(start));
+        }, { once: true });
+      }
+
+      /* ---------- resize ---------- */
+      window.addEventListener("resize", () => {
+        if (window.innerWidth === lastWidth) return;
+        lastWidth = window.innerWidth;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (tween) tween.kill();
+          const wasGone = gone;
+          if (!build()) return;
+          if (wasGone) {
+            canvas.style.opacity = "0";
+            img.style.visibility = "hidden";
+            img.style.opacity = "0";
+            state.p = 1;
+          } else {
+            setRest();
+            render(0);
+          }
+        }, 260);
+      }, { passive: true });
+
+      /* ---------- public API for the temporary uploader ---------- */
+      window.F1LogoDissolve = {
+        setSource(url) {
+          fallback = false;
+          gone = false;
+          if (tween) tween.kill();
+          gsap.killTweensOf(img);
+
+          img.style.visibility = "visible";
+          img.style.opacity = "1";
+          img.style.filter = "";
+          img.style.transform = "";
+          canvas.style.opacity = "0";
+
+          const onReady = () => {
+            state.p = 0;
+            if (build()) setRest();
+          };
+
+          img.addEventListener("load", onReady, { once: true });
+          img.addEventListener("error", () => { fallback = true; onReady(); }, { once: true });
+          img.src = url;
+        },
+        urlRefs: objUrls
+      };
+
+      /* ---------- temporary uploader wiring (remove with the UI) ---------- */
+      const input = document.getElementById("logoUpload");
+      if (input) {
+        input.addEventListener("change", () => {
+          const file = input.files && input.files[0];
+          if (!file) return;
+
+          const url = URL.createObjectURL(file);
+          objUrls.push(url);
+
+          const footerLogo = document.querySelector(".footer-logo-image");
+          if (footerLogo) footerLogo.src = url;
+
+          if (window.F1LogoDissolve) window.F1LogoDissolve.setSource(url);
+        });
+      }
     })();
   </script>
 
