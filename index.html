@@ -121,7 +121,6 @@
     .hero-meta,
     .hero-scroll,
     .kinetic-caption,
-    .field-meta,
     .solution-card-label,
     .project-tag,
     .process-index,
@@ -840,109 +839,6 @@
     }
 
     /* =========================================================
-       ACOUSTIC FIELD
-       CSS ONLY — NO GSAP
-       ========================================================= */
-
-    .field-section{
-      height:180svh;
-      position:relative;
-      background:var(--ocean-deep);
-    }
-
-    .field-pin{
-      position:sticky;
-      top:0;
-
-      height:100svh;
-      overflow:hidden;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .field-word{
-      position:absolute;
-      z-index:3;
-
-      font:
-        800 clamp(70px,18vw,220px)/.8
-        var(--sans);
-
-      letter-spacing:-.10em;
-
-      color:var(--offwhite);
-
-      text-align:center;
-    }
-
-    .field-word span{
-      display:block;
-    }
-
-    .field-word span:nth-child(2){
-      margin-left:10vw;
-
-      color:var(--sage);
-
-      font-family:var(--serif);
-      font-weight:500;
-
-      font-size:.58em;
-    }
-
-    .ripple{
-      position:absolute;
-
-      left:50%;
-      top:50%;
-
-      width:18vw;
-      height:18vw;
-
-      max-width:220px;
-      max-height:220px;
-
-      transform:translate(-50%,-50%);
-
-      border:1px solid rgba(168,191,163,.24);
-      border-radius:50%;
-    }
-
-    .ripple:nth-child(2){
-      width:34vw;
-      height:34vw;
-    }
-
-    .ripple:nth-child(3){
-      width:53vw;
-      height:53vw;
-    }
-
-    .ripple:nth-child(4){
-      width:75vw;
-      height:75vw;
-    }
-
-    .field-meta{
-      position:absolute;
-
-      left:15px;
-      right:15px;
-      bottom:25px;
-
-      z-index:5;
-
-      display:flex;
-      justify-content:space-between;
-
-      color:var(--w45);
-
-      letter-spacing:.11em;
-    }
-
-    /* =========================================================
        SOLUTIONS
        ========================================================= */
 
@@ -1078,7 +974,7 @@
        ========================================================= */
 
     .project-journey{
-      height:290svh;
+      height:490svh;
 
       position:relative;
 
@@ -1102,7 +998,7 @@
       left:0;
 
       height:100%;
-      width:300%;
+      width:500%;
 
       display:flex;
 
@@ -1110,7 +1006,7 @@
     }
 
     .project-panel{
-      width:33.333333%;
+      width:20%;
       height:100%;
 
       position:relative;
@@ -1146,6 +1042,24 @@
           135deg,
           #F1D8DE,
           #D9C7D4
+        );
+    }
+
+    .project-panel-four{
+      background:
+        linear-gradient(
+          135deg,
+          #E5E1D5,
+          #C9D8D0
+        );
+    }
+
+    .project-panel-five{
+      background:
+        linear-gradient(
+          135deg,
+          #D7E1E8,
+          #B7C5D2
         );
     }
 
@@ -1443,7 +1357,7 @@
        ========================================================= */
 
     .numbers{
-      padding:115px 0;
+      padding:128px 0;
 
       background:var(--offwhite);
       color:var(--charcoal);
@@ -1452,7 +1366,7 @@
     .numbers-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:25px;
+      gap:38px;
     }
 
     .number{
@@ -1465,7 +1379,7 @@
 
     .number-value{
       font:
-        800 clamp(60px,9vw,100px)/.85
+        800 clamp(64px,9vw,108px)/.82
         var(--sans);
 
       letter-spacing:-.09em;
@@ -2011,6 +1925,7 @@
       font-weight:500;
     }
 
+
     /* =========================================================
        FALLBACK / STATIC MODE
        ========================================================= */
@@ -2060,11 +1975,6 @@
       }
 
       .kinetic-caption,
-      .field-meta{
-        left:35px;
-        right:35px;
-        bottom:35px;
-      }
 
       .solutions{
         padding:165px 0 190px;
@@ -2298,11 +2208,11 @@
          --------------------------------------------- */
 
       .kinetic{
-        height:245svh;
+        height:190svh;
       }
 
       .kinetic-word{
-        font-size:clamp(60px,17vw,92px);
+        font-size:clamp(56px,15vw,84px);
       }
 
       .kinetic-one{
@@ -2346,45 +2256,11 @@
       }
 
       /* ---------------------------------------------
-         FIELD
-         --------------------------------------------- */
-
-      .field-section{
-        height:165svh;
-      }
-
-      .field-word{
-        width:100%;
-        padding:0 16px;
-
-        font-size:clamp(55px,17vw,85px);
-      }
-
-      .field-word span:nth-child(2){
-        margin-left:7vw;
-      }
-
-      .field-meta{
-        left:14px;
-        right:14px;
-        bottom:20px;
-
-        gap:12px;
-
-        font-size:7px;
-        line-height:1.65;
-      }
-
-      .field-meta span:last-child{
-        text-align:right;
-      }
-
-      /* ---------------------------------------------
          SOLUTIONS
          --------------------------------------------- */
 
       .solutions{
-        padding:88px 0 100px;
+        padding:76px 0 86px;
       }
 
       .solutions-head{
@@ -2407,11 +2283,11 @@
       }
 
       .solution-list{
-        gap:14px;
+        gap:12px;
       }
 
       .solution-card{
-        min-height:430px;
+        min-height:380px;
 
         padding:21px;
 
@@ -2447,7 +2323,7 @@
          --------------------------------------------- */
 
       .project-journey{
-        height:245svh;
+        height:405svh;
       }
 
       .project-panel{
@@ -2511,7 +2387,9 @@
         left:auto;
         top:auto;
 
-        margin:0 20px 55px;
+        margin:0 20px 62px;
+
+        max-width:calc(100% - 40px);
 
         font-size:clamp(50px,13vw,76px);
         line-height:.84;
@@ -2527,7 +2405,7 @@
 
         margin:0 20px;
 
-        padding-left:18px;
+        padding-left:20px;
 
         border-left:1px solid rgba(245,242,233,.14);
       }
@@ -2583,7 +2461,7 @@
       }
 
       .process-title{
-        margin:0 0 10px;
+        margin:0 0 11px;
 
         max-width:100%;
 
@@ -2593,12 +2471,12 @@
       }
 
       .process-description{
-        max-width:100%;
+        max-width:340px;
 
         margin:0;
 
         font-size:12px;
-        line-height:1.62;
+        line-height:1.68;
 
         color:rgba(245,242,233,.56);
       }
@@ -2626,20 +2504,24 @@
          --------------------------------------------- */
 
       .numbers{
-        padding:86px 0;
+        padding:78px 0;
       }
 
       .numbers-grid{
         grid-template-columns:1fr;
-        gap:35px;
+        gap:28px;
       }
 
       .number{
-        padding-top:18px;
+        padding-top:17px;
       }
 
       .number-value{
         font-size:clamp(55px,17vw,80px);
+      }
+
+      .number-label{
+        margin-top:8px;
       }
 
       /* ---------------------------------------------
@@ -2717,14 +2599,14 @@
       .contact-sub{
         max-width:330px;
 
-        margin-top:22px;
+        margin-top:24px;
 
         font-size:12px;
         line-height:1.65;
       }
 
       .contact-actions{
-        margin-top:25px;
+        margin-top:28px;
 
         flex-direction:column;
 
@@ -2866,6 +2748,262 @@
       }
     }
 
+
+    /* FOOTER — FINAL VISUAL TREATMENT */
+    footer{
+      background:#C91438;
+      color:var(--offwhite);
+    }
+
+    footer .footer-top{
+      grid-template-columns:1.15fr 1fr 1fr;
+      gap:55px;
+      border-bottom:1px solid rgba(245,242,233,.25);
+    }
+
+    footer .footer-brand-copy,
+    footer .footer-links{
+      display:none;
+    }
+
+    footer .footer-heading,
+    footer .footer-address,
+    footer .footer-contact a,
+    footer .footer-bottom,
+    footer .footer-social a{
+      color:var(--offwhite);
+    }
+
+    footer .footer-heading{
+      color:rgba(245,242,233,.58);
+    }
+
+    footer .footer-address,
+    footer .footer-contact a{
+      color:rgba(245,242,233,.82);
+    }
+
+    /* ---------------------------------------------------------
+       REFINED STUDIO FOOTER
+       Footer-only enhancement: editorial hierarchy,
+       restrained iconography and a small GSAP reveal.
+       --------------------------------------------------------- */
+
+    footer{
+      background:
+        radial-gradient(circle at 82% 0%, rgba(168,191,163,.14), transparent 28%),
+        radial-gradient(circle at 8% 100%, rgba(0,106,142,.18), transparent 30%),
+        linear-gradient(135deg,#0A1012 0%,#111719 52%,#0B1214 100%);
+    }
+
+    footer::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--sage),transparent);
+      opacity:.65;
+    }
+
+    footer .footer-shell{
+      padding-top:88px;
+    }
+
+    footer .footer-top{
+      position:relative;
+      grid-template-columns:1.3fr 1fr 1fr;
+      gap:64px;
+      padding-bottom:64px;
+    }
+
+    footer .footer-brand-block{
+      position:relative;
+      padding-right:20px;
+    }
+
+    footer .footer-brand-block::after{
+      content:"F1 / 01";
+      position:absolute;
+      right:0;
+      bottom:0;
+      font:500 8px/1 var(--mono);
+      letter-spacing:.18em;
+      color:rgba(245,242,233,.28);
+    }
+
+    footer .footer-logo-image{
+      width:min(230px,100%);
+      margin-bottom:27px;
+    }
+
+    footer .footer-brand-line{
+      width:72px;
+      margin-bottom:0;
+    }
+
+    footer .footer-heading{
+      position:relative;
+      margin-bottom:23px;
+      color:rgba(245,242,233,.46);
+      font-size:8px;
+      letter-spacing:.20em;
+    }
+
+    footer .footer-heading::before{
+      content:"";
+      display:inline-block;
+      width:20px;
+      height:1px;
+      margin:0 9px 3px 0;
+      background:var(--sage);
+      opacity:.75;
+    }
+
+    footer .footer-address{
+      font-size:13px;
+      line-height:1.9;
+      color:rgba(245,242,233,.67);
+    }
+
+    footer .footer-address strong{
+      display:inline-block;
+      margin-bottom:2px;
+      color:var(--offwhite);
+      font-size:11px;
+      letter-spacing:.12em;
+      font-family:var(--mono);
+    }
+
+    footer .footer-contact{
+      gap:13px;
+    }
+
+    footer .footer-contact a{
+      position:relative;
+      width:max-content;
+      max-width:100%;
+      font-size:13px;
+      color:rgba(245,242,233,.72);
+      transition:color .25s ease,transform .25s ease;
+    }
+
+    footer .footer-contact a::after{
+      content:"↗";
+      margin-left:7px;
+      color:var(--sage);
+      opacity:0;
+      transform:translate(-4px,2px);
+      display:inline-block;
+      transition:opacity .25s ease,transform .25s ease;
+    }
+
+    footer .footer-contact a:hover{
+      color:var(--offwhite);
+      transform:translateX(3px);
+    }
+
+    footer .footer-contact a:hover::after{
+      opacity:1;
+      transform:translate(0,2px);
+    }
+
+    footer .footer-social{
+      gap:10px;
+      margin-top:25px;
+    }
+
+    footer .footer-social a{
+      position:relative;
+      width:43px;
+      height:43px;
+      border:1px solid rgba(245,242,233,.18);
+      border-radius:14px;
+      background:rgba(245,242,233,.035);
+      overflow:hidden;
+      transition:background .3s ease,border-color .3s ease,transform .3s ease,color .3s ease;
+    }
+
+    footer .footer-social a::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:var(--sage);
+      transform:translateY(105%);
+      transition:transform .35s cubic-bezier(.16,1,.3,1);
+    }
+
+    footer .footer-social a:hover{
+      color:var(--charcoal);
+      border-color:var(--sage);
+      background:var(--sage);
+      transform:translateY(-4px);
+    }
+
+    footer .footer-social a:hover::before{
+      transform:translateY(0);
+    }
+
+    footer .footer-social svg{
+      position:relative;
+      z-index:1;
+      width:17px;
+      height:17px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.7;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    footer .footer-bottom{
+      padding-top:22px;
+      color:rgba(245,242,233,.35);
+    }
+
+    footer .footer-bottom-right{
+      color:rgba(245,242,233,.48);
+    }
+
+    @media(max-width:760px){
+      footer .footer-shell{
+        padding-top:64px;
+      }
+      footer .footer-top{
+        gap:42px;
+        padding-bottom:45px;
+      }
+      footer .footer-brand-block{
+        padding-right:0;
+      }
+      footer .footer-brand-block::after{
+        right:0;
+        bottom:0;
+      }
+      footer .footer-contact a{
+        font-size:12px;
+      }
+      footer .footer-social a{
+        width:44px;
+        height:44px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      footer .footer-social a,
+      footer .footer-contact a,
+      footer .footer-social a::before{
+        transition:none !important;
+      }
+    }
+
+    @media(max-width:760px){
+      footer .footer-top{
+        grid-template-columns:1fr;
+        gap:38px;
+      }
+    }
   </style>
 </head>
 
@@ -2957,7 +3095,7 @@
 
           </div>
 
-          <h1 class="display hero-title">
+          <h1 class="display hero-title" aria-label="DESIGN the SILENCE">
 
             <span class="hero-title-line">
               <span>DESIGN</span>
@@ -3102,47 +3240,6 @@
           <span class="kinetic-caption-right">
             CONTROL THE UNWANTED.<br>
             PRESERVE WHAT MATTERS.
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =====================================================
-         ACOUSTIC FIELD
-         ===================================================== -->
-
-    <section class="field-section">
-
-      <div class="field-pin">
-
-        <div class="ripple"></div>
-        <div class="ripple"></div>
-        <div class="ripple"></div>
-        <div class="ripple"></div>
-
-        <div class="field-word">
-
-          <span>
-            SOUND
-          </span>
-
-          <span>
-            BECOMES SPACE
-          </span>
-
-        </div>
-
-        <div class="field-meta">
-
-          <span>
-            Acoustic field
-          </span>
-
-          <span>
-            Isolation · Absorption · Control
           </span>
 
         </div>
@@ -3425,6 +3522,84 @@
                 Acoustic zoning across lounges,
                 fitness, entertainment and shared
                 luxury spaces.
+              </p>
+
+            </div>
+
+          </article>
+
+          <!-- PROJECT FOUR -->
+
+          <article class="project-panel project-panel-four">
+
+            <div
+              class="project-art"
+              aria-hidden="true"
+            ></div>
+
+            <div
+              class="project-art-two"
+              aria-hidden="true"
+            ></div>
+
+            <div class="project-copy">
+
+              <div>
+
+                <span class="project-tag">
+                  Luxury hospitality
+                </span>
+
+                <h3 class="project-title">
+                  THE<br>
+                  PRIVATE<br>
+                  SUITE
+                </h3>
+
+              </div>
+
+              <p class="project-description">
+                Quiet guest rooms, discreet service zones and
+                controlled privacy — tuned for a refined stay.
+              </p>
+
+            </div>
+
+          </article>
+
+          <!-- PROJECT FIVE -->
+
+          <article class="project-panel project-panel-five">
+
+            <div
+              class="project-art"
+              aria-hidden="true"
+            ></div>
+
+            <div
+              class="project-art-two"
+              aria-hidden="true"
+            ></div>
+
+            <div class="project-copy">
+
+              <div>
+
+                <span class="project-tag">
+                  Entertainment &amp; lifestyle
+                </span>
+
+                <h3 class="project-title">
+                  THE<br>
+                  SOUND<br>
+                  LOUNGE
+                </h3>
+
+              </div>
+
+              <p class="project-description">
+                Immersive listening, social energy and acoustic
+                control shaped into one expressive environment.
               </p>
 
             </div>
@@ -3774,47 +3949,6 @@
 
           <div class="footer-brand-line"></div>
 
-          <p class="footer-brand-copy">
-            Precision acoustic engineering and soundproofing
-            systems designed for refined residences,
-            hospitality, workspaces and ambitious
-            architectural environments.
-          </p>
-
-        </div>
-
-        <!-- CAPABILITIES -->
-
-        <div>
-
-          <div class="footer-heading">
-            Capabilities
-          </div>
-
-          <div class="footer-links">
-
-            <a href="#solutions">
-              Sound Isolation
-            </a>
-
-            <a href="#solutions">
-              Acoustic Treatment
-            </a>
-
-            <a href="#solutions">
-              Private Cinema
-            </a>
-
-            <a href="#solutions">
-              Noise Control
-            </a>
-
-            <a href="#solutions">
-              Developer Projects
-            </a>
-
-          </div>
-
         </div>
 
         <!-- STUDIO / ADDRESS -->
@@ -3861,7 +3995,7 @@
               +91 90044 55115
             </a>
 
-            <a href="mailto:fizzainteriorsign@gmail.com">
+            <a href="mailto:f1acoustic@gmail.com">
               f1acoustic@gmail.com
             </a>
 
@@ -3869,112 +4003,28 @@
 
           <div class="footer-social">
 
-            <!-- INSTAGRAM -->
-
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-
-                <rect
-                  x="3"
-                  y="3"
-                  width="18"
-                  height="18"
-                  rx="5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                />
-
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                />
-
-                <circle
-                  cx="17.4"
-                  cy="6.8"
-                  r="1.1"
-                />
-
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none"></circle>
               </svg>
-
             </a>
 
-            <!-- LINKEDIN -->
-
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-
-                <path d="
-                  M6.2 8.2H3.3V20h2.9V8.2ZM4.75 3.2
-                  a1.7 1.7 0 1 0 0 3.4
-                  1.7 1.7 0 0 0 0-3.4ZM20.7 13.25
-                  c0-3.55-1.9-5.2-4.45-5.2
-                  -2.05 0-2.95 1.13-3.46 1.92V8.2H9.9V20
-                  h2.9v-5.84c0-1.54.3-3.03 2.2-3.03
-                  1.88 0 1.9 1.76 1.9 3.13V20h2.9v-6.75Z
-                " />
-
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.5 9.5v8"></path>
+                <path d="M6.5 6.5v.01"></path>
+                <path d="M10.5 17.5v-8"></path>
+                <path d="M10.5 13.2c0-2.5 1.3-4 3.5-4 2.1 0 3.5 1.4 3.5 4v4.3"></path>
               </svg>
-
             </a>
 
-            <!-- WHATSAPP -->
-
-            <a
-              href="https://wa.me/919004455115"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-            >
-
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-
-                <path d="
-                  M12.04 3A8.97 8.97 0 0 0 4.3 16.53
-                  L3 21l4.59-1.2A8.96 8.96 0 1 0 12.04 3Zm0
-                  16.27c-1.18 0-2.34-.31-3.35-.9l-.24-.14
-                  -2.72.72.73-2.65-.16-.27a7.3 7.3 0 1 1
-                  5.74 3.24Zm4.02-5.48c-.22-.11-1.28-.63-1.48-.7
-                  -.2-.07-.34-.11-.49.11-.14.22-.56.7-.68.84
-                  -.13.15-.25.16-.47.05-.22-.11-.92-.34-1.75-1.09
-                  -.65-.58-1.09-1.3-1.22-1.52-.13-.22-.01-.34.1-.45
-                  .1-.1.22-.25.33-.37.11-.13.15-.22.22-.37
-                  .07-.14.04-.27-.02-.38-.05-.11-.49-1.17-.67-1.61
-                  -.18-.42-.36-.36-.49-.37h-.42c-.15 0-.38.06-.58.28
-                  -.2.22-.76.74-.76 1.8s.78 2.09.89 2.23
-                  c.11.15 1.54 2.36 3.74 3.3.52.22.92.35 1.24.45
-                  .52.16.99.14 1.36.09.42-.06 1.28-.52 1.46-1.03
-                  .18-.5.18-.94.13-1.03-.05-.1-.2-.15-.42-.26Z
-                " />
-
+            <a href="#" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 11.5a8 8 0 0 1-11.8 7l-3.2.9.9-3.1A8 8 0 1 1 20 11.5Z"></path>
+                <path d="M9.2 8.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.5c.1.2.1.4-.1.6l-.5.6c.6 1 1.4 1.7 2.5 2.2l.7-.5c.2-.2.4-.2.6-.1l1.5.7c.2.1.3.3.2.6-.2.8-.8 1.3-1.5 1.3-2.5 0-5.7-2.9-6.2-5.5-.1-.5.1-1 .4-1.4Z"></path>
               </svg>
-
             </a>
 
           </div>
@@ -3983,14 +4033,10 @@
 
       </div>
 
-      <!-- COPYRIGHT -->
-
       <div class="footer-bottom">
 
         <span>
-          © <strong>2026</strong>
-          F1 Acoustic.
-          All rights reserved.
+          © 2026 F1 Acoustic. All rights reserved.
         </span>
 
         <span class="footer-bottom-right">
@@ -4418,7 +4464,8 @@
 
           scene(
             ".kinetic",
-            1
+            1,
+            {scrub:mobile ? 0.2 : 1}
           ),
 
           [
@@ -4516,23 +4563,7 @@
 
         );
 
-        /*
-         * -----------------------------------------------------
-         * FIELD
-         *
-         * Completely static by design.
-         * No GSAP.
-         * -----------------------------------------------------
-         */
-
-        /*
-         * -----------------------------------------------------
-         * PROJECT JOURNEY
-         *
-         * Only horizontal track + progress remain.
-         * Artwork parallax has intentionally been removed.
-         * -----------------------------------------------------
-         */
+        
 
         add(
 
@@ -4547,7 +4578,7 @@
               ".project-track",
 
               {
-                xPercent:-66.6666667
+                xPercent:-80
               }
             ],
 
@@ -4647,6 +4678,45 @@
 
           0
 
+        );
+
+        /*
+         * -----------------------------------------------------
+         * FOOTER STUDIO REVEAL
+         * -----------------------------------------------------
+         * Small editorial reveal only; the footer remains fully
+         * usable without GSAP and is intentionally subtle.
+         */
+
+        const footerTimeline = gsap.timeline({
+          scrollTrigger:{
+            trigger:"footer",
+            start:"top 88%",
+            end:"top 45%",
+            scrub:S(.55),
+            invalidateOnRefresh:true
+          }
+        });
+
+        footerTimeline.fromTo(
+          "footer .footer-brand-block",
+          {y:28,opacity:.45},
+          {y:0,opacity:1,ease:"none"},
+          0
+        );
+
+        footerTimeline.fromTo(
+          "footer .footer-heading, footer .footer-address, footer .footer-contact, footer .footer-social",
+          {y:22,opacity:.35},
+          {y:0,opacity:1,stagger:.08,ease:"none"},
+          .08
+        );
+
+        footerTimeline.fromTo(
+          "footer .footer-bottom",
+          {y:12,opacity:.25},
+          {y:0,opacity:1,ease:"none"},
+          .22
         );
 
         /*
@@ -4808,6 +4878,8 @@
         init();
 
       }
+
+
 
       /*
        * Absolute safety:
