@@ -49,11 +49,11 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;
   padding:0 28px;
   border-radius:0px;
-  background-color:rgba(255,255,255,.22);
+  background-color:rgba(18,20,24,.22);
   border:1px solid rgba(244,243,236,.15);
   backdrop-filter:blur(14px) saturate(130%);
   -webkit-backdrop-filter:blur(14px) saturate(130%);
-  box-shadow:0 4px 16px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.18);
+  box-shadow:0 4px 16px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.06);
   will-change:max-width,height,border-radius,background-color,border-color,backdrop-filter,box-shadow;
 }
 .brand{
@@ -1065,8 +1065,9 @@ footer::before{
 
     const chrome = Math.max(0, 1 - Math.max(0, (p - CHROME_START) / (1 - CHROME_START)));
 
+    /* Blackish tint — same .22 alpha as the previous white tint */
     const bgAlpha = 0.22 * chrome;
-    shell.style.backgroundColor = 'rgba(255,255,255,' + bgAlpha.toFixed(3) + ')';
+    shell.style.backgroundColor = 'rgba(18,20,24,' + bgAlpha.toFixed(3) + ')';
 
     const blur = 14 + 28 * (1 - chrome);
     const sat  = 130 + 50 * (1 - chrome);
@@ -1078,8 +1079,8 @@ footer::before{
 
     const s1 = (4 * chrome).toFixed(1);
     const s2 = (16 * chrome).toFixed(1);
-    const sA = (0.08 * chrome).toFixed(3);
-    const insetA = (0.18 * chrome).toFixed(3);
+    const sA = (0.14 * chrome).toFixed(3);
+    const insetA = (0.06 * chrome).toFixed(3);
     shell.style.boxShadow =
       '0 ' + s1 + 'px ' + s2 + 'px rgba(0,0,0,' + sA + '), ' +
       'inset 0 1px 0 rgba(255,255,255,' + insetA + ')';
