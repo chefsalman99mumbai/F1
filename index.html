@@ -49,11 +49,11 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;
   padding:0 28px;
   border-radius:0px;
-  background-color:rgba(18,20,24,0);
-  border:1px solid rgba(244,243,236,0);
-  backdrop-filter:blur(0px) saturate(100%);
-  -webkit-backdrop-filter:blur(0px) saturate(100%);
-  box-shadow:0 0 0 rgba(0,0,0,0);
+  background-color:rgba(255,255,255,.22);
+  border:1px solid rgba(244,243,236,.15);
+  backdrop-filter:blur(14px) saturate(130%);
+  -webkit-backdrop-filter:blur(14px) saturate(130%);
+  box-shadow:0 4px 16px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.18);
   will-change:max-width,height,border-radius,background-color,border-color,backdrop-filter,box-shadow;
 }
 .brand{
@@ -76,18 +76,18 @@ img{max-width:100%;display:block}
   text-shadow:0 0 18px rgba(255,255,255,.18);
 }
 
-/* LOGO */
+/* LOGO — bigger now */
 .brand-image{
   display:none;
-  height:68px;
+  height:80px;
   width:auto;
   filter:saturate(1.45) contrast(1.1) brightness(1.06)
-         drop-shadow(0 0 10px rgba(234,246,77,.28));
+         drop-shadow(0 3px 8px rgba(0,0,0,.24));
   transition:filter .35s ease, transform .35s ease;
 }
 .brand-image:hover{
   filter:saturate(1.65) contrast(1.14) brightness(1.1)
-         drop-shadow(0 0 16px rgba(234,246,77,.48));
+         drop-shadow(0 0 16px rgba(234,246,77,.45));
   transform:scale(1.03);
 }
 .brand.has-image .brand-wordmark{display:none}
@@ -104,14 +104,21 @@ img{max-width:100%;display:block}
   will-change:opacity,max-width;
 }
 .nav-right > *{flex-shrink:0}
-.nav-meta{font:10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,236,.62)}
+.nav-meta{
+  font:10px/1 var(--mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.72);
+}
 .nav-btn{
   border:1px solid rgba(244,243,236,.28);padding:11px 18px;border-radius:999px;
   font:10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
-  background:rgba(20,22,26,.4);backdrop-filter:blur(10px);
+  background:rgba(20,22,26,.4);
+  backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
+  color:#f4f3ec;
   cursor:pointer;
-  transition:border-color .3s ease,color .3s ease;
+  transition:border-color .3s ease,color .3s ease,background .3s ease;
 }
 .nav-btn:hover{border-color:var(--yellow);color:var(--yellow)}
 
@@ -286,7 +293,6 @@ footer::before{
   50%{opacity:1;transform:translateY(-6px) scale(1.01)}
 }
 
-/* ---------- HERO ROW ---------- */
 .footer-hero{
   position:relative;
   z-index:2;
@@ -331,7 +337,6 @@ footer::before{
   padding-bottom:10px;
 }
 
-/* Live Mumbai clock */
 .footer-live{
   display:flex;
   align-items:baseline;
@@ -352,7 +357,6 @@ footer::before{
 }
 .footer-live-tz{color:rgba(244,243,236,.48)}
 
-/* Status pill */
 .footer-status{
   display:inline-flex;
   align-items:center;
@@ -378,7 +382,6 @@ footer::before{
   50%{opacity:1;transform:scale(1.4)}
 }
 
-/* Back to top button */
 .footer-top-btn{
   display:inline-flex;
   align-items:center;
@@ -413,7 +416,6 @@ footer::before{
   transform:translateY(-3px);
 }
 
-/* ---------- INFO GRID ---------- */
 .footer-grid{
   position:relative;
   z-index:2;
@@ -518,13 +520,11 @@ footer::before{
   box-shadow:0 8px 20px rgba(234,246,77,.3);
 }
 
-/* Safety net for all interactive footer elements */
 .social, .footer-contact a, .footer-top-btn{
   touch-action:manipulation;
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ---------- BOTTOM STRIP ---------- */
 .footer-bottom{
   position:relative;
   z-index:2;
@@ -541,7 +541,6 @@ footer::before{
 }
 .footer-bottom > span:last-child{text-align:right}
 
-/* ---------- POWERED STRIP ---------- */
 .footer-powered{
   position:relative;
   z-index:2;
@@ -568,7 +567,7 @@ footer::before{
   .brand-icon{font-size:34px}
   .brand-word{font-size:18px;letter-spacing:.34em}
   .brand-wordmark{gap:14px}
-  .brand-image{height:54px}
+  .brand-image{height:66px}
   .nav-right{right:22px}
 
   .footer-hero{
@@ -646,7 +645,7 @@ footer::before{
   .c-word-5{margin-left:-1%}
   .brand-icon{font-size:28px}
   .brand-word{font-size:15px;letter-spacing:.28em}
-  .brand-image{height:44px}
+  .brand-image{height:56px}
   .brand-wordmark{gap:12px}
   .nav-shell{height:58px;padding:0 18px}
   .nav-btn{padding:9px 12px;font-size:9px}
@@ -1004,7 +1003,6 @@ footer::before{
     cell.classList.add('active');
   }));
 
-  /* Smooth-scroll for the "Who we are" nav button */
   (function(){
     const btn = document.getElementById('navWhoBtn');
     if (!btn) return;
@@ -1013,31 +1011,27 @@ footer::before{
       const target = document.getElementById('who');
       if (!target) return;
       const y = target.getBoundingClientRect().top + window.scrollY - 90;
-      try {
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      } catch (err) {
-        window.scrollTo(0, y);
-      }
+      try { window.scrollTo({ top: y, behavior: 'smooth' }); }
+      catch (err) { window.scrollTo(0, y); }
     });
   })();
 
-  /* Smooth-scroll for the footer "Back to top" button */
   (function(){
     const btn = document.getElementById('footerTopBtn');
     if (!btn) return;
     btn.addEventListener('click', function(e){
       e.preventDefault();
-      try {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } catch (err) {
-        window.scrollTo(0, 0);
-      }
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      catch (err) { window.scrollTo(0, 0); }
     });
   })();
 
   const shell    = document.getElementById('navShell');
   const brand    = document.getElementById('brandLogo');
   const navRight = document.getElementById('navRight');
+  const navMetaEl   = document.querySelector('.nav-meta');
+  const navBtnEl    = document.querySelector('.nav-btn');
+  const brandWordEl = document.querySelector('.brand-word');
 
   const LERP         = 0.055;
   const CHROME_START = 0.45;
@@ -1066,16 +1060,40 @@ footer::before{
     shell.style.height   = h.toFixed(1) + 'px';
     shell.style.borderRadius = (999 * eased).toFixed(1) + 'px';
 
+    /* chrome = 1 at top (whisper of white), fades to 0 as we scroll */
     const chrome = Math.max(0, 1 - Math.max(0, (p - CHROME_START) / (1 - CHROME_START)));
-    const bg = 0.22 * chrome, brd = 0.16 * chrome, blur = 28 * chrome, sat = 100 + 80 * chrome;
-    shell.style.backgroundColor = 'rgba(18,20,24,' + bg.toFixed(3) + ')';
-    shell.style.borderColor     = 'rgba(244,243,236,' + brd.toFixed(3) + ')';
+
+    /* Just a pinch of white — .22 at top, fades out */
+    const bgAlpha = 0.22 * chrome;
+    shell.style.backgroundColor = 'rgba(255,255,255,' + bgAlpha.toFixed(3) + ')';
+
+    /* Frost intensifies as we scroll */
+    const blur = 14 + 28 * (1 - chrome);
+    const sat  = 130 + 50 * (1 - chrome);
     const bf = 'blur(' + blur.toFixed(1) + 'px) saturate(' + sat.toFixed(0) + '%)';
     shell.style.backdropFilter = bf;
     shell.style.webkitBackdropFilter = bf;
-    shell.style.boxShadow = chrome > 0.01
-      ? '0 ' + (14*chrome).toFixed(1) + 'px ' + (40*chrome).toFixed(1) + 'px rgba(0,0,0,' + (0.34*chrome).toFixed(3) + '), inset 0 1px 0 rgba(255,255,255,' + (0.05*chrome).toFixed(3) + ')'
-      : 'none';
+
+    /* Light hairline border throughout */
+    shell.style.borderColor = 'rgba(244,243,236,' + (0.15 * chrome).toFixed(3) + ')';
+
+    /* Soft shadow — subtle at top, fades as we scroll */
+    const s1 = (4 * chrome).toFixed(1);
+    const s2 = (16 * chrome).toFixed(1);
+    const sA = (0.08 * chrome).toFixed(3);
+    const insetA = (0.18 * chrome).toFixed(3);
+    shell.style.boxShadow =
+      '0 ' + s1 + 'px ' + s2 + 'px rgba(0,0,0,' + sA + '), ' +
+      'inset 0 1px 0 rgba(255,255,255,' + insetA + ')';
+
+    /* Text stays light throughout — bg is just a whisper of white */
+    if (navMetaEl) navMetaEl.style.color = 'rgba(244,243,236,.72)';
+    if (navBtnEl) {
+      navBtnEl.style.color       = '#f4f3ec';
+      navBtnEl.style.borderColor = 'rgba(244,243,236,.28)';
+      navBtnEl.style.background  = 'rgba(20,22,26,.4)';
+    }
+    if (brandWordEl) brandWordEl.style.color = '#f4f3ec';
 
     const nr = Math.max(0, 1 - eased * 1.35);
     navRight.style.opacity  = nr.toFixed(3);
