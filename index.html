@@ -142,23 +142,112 @@ img{max-width:100%;display:block}
 .section-note{max-width:360px;margin:0;color:rgba(244,243,236,.65);font-size:12px;line-height:1.7}
 .light .section-note{color:rgba(20,22,25,.64)}
 
+/* ============================================================
+   MANIFESTO — editorial two column
+   ============================================================ */
 .manifesto{min-height:86vh;display:flex;align-items:center}
 .manifesto .section-title{max-width:940px}
-.manifesto-copy{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:60px;padding-top:22px;border-top:1px solid rgba(20,22,25,.18)}
-.manifesto-copy p{margin:0;font-size:12px;line-height:1.72;color:rgba(20,22,25,.66)}
-.manifesto-copy strong{font:500 18px/1.1 var(--serif);color:#2a3d70;display:block;margin-bottom:8px}
+.manifesto-copy{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:44px 60px;
+  margin-top:78px;
+}
+.manifesto-copy p{
+  position:relative;
+  margin:0;
+  padding:26px 0 0 0;
+  font-size:12px;
+  line-height:1.95;
+  letter-spacing:.005em;
+  color:rgba(20,22,25,.72);
+}
+.manifesto-copy p::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:1px;
+  background:rgba(20,22,25,.16);
+}
+.manifesto-copy p::after{
+  content:"";
+  position:absolute;
+  top:-1px;left:0;
+  width:56px;height:3px;
+  background:var(--yellow);
+}
+.manifesto-copy strong{
+  font:500 19px/1.25 var(--serif);
+  color:#2a3d70;
+  display:block;
+  margin-bottom:14px;
+  letter-spacing:-.015em;
+}
 
+/* ============================================================
+   KINETIC — centered stack, echo dissipation on scroll
+   ============================================================ */
 .kinetic{min-height:100vh;background:var(--blue);overflow:hidden}
-.kinetic-stage{height:70vh;min-height:560px;position:relative;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(244,243,236,.16);border-bottom:1px solid rgba(244,243,236,.16);overflow:hidden}
-.kinetic-orbit{width:min(50vw,600px);height:min(50vw,600px);border:1px solid rgba(244,243,236,.15);border-radius:50%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.kinetic-stage{
+  height:70vh;
+  min-height:560px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-top:1px solid rgba(244,243,236,.16);
+  border-bottom:1px solid rgba(244,243,236,.16);
+  overflow:hidden;
+}
+.kinetic-orbit{
+  width:min(50vw,600px);
+  height:min(50vw,600px);
+  border:1px solid rgba(244,243,236,.15);
+  border-radius:50%;
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
 .kinetic-orbit::before,.kinetic-orbit::after{content:"";position:absolute;inset:10%;border:1px solid rgba(234,246,77,.15);border-radius:50%}
 .kinetic-orbit::after{inset:30%;border-color:rgba(244,243,236,.12)}
-.kinetic-word{position:absolute;white-space:nowrap;font:700 clamp(80px,12vw,190px)/.82 var(--sans);letter-spacing:-.08em;text-transform:uppercase;mix-blend-mode:screen}
-.word-1{top:9%;left:16%;color:#f4f3ec}
-.word-2{top:29%;left:39%;color:var(--yellow)}
-.word-3{top:50%;left:13%;color:#f4f3ec}
-.word-4{top:71%;left:44%;color:#101217;-webkit-text-stroke:1px rgba(244,243,236,.18)}
-.kinetic-caption{position:absolute;left:16px;right:16px;bottom:15px;display:flex;justify-content:space-between;gap:20px;font:8px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(244,243,236,.56)}
+
+.kinetic-stack{
+  position:relative;
+  z-index:3;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 16px;
+  pointer-events:none;
+}
+.kinetic-word{
+  display:block;
+  font:700 clamp(52px,10.5vw,170px)/.82 var(--sans);
+  letter-spacing:-.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  will-change:opacity,transform,filter;
+  transform-origin:center center;
+}
+.word-1{color:#f4f3ec; margin-left:-7%}
+.word-2{color:var(--yellow); margin-left:7%}
+.word-3{color:#f4f3ec; margin-left:-4%}
+.word-4{color:#101217; -webkit-text-stroke:1px rgba(244,243,236,.18); margin-left:5%}
+
+.kinetic-caption{
+  position:absolute;
+  left:16px;right:16px;bottom:15px;
+  display:flex;justify-content:space-between;gap:20px;
+  font:8px/1.5 var(--mono);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.56);
+  z-index:4;
+}
 
 .solution-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .solution{min-height:330px;padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;display:flex;flex-direction:column;justify-content:space-between;background:rgba(255,255,255,.015);overflow:hidden}
@@ -166,15 +255,32 @@ img{max-width:100%;display:block}
 .solution-tag{font:8px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)}
 .solution h3{margin:35px 0 14px;font:500 clamp(33px,4vw,61px)/.86 var(--serif);letter-spacing:-.045em;max-width:620px}
 .solution p{margin:0;max-width:390px;font-size:11px;line-height:1.6;color:rgba(244,243,236,.58)}
-.solution .num{position:absolute;right:18px;top:18px;font:8px/1 var(--mono);color:rgba(244,243,236,.34)}
 
+/* ============================================================
+   PROCESS — clean label above headline
+   ============================================================ */
 .process-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:start}
 .process-title{margin:0;font:500 clamp(60px,7vw,112px)/.83 var(--serif);letter-spacing:-.055em}
 .process-list{border-top:1px solid var(--line)}
-.process-item{padding:24px 0 28px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:72px 1fr;gap:20px}
-.process-no{font:8px/1 var(--mono);letter-spacing:.14em;color:var(--yellow)}
-.process-item h3{margin:0 0 9px;font:500 clamp(24px,3vw,42px)/.95 var(--serif);letter-spacing:-.03em}
-.process-item p{margin:0;max-width:560px;font-size:11px;line-height:1.65;color:rgba(244,243,236,.56)}
+.process-item{padding:28px 0 32px;border-bottom:1px solid var(--line);display:block}
+.process-no{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:16px;
+  font:8px/1 var(--mono);
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--yellow);
+}
+.process-no::before{
+  content:"";
+  display:inline-block;
+  width:22px;height:1px;
+  background:var(--yellow);
+}
+.process-item h3{margin:0 0 10px;font:500 clamp(24px,3vw,42px)/.95 var(--serif);letter-spacing:-.03em}
+.process-item p{margin:0;max-width:560px;font-size:11px;line-height:1.7;color:rgba(244,243,236,.56)}
 
 .numbers{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .number{padding:26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
@@ -184,7 +290,7 @@ img{max-width:100%;display:block}
 .number-label{margin-top:11px;font:8px/1.4 var(--mono);letter-spacing:.17em;text-transform:uppercase;color:rgba(244,243,236,.52)}
 
 /* ============================================================
-   WHO WE'RE
+   WHO WE ARE
    ============================================================ */
 .who{background:#f1f0e9;color:#17181b;padding:112px 7vw}
 .who .section-kicker{color:rgba(20,22,25,.48)}
@@ -206,6 +312,7 @@ img{max-width:100%;display:block}
   gap:50px 70px;
   margin-top:20px;
   padding-top:34px;
+  padding-bottom:20px;
   border-top:1px solid rgba(20,22,25,.18);
 }
 .who-block h3{
@@ -220,41 +327,36 @@ img{max-width:100%;display:block}
   line-height:1.78;
   color:rgba(20,22,25,.68);
 }
-.who-sign{
-  margin-top:52px;
-  padding-top:24px;
-  border-top:1px solid rgba(20,22,25,.18);
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:22px;
-  flex-wrap:wrap;
-}
-.who-sign-mark{
-  font:700 30px/1 var(--mono);
-  color:#17181b;
-  letter-spacing:.02em;
-}
-.who-sign-mark span{
-  color:#29447d;
-  margin-right:4px;
-}
-.who-sign-text{
-  font:500 14px/1.5 var(--serif);
-  color:rgba(20,22,25,.6);
-  max-width:520px;
-  text-align:right;
-}
 
 /* ============================================================
-   CONTACT  —  "Let's discuss"
+   CONTACT
    ============================================================ */
 .contact{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;background:#1b1b1b}
 .contact::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(244,243,236,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(244,243,236,.10) 1px,transparent 1px);background-size:70px 70px;opacity:.35}
 .contact-orbit{position:absolute;width:min(80vw,1000px);height:min(80vw,1000px);border:1px solid rgba(234,246,77,.11);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
 .contact-content{position:relative;z-index:2;max-width:950px;padding:80px 20px;text-align:center}
-.contact-title{margin:22px 0 18px;font:500 clamp(68px,9vw,150px)/.82 var(--serif);letter-spacing:-.06em;color:var(--yellow)}
-.contact-title em{font-style:normal;color:#f4f3ec}
+.contact-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  margin-bottom:18px;
+}
+.contact-word{
+  display:block;
+  font:500 clamp(68px,9vw,150px)/.82 var(--serif);
+  letter-spacing:-.06em;
+  white-space:nowrap;
+  will-change:opacity,transform,filter;
+  transform-origin:center center;
+}
+.contact-word.c-word-1{color:#f4f3ec; margin-left:-5%}
+.contact-word.c-word-2{color:var(--yellow); margin-left:5%}
+.contact-word.c-word-3{color:#f4f3ec; margin-left:-3%}
+.contact-word.c-word-4{color:var(--yellow); margin-left:4%}
+.contact-word.c-word-5{color:#f4f3ec; margin-left:-2%}
+
 .contact-sub{max-width:460px;margin:0 auto;color:rgba(244,243,236,.62);font-size:12px;line-height:1.65}
 .contact-actions{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
 .action{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:12px 17px;border:1px solid rgba(244,243,236,.24);font:8px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase}
@@ -262,120 +364,54 @@ img{max-width:100%;display:block}
 .action:hover{transform:translateY(-2px)}
 
 /* ============================================================
-   FOOTER  —  tiny live-signature strip
+   FOOTER
    ============================================================ */
 footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(--line);overflow:hidden}
 
-/* Small signature strip that replaced the big frosted bar */
-.footer-sign{
-  position:relative;
-  padding:44px 7vw;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-.footer-sign-glow{
-  position:absolute;
-  left:50%;top:50%;
-  width:min(60vw,520px);
-  height:min(20vw,140px);
-  transform:translate(-50%,-50%);
-  background:radial-gradient(ellipse at center,
-    rgba(234,246,77,.10) 0%,
-    rgba(234,246,77,.03) 45%,
-    transparent 75%);
-  pointer-events:none;
-  filter:blur(18px);
-}
-.footer-mini{
-  position:relative;
-  z-index:2;
-  display:inline-flex;
-  align-items:center;
-  gap:11px;
-  padding:11px 20px;
-  border-radius:999px;
-  background:rgba(18,20,24,.28);
-  border:1px solid rgba(244,243,236,.12);
-  backdrop-filter:blur(20px) saturate(170%);
-  -webkit-backdrop-filter:blur(20px) saturate(170%);
-  box-shadow:
-    0 10px 26px rgba(0,0,0,.32),
-    inset 0 1px 0 rgba(255,255,255,.05);
-  font:10px/1 var(--mono);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:rgba(244,243,236,.62);
-}
-.footer-mini-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--yellow);
-  box-shadow:0 0 10px rgba(234,246,77,.85);
-  animation:footerPulse 2.6s ease-in-out infinite;
-}
-@keyframes footerPulse{
-  0%,100%{opacity:.7;transform:scale(1)}
-  50%{opacity:1;transform:scale(1.35)}
-}
-.footer-mini-place{
-  color:rgba(244,243,236,.88);
-  font-weight:700;
-}
-.footer-mini-sep{color:rgba(244,243,236,.22)}
-.footer-mini-time{
-  color:var(--yellow);
-  font-weight:700;
-  letter-spacing:.06em;
-  font-variant-numeric:tabular-nums;
-}
-.footer-mini-tz{color:rgba(244,243,236,.42)}
-.footer-mini-top{
-  margin-left:4px;
-  padding-left:14px;
-  border-left:1px solid rgba(244,243,236,.14);
-  color:rgba(244,243,236,.6);
-  transition:color .3s ease;
-}
-.footer-mini-top:hover{color:var(--yellow)}
-
-.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:60px;max-width:1180px;margin:0 auto;padding:70px 7vw 50px;border-bottom:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:60px;max-width:1180px;margin:0 auto;padding:80px 7vw 50px;border-bottom:1px solid var(--line)}
 .footer-brand-col{font:500 clamp(38px,5vw,68px)/.84 var(--serif);color:var(--yellow);letter-spacing:-.05em}
 .footer-rule{width:74px;height:1px;background:var(--yellow);margin:22px 0}
 .footer-copy,.footer-address,.footer-contact a{font-size:11px;line-height:1.75;color:rgba(244,243,236,.58)}
 .footer-heading{margin-bottom:15px;font:8px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(244,243,236,.42)}
 .footer-contact{display:flex;flex-direction:column;gap:8px}
+
+/* Social icons */
 .socials{display:flex;gap:8px;margin-top:17px}
-.social{width:38px;height:38px;border:1px solid rgba(244,243,236,.18);display:grid;place-items:center;font:9px/1 var(--mono);transition:border-color .3s ease,color .3s ease}
-.social:hover{border-color:var(--yellow);color:var(--yellow)}
+.social{
+  width:38px;height:38px;
+  border:1px solid rgba(234,246,77,.34);
+  background:rgba(234,246,77,.05);
+  color:var(--yellow);
+  display:grid;place-items:center;
+  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease;
+}
+.social svg{width:16px;height:16px;display:block;fill:currentColor}
+.social:hover{
+  border-color:var(--yellow);
+  background:rgba(234,246,77,.14);
+  box-shadow:0 0 16px rgba(234,246,77,.28);
+  transform:translateY(-2px);
+}
+
 .footer-bottom{max-width:1180px;margin:0 auto;padding:20px 7vw;display:flex;justify-content:space-between;gap:20px;font:7px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,236,.36)}
-.footer-marquee{position:relative;overflow:hidden;padding:20px 0;border-top:1px solid var(--line);background:#0a0b0e}
-.marquee-track{display:flex;white-space:nowrap;animation:marquee 38s linear infinite;will-change:transform}
-.marquee-track span{display:inline-block;padding-right:70px;font:500 clamp(20px,3vw,42px)/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(234,246,77,.68)}
-.marquee-track span em{font-style:normal;color:rgba(244,243,236,.28);padding:0 22px}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Powered by — the very last line in the footer */
+.footer-powered{
+  padding:22px 7vw 26px;
+  text-align:center;
+  background:#0a0b0e;
+  border-top:1px solid rgba(234,246,77,.08);
+}
+.footer-powered span{
+  font:400 8px/1.4 var(--mono);
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  color:var(--yellow);
+  opacity:.85;
+}
 
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.is-in{opacity:1;transform:none}
-
-/* ============================================================
-   TEMPORARY IMAGE TESTER
-   ============================================================ */
-.dev-panel{position:fixed;right:16px;bottom:16px;z-index:300;font-family:var(--mono)}
-.dev-toggle{display:inline-flex;align-items:center;gap:6px;background:#eaf64d;color:#141519;border:0;border-radius:999px;padding:9px 13px;font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.5)}
-.dev-toggle:hover{filter:brightness(1.05)}
-.dev-body{display:none;margin-top:10px;background:#111216;border:1px solid rgba(244,243,236,.22);border-radius:10px;padding:14px;width:300px;box-shadow:0 12px 40px rgba(0,0,0,.55);color:#f4f3ec}
-.dev-body.open{display:block}
-.dev-head{font:700 9px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#eaf64d;margin-bottom:12px}
-.dev-row{margin-bottom:12px}
-.dev-row label{display:block;margin-bottom:5px;font:9px/1 var(--mono);letter-spacing:.06em;color:rgba(244,243,236,.72)}
-.dev-row input[type=file]{width:100%;font:9px/1.4 var(--mono);color:rgba(244,243,236,.72);background:rgba(255,255,255,.04);border:1px solid rgba(244,243,236,.18);border-radius:6px;padding:6px 8px;cursor:pointer}
-.dev-row input[type=file]::file-selector-button{background:#eaf64d;color:#141519;border:0;border-radius:4px;padding:4px 8px;margin-right:8px;font:700 9px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
-.dev-ok{width:100%;background:#eaf64d;color:#141519;border:0;border-radius:6px;padding:9px;font:700 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.dev-ok:hover{filter:brightness(1.05)}
-.dev-note{margin-top:10px;font:8px/1.5 var(--mono);color:rgba(244,243,236,.4);text-align:center}
-.dev-helper{font:8px/1.5 var(--mono);color:rgba(244,243,236,.5);margin:-4px 0 10px}
 
 @media (max-width:900px){
   .topbar{padding:10px 14px 0}
@@ -387,7 +423,6 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   .brand-image{height:44px}
   .nav-right{right:22px}
 
-  .footer-sign{padding:34px 20px}
   .footer-grid{grid-template-columns:1fr;gap:34px;padding:50px 24px 34px}
   .footer-bottom{flex-direction:column;padding:18px 24px}
 
@@ -404,25 +439,45 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   }
   .section{padding:78px 24px}
   .section-head{grid-template-columns:1fr;gap:22px;margin-bottom:46px}
-  .manifesto-copy,.process-grid{grid-template-columns:1fr;gap:36px}
+  .manifesto-copy{grid-template-columns:1fr;gap:36px;margin-top:56px}
+  .process-grid{grid-template-columns:1fr;gap:36px}
   .solution-grid{grid-template-columns:1fr}
   .numbers{grid-template-columns:1fr}
   .who{padding:78px 24px}
   .who-grid{grid-template-columns:1fr;gap:34px}
   .who-sign{flex-direction:column;align-items:flex-start}
   .who-sign-text{text-align:left}
-  .dev-panel{left:16px;right:16px}
-  .dev-toggle{width:100%;justify-content:center}
-  .dev-body{width:auto}
+
+  .kinetic-stage{min-height:520px;height:64vh}
+  .kinetic-word{font-size:clamp(46px,13vw,120px)}
+  .word-1{margin-left:-6%}
+  .word-2{margin-left:6%}
+  .word-3{margin-left:-3%}
+  .word-4{margin-left:4%}
+
+  .contact-word{font-size:clamp(48px,12vw,100px)}
+  .c-word-1{margin-left:-4%}
+  .c-word-2{margin-left:4%}
+  .c-word-3{margin-left:-2%}
+  .c-word-4{margin-left:3%}
+  .c-word-5{margin-left:-2%}
 }
 @media (max-width:560px){
   .hero-title{font-size:clamp(54px,17vw,82px)}
   .hero-side{grid-template-columns:1fr 1fr}
   .hero-cell{min-height:110px}
-  .kinetic-stage{min-height:480px}
-  .word-1{left:0}.word-2{left:28%}.word-3{left:-2%}.word-4{left:25%}
-  .process-item{grid-template-columns:50px 1fr;gap:12px}
-  .contact-title{font-size:clamp(58px,15vw,78px)}
+  .kinetic-stage{min-height:460px;height:60vh}
+  .kinetic-word{font-size:clamp(40px,14vw,96px)}
+  .word-1{margin-left:-5%}
+  .word-2{margin-left:5%}
+  .word-3{margin-left:-3%}
+  .word-4{margin-left:3%}
+  .contact-word{font-size:clamp(36px,14vw,72px)}
+  .c-word-1{margin-left:-3%}
+  .c-word-2{margin-left:3%}
+  .c-word-3{margin-left:-2%}
+  .c-word-4{margin-left:2%}
+  .c-word-5{margin-left:-1%}
   .brand-icon{font-size:28px}
   .brand-word{font-size:15px;letter-spacing:.28em}
   .brand-image{height:36px}
@@ -430,16 +485,12 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   .nav-shell{height:58px;padding:0 18px}
   .nav-btn{padding:9px 12px;font-size:9px}
   .nav-right{right:18px}
-
-  .footer-sign{padding:28px 14px}
-  .footer-mini{gap:9px;padding:9px 14px;font-size:9px;letter-spacing:.12em}
-  .footer-mini-top{padding-left:10px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .marquee-track{animation:none}
-  .footer-mini-dot{animation:none}
+  .kinetic-word{transition:none !important}
+  .contact-word{transition:none !important}
 }
 </style>
 </head>
@@ -458,7 +509,7 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
         </a>
         <div class="nav-right" id="navRight">
           <span class="nav-meta">Mumbai · India</span>
-          <a class="nav-btn" href="#who">Who we're</a>
+          <a class="nav-btn" href="#who">Who we are</a>
         </div>
       </div>
     </header>
@@ -493,7 +544,7 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
           <h2 class="section-title reveal">YOUR ROOM<br>SHOULD FEEL <span class="accent">EXPENSIVE</span><br>IN SILENCE.</h2>
           <div class="manifesto-copy reveal">
             <p><strong>Acoustic control without visual compromise.</strong>Soundproofing becomes part of the architectural logic, not an afterthought attached to the finished room.</p>
-            <p>In premium real estate, privacy is not merely a technical requirement. It is part of the experience.</p>
+            <p><strong>Privacy is part of the experience.</strong>In premium real estate, silence is not merely a technical requirement — it is what separates a good room from an unforgettable one.</p>
           </div>
         </div>
       </section>
@@ -502,12 +553,14 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
         <div class="section-grid"></div>
         <div class="wrap">
           <div class="section-kicker">Acoustic intelligence</div>
-          <div class="kinetic-stage" data-parallax>
+          <div class="kinetic-stage" id="kineticStage" data-parallax>
             <div class="kinetic-orbit" aria-hidden="true"></div>
-            <div class="kinetic-word word-1">SOUND</div>
-            <div class="kinetic-word word-2">ISOLATED</div>
-            <div class="kinetic-word word-3">PRIVACY</div>
-            <div class="kinetic-word word-4">DESIGNED</div>
+            <div class="kinetic-stack" id="kineticStack">
+              <div class="kinetic-word word-1">SOUND</div>
+              <div class="kinetic-word word-2">ISOLATED</div>
+              <div class="kinetic-word word-3">PRIVACY</div>
+              <div class="kinetic-word word-4">DESIGNED</div>
+            </div>
             <div class="kinetic-caption"><span>Control the unwanted.</span><span>Preserve what matters.</span></div>
           </div>
         </div>
@@ -521,10 +574,10 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
             <p class="section-note reveal">Layered acoustic systems for impact, speech, music and privacy — designed around the architecture.</p>
           </div>
           <div class="solution-grid">
-            <article class="solution reveal"><span class="solution-tag">Private residence</span><div><span class="num">01</span><h3>Bedrooms that disappear from the city.</h3><p>High-performance partitions, ceilings, doors and junctions designed around residential comfort and privacy.</p></div></article>
-            <article class="solution reveal"><span class="solution-tag">Media &amp; cinema</span><div><span class="num">02</span><h3>Immersion, contained.</h3><p>Control airborne sound, impact noise and low-frequency energy without sacrificing room character.</p></div></article>
-            <article class="solution reveal"><span class="solution-tag">Workspace</span><div><span class="num">03</span><h3>Focus without isolation.</h3><p>Acoustic zoning that protects concentration while preserving the energy of collaboration.</p></div></article>
-            <article class="solution reveal"><span class="solution-tag">Developer scale</span><div><span class="num">04</span><h3>One standard. Hundreds of doors.</h3><p>Repeatable systems, specifications and site coordination for premium project portfolios.</p></div></article>
+            <article class="solution reveal"><span class="solution-tag">Private residence</span><div><h3>Bedrooms that disappear from the city.</h3><p>High-performance partitions, ceilings, doors and junctions designed around residential comfort and privacy.</p></div></article>
+            <article class="solution reveal"><span class="solution-tag">Media &amp; cinema</span><div><h3>Immersion, contained.</h3><p>Control airborne sound, impact noise and low-frequency energy without sacrificing room character.</p></div></article>
+            <article class="solution reveal"><span class="solution-tag">Workspace</span><div><h3>Focus without isolation.</h3><p>Acoustic zoning that protects concentration while preserving the energy of collaboration.</p></div></article>
+            <article class="solution reveal"><span class="solution-tag">Developer scale</span><div><h3>One standard. Hundreds of doors.</h3><p>Repeatable systems, specifications and site coordination for premium project portfolios.</p></div></article>
           </div>
         </div>
       </section>
@@ -535,10 +588,26 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
           <div class="process-grid">
             <div><div class="section-kicker">Method</div><h2 class="process-title reveal">ENGINEER<br><span style="color:var(--yellow)">the calm.</span></h2></div>
             <div class="process-list">
-              <article class="process-item reveal"><div class="process-no">01 / LISTEN</div><div><h3>Measure the room.</h3><p>We read the site, structure, adjacencies, intended use and unwanted transmission paths before specifying.</p></div></article>
-              <article class="process-item reveal"><div class="process-no">02 / ISOLATE</div><div><h3>Stop the transmission.</h3><p>Walls, ceilings, doors, floors and penetrations are treated as one acoustic system.</p></div></article>
-              <article class="process-item reveal"><div class="process-no">03 / TUNE</div><div><h3>Shape the experience.</h3><p>Absorption, diffusion and reflection are balanced so the room remains natural and emotionally engaging.</p></div></article>
-              <article class="process-item reveal"><div class="process-no">04 / DELIVER</div><div><h3>Coordinate the invisible.</h3><p>Acoustic intent meets architecture, MEP, materials and execution at the required finish standard.</p></div></article>
+              <article class="process-item reveal">
+                <span class="process-no">Listen</span>
+                <h3>Measure the room.</h3>
+                <p>We read the site, structure, adjacencies, intended use and unwanted transmission paths before specifying.</p>
+              </article>
+              <article class="process-item reveal">
+                <span class="process-no">Isolate</span>
+                <h3>Stop the transmission.</h3>
+                <p>Walls, ceilings, doors, floors and penetrations are treated as one acoustic system.</p>
+              </article>
+              <article class="process-item reveal">
+                <span class="process-no">Tune</span>
+                <h3>Shape the experience.</h3>
+                <p>Absorption, diffusion and reflection are balanced so the room remains natural and emotionally engaging.</p>
+              </article>
+              <article class="process-item reveal">
+                <span class="process-no">Deliver</span>
+                <h3>Coordinate the invisible.</h3>
+                <p>Acoustic intent meets architecture, MEP, materials and execution at the required finish standard.</p>
+              </article>
             </div>
           </div>
         </div>
@@ -558,7 +627,7 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
       <section class="section who" id="who">
         <div class="section-grid"></div>
         <div class="who-inner">
-          <div class="section-kicker">Who we're</div>
+          <div class="section-kicker">Who we are</div>
           <h2 class="who-title reveal">
             WE ENGINEER <em>QUIET</em><br>INTO THE ROOMS<br>PEOPLE ACTUALLY LIVE IN.
           </h2>
@@ -581,11 +650,6 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
               <p>We treat acoustics as part of the architecture, not an add-on. The result is performance you can measure, with a finish you'd want to live with — invisible where it should be, purposeful where it matters.</p>
             </div>
           </div>
-
-          <div class="who-sign reveal">
-            <div class="who-sign-mark"><span>F1</span>ACOUSTIC</div>
-            <div class="who-sign-text">Based in Mumbai. Working with clients across premium residential, hospitality, workplace and developer projects.</div>
-          </div>
         </div>
       </section>
 
@@ -593,27 +657,20 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
         <div class="contact-orbit" aria-hidden="true"></div>
         <div class="contact-content">
           <div class="eyebrow">Let's discuss</div>
-          <h2 class="contact-title reveal">LET'S MAKE<br><em>ROOM FOR</em> SILENCE.</h2>
+          <div class="contact-stack" id="contactStack">
+            <div class="contact-word c-word-1">LET'S</div>
+            <div class="contact-word c-word-2">MAKE</div>
+            <div class="contact-word c-word-3">ROOM</div>
+            <div class="contact-word c-word-4">FOR</div>
+            <div class="contact-word c-word-5">SILENCE.</div>
+          </div>
           <p class="contact-sub reveal">Tell us what the space is, who it is for and what you need it to feel like.</p>
-          <div class="contact-actions reveal"><a class="action primary" href="mailto:fizzainteriorsign@gmail.com">Begin enquiry ↗</a><a class="action" href="#top">Return to top ↑</a></div>
+          <div class="contact-actions reveal"><a class="action primary" href="mailto:f1acoustic@gmail.com">Begin enquiry ↗</a><a class="action" href="#top">Return to top ↑</a></div>
         </div>
       </section>
     </main>
 
     <footer>
-      <!-- Small signature strip — replaces the big frosted bar -->
-      <div class="footer-sign">
-        <div class="footer-sign-glow" aria-hidden="true"></div>
-        <div class="footer-mini">
-          <span class="footer-mini-dot" aria-hidden="true"></span>
-          <span class="footer-mini-place">Mumbai</span>
-          <span class="footer-mini-sep">·</span>
-          <span class="footer-mini-time" id="footerClock">--:--:--</span>
-          <span class="footer-mini-tz">IST</span>
-          <a class="footer-mini-top" href="#top">Top ↑</a>
-        </div>
-      </div>
-
       <div class="footer-grid">
         <div>
           <div class="footer-brand-col">DESIGN THE<br>SILENCE.</div>
@@ -622,12 +679,28 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
         </div>
         <div>
           <div class="footer-heading">Visit us</div>
-          <p class="footer-address"><strong>F1 ACOUSTIC</strong><br><br>810, Opposite City Mall<br>Next to Global Junction<br>Veera Desai Industrial Estates<br>New Link Road, Andheri (W)<br>Mumbai - 40005</p>
+          <p class="footer-address"><strong>F1 ACOUSTIC</strong><br><br>810, Opposite City Mall<br>Next to Global Junction<br>Veera Desai Industrial Estates<br>New Link Road, Andheri (W)<br>Mumbai - 400053</p>
         </div>
         <div>
           <div class="footer-heading">Connect</div>
           <div class="footer-contact"><a href="tel:+912240232051">022 - 40232051 / 52 / 55</a><a href="tel:+919004455115">+91 90044 55115</a><a href="mailto:f1acoustic@gmail.com">f1acoustic@gmail.com</a></div>
-          <div class="socials"><a class="social" href="#" aria-label="Instagram">IG</a><a class="social" href="#" aria-label="LinkedIn">IN</a><a class="social" href="#" aria-label="WhatsApp">WA</a></div>
+          <div class="socials">
+            <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm7.846-10.405a1.441 1.441 0 01-2.88 0 1.44 1.44 0 012.88 0z"/>
+              </svg>
+            </a>
+            <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a class="social" href="https://wa.me/919004455115" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -636,47 +709,60 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
         <span>Mumbai · Acoustics · Soundproofing</span>
       </div>
 
-      <div class="footer-marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>F1 ACOUSTIC <em>—</em> DESIGN THE SILENCE <em>—</em> MUMBAI <em>—</em>&nbsp;</span>
-          <span>F1 ACOUSTIC <em>—</em> DESIGN THE SILENCE <em>—</em> MUMBAI <em>—</em>&nbsp;</span>
-        </div>
+      <div class="footer-powered">
+        <span>POWERED BY SANTINOPOLE</span>
       </div>
     </footer>
   </div>
 </div>
 
-<!-- ============================================================
-     TEMPORARY IMAGE TESTER  —  DELETE BEFORE LAUNCH
-     ============================================================ -->
-<div class="dev-panel" id="devPanel">
-  <button class="dev-toggle" id="devToggle" type="button">🖼 Upload Images</button>
-  <div class="dev-body" id="devBody">
-    <div class="dev-head">Quick Image Test</div>
-
-    <div class="dev-row">
-      <label>1. Logo (PNG with transparency)</label>
-      <input type="file" accept="image/*" id="devLogo">
-    </div>
-    <div class="dev-helper">→ Appears in nav only.</div>
-
-    <div class="dev-row">
-      <label>2. Hero image</label>
-      <input type="file" accept="image/*" id="devHero">
-    </div>
-
-    <button class="dev-ok" id="devOk" type="button">OK</button>
-    <div class="dev-note">Temporary tester · remove before launch</div>
-  </div>
-</div>
-
 <script>
 (function(){
-  const root=document.documentElement, progress=document.querySelector('.progress span');
+  const progress=document.querySelector('.progress span');
   const reveals=[...document.querySelectorAll('.reveal')];
   const observer=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-in')}),{threshold:.12});
   reveals.forEach(el=>observer.observe(el));
   const stage=document.querySelector('[data-parallax]');
+
+  /* Dissipation effect for both kinetic and contact sections */
+  const kineticStage = document.getElementById('kineticStage');
+  const kineticWords = kineticStage ? [...kineticStage.querySelectorAll('.kinetic-word')] : [];
+  
+  const contactStack = document.getElementById('contactStack');
+  const contactWords = contactStack ? [...contactStack.querySelectorAll('.contact-word')] : [];
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function applyDissipation(stageEl, words, t){
+    if(!stageEl || !words.length) return;
+    words.forEach(function(w, i){
+      const delay = i * 0.10;
+      const span  = 1 - delay - 0.05;
+      const lt    = span > 0 ? Math.max(0, Math.min(1, (t - delay) / span)) : 0;
+      const opacity = Math.max(0, 1 - lt);
+      w.style.opacity   = opacity.toFixed(3);
+      w.style.transform = 'scale(' + (1 + lt * 0.42).toFixed(3) + ')';
+      w.style.filter    = lt > 0.01 ? 'blur(' + (lt * 14).toFixed(2) + 'px)' : 'none';
+    });
+  }
+
+  function updateKinetic(){
+    const vh = window.innerHeight;
+
+    if (kineticStage && kineticWords.length) {
+      const r = kineticStage.getBoundingClientRect();
+      const center = r.top + r.height / 2;
+      const t = Math.max(0, Math.min(1, (vh / 2 - center) / (vh / 2)));
+      applyDissipation(kineticStage, kineticWords, t);
+    }
+
+    if (contactStack && contactWords.length) {
+      const r = contactStack.getBoundingClientRect();
+      const center = r.top + r.height / 2;
+      const t = Math.max(0, Math.min(1, (vh / 2 - center) / (vh / 2)));
+      applyDissipation(contactStack, contactWords, t);
+    }
+  }
 
   function onScroll(){
     const y = window.scrollY || 0;
@@ -687,8 +773,10 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
       const p = 1 - Math.min(1, Math.max(0, (r.top + r.height) / (window.innerHeight + r.height)));
       stage.style.transform = 'translateY(' + (p * 18 - 9) + 'px)';
     }
+    if (!reduceMotion) updateKinetic();
   }
   window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
   onScroll();
 
   document.querySelectorAll('.hero-cell').forEach(cell => cell.addEventListener('mouseenter', () => {
@@ -786,62 +874,6 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   window.addEventListener('resize', function(){ measure(); updateProgress(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measure(); updateProgress(); });
   window.addEventListener('load', function(){ measure(); updateProgress(); });
-
-  /* ============================================================
-     LIVE MUMBAI CLOCK — small signature strip
-     ============================================================ */
-  (function(){
-    const el = document.getElementById('footerClock');
-    if (!el) return;
-
-    function tick(){
-      // Always show Mumbai time (IST = UTC+5:30), no matter where the visitor is
-      const now  = new Date();
-      const utc  = now.getTime() + now.getTimezoneOffset() * 60000;
-      const ist  = new Date(utc + (5.5 * 3600000));
-      const hh   = String(ist.getHours()).padStart(2, '0');
-      const mm   = String(ist.getMinutes()).padStart(2, '0');
-      const ss   = String(ist.getSeconds()).padStart(2, '0');
-      el.textContent = hh + ':' + mm + ':' + ss;
-    }
-
-    tick();
-    setInterval(tick, 1000);
-  })();
-
-  /* ============================================================
-     TEMPORARY IMAGE TESTER  —  REMOVE BEFORE LAUNCH
-     ============================================================ */
-  (function(){
-    const panel = document.getElementById('devPanel');
-    if(!panel) return;
-    const toggle  = document.getElementById('devToggle');
-    const body    = document.getElementById('devBody');
-    const logoIn  = document.getElementById('devLogo');
-    const heroIn  = document.getElementById('devHero');
-    const okBtn   = document.getElementById('devOk');
-
-    const navBrand = document.getElementById('brandLogo');
-    const navImg   = document.getElementById('brandImage');
-
-    toggle.addEventListener('click', function(){ body.classList.toggle('open'); });
-
-    okBtn.addEventListener('click', function(){
-      const logoFile = logoIn.files && logoIn.files[0];
-      if(logoFile){
-        const url = URL.createObjectURL(logoFile);
-        navImg.src = url;
-        navBrand.classList.add('has-image');
-        navImg.onload = function(){ measure(); updateProgress(); };
-      }
-      const heroFile = heroIn.files && heroIn.files[0];
-      if(heroFile){
-        root.style.setProperty('--img-hero', 'url("' + URL.createObjectURL(heroFile) + '")');
-      }
-      body.classList.remove('open');
-      measure(); updateProgress();
-    });
-  })();
 })();
 </script>
 </body>
