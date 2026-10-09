@@ -75,7 +75,21 @@ img{max-width:100%;display:block}
   color:#f4f3ec;
   text-shadow:0 0 18px rgba(255,255,255,.18);
 }
-.brand-image{display:none;height:56px;width:auto}
+
+/* LOGO */
+.brand-image{
+  display:none;
+  height:68px;
+  width:auto;
+  filter:saturate(1.45) contrast(1.1) brightness(1.06)
+         drop-shadow(0 0 10px rgba(234,246,77,.28));
+  transition:filter .35s ease, transform .35s ease;
+}
+.brand-image:hover{
+  filter:saturate(1.65) contrast(1.14) brightness(1.1)
+         drop-shadow(0 0 16px rgba(234,246,77,.48));
+  transform:scale(1.03);
+}
 .brand.has-image .brand-wordmark{display:none}
 .brand.has-image .brand-image{display:block}
 
@@ -86,6 +100,7 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;gap:12px;
   white-space:nowrap;
   overflow:hidden;
+  pointer-events:auto;
   will-change:opacity,max-width;
 }
 .nav-right > *{flex-shrink:0}
@@ -95,6 +110,7 @@ img{max-width:100%;display:block}
   font:10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
   background:rgba(20,22,26,.4);backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
+  cursor:pointer;
   transition:border-color .3s ease,color .3s ease;
 }
 .nav-btn:hover{border-color:var(--yellow);color:var(--yellow)}
@@ -142,112 +158,26 @@ img{max-width:100%;display:block}
 .section-note{max-width:360px;margin:0;color:rgba(244,243,236,.65);font-size:12px;line-height:1.7}
 .light .section-note{color:rgba(20,22,25,.64)}
 
-/* ============================================================
-   MANIFESTO — editorial two column
-   ============================================================ */
 .manifesto{min-height:86vh;display:flex;align-items:center}
 .manifesto .section-title{max-width:940px}
-.manifesto-copy{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:44px 60px;
-  margin-top:78px;
-}
-.manifesto-copy p{
-  position:relative;
-  margin:0;
-  padding:26px 0 0 0;
-  font-size:12px;
-  line-height:1.95;
-  letter-spacing:.005em;
-  color:rgba(20,22,25,.72);
-}
-.manifesto-copy p::before{
-  content:"";
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:1px;
-  background:rgba(20,22,25,.16);
-}
-.manifesto-copy p::after{
-  content:"";
-  position:absolute;
-  top:-1px;left:0;
-  width:56px;height:3px;
-  background:var(--yellow);
-}
-.manifesto-copy strong{
-  font:500 19px/1.25 var(--serif);
-  color:#2a3d70;
-  display:block;
-  margin-bottom:14px;
-  letter-spacing:-.015em;
-}
+.manifesto-copy{display:grid;grid-template-columns:1fr 1fr;gap:44px 60px;margin-top:78px}
+.manifesto-copy p{position:relative;margin:0;padding:26px 0 0 0;font-size:12px;line-height:1.95;letter-spacing:.005em;color:rgba(20,22,25,.72)}
+.manifesto-copy p::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:rgba(20,22,25,.16)}
+.manifesto-copy p::after{content:"";position:absolute;top:-1px;left:0;width:56px;height:3px;background:var(--yellow)}
+.manifesto-copy strong{font:500 19px/1.25 var(--serif);color:#2a3d70;display:block;margin-bottom:14px;letter-spacing:-.015em}
 
-/* ============================================================
-   KINETIC
-   ============================================================ */
 .kinetic{min-height:100vh;background:var(--blue);overflow:hidden}
-.kinetic-stage{
-  height:70vh;
-  min-height:560px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-top:1px solid rgba(244,243,236,.16);
-  border-bottom:1px solid rgba(244,243,236,.16);
-  overflow:hidden;
-}
-.kinetic-orbit{
-  width:min(50vw,600px);
-  height:min(50vw,600px);
-  border:1px solid rgba(244,243,236,.15);
-  border-radius:50%;
-  position:absolute;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-}
+.kinetic-stage{height:70vh;min-height:560px;position:relative;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(244,243,236,.16);border-bottom:1px solid rgba(244,243,236,.16);overflow:hidden}
+.kinetic-orbit{width:min(50vw,600px);height:min(50vw,600px);border:1px solid rgba(244,243,236,.15);border-radius:50%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
 .kinetic-orbit::before,.kinetic-orbit::after{content:"";position:absolute;inset:10%;border:1px solid rgba(234,246,77,.15);border-radius:50%}
 .kinetic-orbit::after{inset:30%;border-color:rgba(244,243,236,.12)}
-
-.kinetic-stack{
-  position:relative;
-  z-index:3;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:0 16px;
-  pointer-events:none;
-}
-.kinetic-word{
-  display:block;
-  font:700 clamp(52px,10.5vw,170px)/.82 var(--sans);
-  letter-spacing:-.08em;
-  text-transform:uppercase;
-  white-space:nowrap;
-  will-change:opacity,transform,filter;
-  transform-origin:center center;
-}
+.kinetic-stack{position:relative;z-index:3;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16px;pointer-events:none}
+.kinetic-word{display:block;font:700 clamp(52px,10.5vw,170px)/.82 var(--sans);letter-spacing:-.08em;text-transform:uppercase;white-space:nowrap;will-change:opacity,transform,filter;transform-origin:center center}
 .word-1{color:#f4f3ec; margin-left:-7%}
 .word-2{color:var(--yellow); margin-left:7%}
 .word-3{color:#f4f3ec; margin-left:-4%}
 .word-4{color:#101217; -webkit-text-stroke:1px rgba(244,243,236,.18); margin-left:5%}
-
-.kinetic-caption{
-  position:absolute;
-  left:16px;right:16px;bottom:15px;
-  display:flex;justify-content:space-between;gap:20px;
-  font:8px/1.5 var(--mono);
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(244,243,236,.56);
-  z-index:4;
-}
+.kinetic-caption{position:absolute;left:16px;right:16px;bottom:15px;display:flex;justify-content:space-between;gap:20px;font:8px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(244,243,236,.56);z-index:4}
 
 .solution-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .solution{min-height:330px;padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;display:flex;flex-direction:column;justify-content:space-between;background:rgba(255,255,255,.015);overflow:hidden}
@@ -260,22 +190,8 @@ img{max-width:100%;display:block}
 .process-title{margin:0;font:500 clamp(60px,7vw,112px)/.83 var(--serif);letter-spacing:-.055em}
 .process-list{border-top:1px solid var(--line)}
 .process-item{padding:28px 0 32px;border-bottom:1px solid var(--line);display:block}
-.process-no{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:16px;
-  font:8px/1 var(--mono);
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color:var(--yellow);
-}
-.process-no::before{
-  content:"";
-  display:inline-block;
-  width:22px;height:1px;
-  background:var(--yellow);
-}
+.process-no{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;font:8px/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:var(--yellow)}
+.process-no::before{content:"";display:inline-block;width:22px;height:1px;background:var(--yellow)}
 .process-item h3{margin:0 0 10px;font:500 clamp(24px,3vw,42px)/.95 var(--serif);letter-spacing:-.03em}
 .process-item p{margin:0;max-width:560px;font-size:11px;line-height:1.7;color:rgba(244,243,236,.56)}
 
@@ -286,74 +202,26 @@ img{max-width:100%;display:block}
 .number:nth-child(3) .number-value{color:rgba(244,243,236,.72)}
 .number-label{margin-top:11px;font:8px/1.4 var(--mono);letter-spacing:.17em;text-transform:uppercase;color:rgba(244,243,236,.52)}
 
-/* ============================================================
-   WHO WE ARE
-   ============================================================ */
 .who{background:#f1f0e9;color:#17181b;padding:112px 7vw}
 .who .section-kicker{color:rgba(20,22,25,.48)}
 .who-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
-.who-title{
-  margin:14px 0 40px;
-  font:500 clamp(52px,7.5vw,120px)/.84 var(--serif);
-  letter-spacing:-.05em;
-  color:#17181b;
-  max-width:960px;
-}
-.who-title em{
-  font-style:normal;
-  color:#29447d;
-}
-.who-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px 70px;
-  margin-top:20px;
-  padding-top:34px;
-  padding-bottom:20px;
-  border-top:1px solid rgba(20,22,25,.18);
-}
-.who-block h3{
-  margin:0 0 12px;
-  font:500 22px/1.15 var(--serif);
-  letter-spacing:-.02em;
-  color:#2a3d70;
-}
-.who-block p{
-  margin:0;
-  font-size:13px;
-  line-height:1.78;
-  color:rgba(20,22,25,.68);
-}
+.who-title{margin:14px 0 40px;font:500 clamp(52px,7.5vw,120px)/.84 var(--serif);letter-spacing:-.05em;color:#17181b;max-width:960px}
+.who-title em{font-style:normal;color:#29447d}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px 70px;margin-top:20px;padding-top:34px;padding-bottom:20px;border-top:1px solid rgba(20,22,25,.18)}
+.who-block h3{margin:0 0 12px;font:500 22px/1.15 var(--serif);letter-spacing:-.02em;color:#2a3d70}
+.who-block p{margin:0;font-size:13px;line-height:1.78;color:rgba(20,22,25,.68)}
 
-/* ============================================================
-   CONTACT
-   ============================================================ */
 .contact{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;background:#1b1b1b}
 .contact::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(244,243,236,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(244,243,236,.10) 1px,transparent 1px);background-size:70px 70px;opacity:.35}
 .contact-orbit{position:absolute;width:min(80vw,1000px);height:min(80vw,1000px);border:1px solid rgba(234,246,77,.11);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
 .contact-content{position:relative;z-index:2;max-width:950px;padding:80px 20px;text-align:center}
-.contact-stack{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  pointer-events:none;
-  margin-bottom:18px;
-}
-.contact-word{
-  display:block;
-  font:500 clamp(68px,9vw,150px)/.82 var(--serif);
-  letter-spacing:-.06em;
-  white-space:nowrap;
-  will-change:opacity,transform,filter;
-  transform-origin:center center;
-}
+.contact-stack{display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;margin-bottom:18px}
+.contact-word{display:block;font:500 clamp(68px,9vw,150px)/.82 var(--serif);letter-spacing:-.06em;white-space:nowrap;will-change:opacity,transform,filter;transform-origin:center center}
 .contact-word.c-word-1{color:#f4f3ec; margin-left:-5%}
 .contact-word.c-word-2{color:var(--yellow); margin-left:5%}
 .contact-word.c-word-3{color:#f4f3ec; margin-left:-3%}
 .contact-word.c-word-4{color:var(--yellow); margin-left:4%}
 .contact-word.c-word-5{color:#f4f3ec; margin-left:-2%}
-
 .contact-sub{max-width:460px;margin:0 auto;color:rgba(244,243,236,.62);font-size:12px;line-height:1.65}
 .contact-actions{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
 .action{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:12px 17px;border:1px solid rgba(244,243,236,.24);font:8px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase}
@@ -361,86 +229,333 @@ img{max-width:100%;display:block}
 .action:hover{transform:translateY(-2px)}
 
 /* ============================================================
-   FOOTER — original 3-column grid
+   FOOTER
    ============================================================ */
-footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(--line);overflow:hidden}
+footer{
+  position:relative;
+  background:var(--blue);
+  color:rgba(244,243,236,.82);
+  overflow:hidden;
+  border-top:1px solid rgba(244,243,236,.14);
+}
 
-.footer-grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr .8fr;
-  gap:60px;
+footer::before{
+  content:"";
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(234,246,77,.55) 30%,
+    rgba(234,246,77,.55) 70%,
+    transparent 100%);
+  z-index:3;
+  pointer-events:none;
+}
+
+.footer-shell{
+  position:relative;
   max-width:1180px;
   margin:0 auto;
-  padding:80px 7vw 50px;
-  border-bottom:1px solid var(--line);
+  padding:0 7vw;
+  z-index:2;
 }
-.footer-brand-col{
-  font:500 clamp(38px,5vw,68px)/.84 var(--serif);
-  color:var(--yellow);
-  letter-spacing:-.05em;
-}
-.footer-rule{
-  width:74px;height:1px;background:var(--yellow);
-  margin:22px 0;
-}
-.footer-copy,
-.footer-address,
-.footer-contact a{
-  font-size:11px;line-height:1.75;
-  color:rgba(244,243,236,.58);
-}
-.footer-heading{
-  margin-bottom:15px;
-  font:8px/1 var(--mono);
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(244,243,236,.42);
-}
-.footer-contact{display:flex;flex-direction:column;gap:8px}
 
-/* Social icons */
-.socials{display:flex;gap:8px;margin-top:17px}
+.footer-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(244,243,236,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(244,243,236,.045) 1px,transparent 1px);
+  background-size:72px 72px;
+  pointer-events:none;
+  z-index:0;
+}
+
+.footer-mark{
+  position:absolute;
+  right:-2vw;
+  top:-1vw;
+  font:700 clamp(140px,24vw,340px)/.8 var(--mono);
+  letter-spacing:-.07em;
+  color:rgba(234,246,77,.06);
+  pointer-events:none;
+  user-select:none;
+  z-index:1;
+  animation:markBreath 9s ease-in-out infinite;
+}
+@keyframes markBreath{
+  0%,100%{opacity:.85;transform:translateY(0) scale(1)}
+  50%{opacity:1;transform:translateY(-6px) scale(1.01)}
+}
+
+/* ---------- HERO ROW ---------- */
+.footer-hero{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.55fr .95fr;
+  gap:70px;
+  align-items:end;
+  padding:92px 0 72px;
+  border-bottom:1px solid rgba(244,243,236,.14);
+}
+
+.footer-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:30px;
+  font:9px/1 var(--mono);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--yellow);
+}
+.footer-kicker::before{
+  content:"";
+  display:inline-block;
+  width:24px;height:1px;
+  background:var(--yellow);
+}
+
+.footer-statement{
+  margin:0;
+  font:500 clamp(56px,8.6vw,140px)/.92 var(--serif);
+  letter-spacing:-.05em;
+  color:#f4f3ec;
+  max-width:900px;
+}
+.footer-statement-accent{ color:var(--yellow); }
+
+.footer-hero-right{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  padding-bottom:10px;
+}
+
+/* Live Mumbai clock */
+.footer-live{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  padding:16px 20px;
+  border:1px solid rgba(244,243,236,.18);
+  background:rgba(0,0,0,.16);
+  font:12px/1 var(--mono);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.82);
+}
+.footer-live-label{color:rgba(244,243,236,.55)}
+.footer-live-time{
+  color:var(--yellow);
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+.footer-live-tz{color:rgba(244,243,236,.48)}
+
+/* Status pill */
+.footer-status{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  width:fit-content;
+  padding:11px 18px;
+  border:1px solid rgba(234,246,77,.45);
+  background:rgba(234,246,77,.06);
+  font:9px/1 var(--mono);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--yellow);
+  border-radius:999px;
+}
+.status-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--yellow);
+  box-shadow:0 0 10px rgba(234,246,77,.9);
+  animation:pulseDot 2.4s ease-in-out infinite;
+}
+@keyframes pulseDot{
+  0%,100%{opacity:.5;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.4)}
+}
+
+/* Back to top button */
+.footer-top-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+  padding:18px 22px;
+  border:1px solid rgba(244,243,236,.24);
+  background:transparent;
+  color:#f4f3ec;
+  font:11px/1 var(--mono);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  width:100%;
+  margin-top:6px;
+  cursor:pointer;
+  transition:background .4s cubic-bezier(.16,1,.3,1),
+             color .4s cubic-bezier(.16,1,.3,1),
+             border-color .4s cubic-bezier(.16,1,.3,1),
+             transform .4s cubic-bezier(.16,1,.3,1);
+}
+.footer-top-btn .footer-top-arrow{
+  font-size:15px;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.footer-top-btn:hover{
+  background:var(--yellow);
+  color:#111;
+  border-color:var(--yellow);
+  transform:translateY(-2px);
+}
+.footer-top-btn:hover .footer-top-arrow{
+  transform:translateY(-3px);
+}
+
+/* ---------- INFO GRID ---------- */
+.footer-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-bottom:1px solid rgba(244,243,236,.14);
+}
+.footer-col{
+  position:relative;
+  padding:56px 44px 60px 0;
+}
+.footer-col + .footer-col{
+  padding-left:44px;
+  border-left:1px solid rgba(244,243,236,.12);
+}
+.footer-col:last-child{padding-right:0}
+
+.footer-heading{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:24px;
+  font:9px/1 var(--mono);
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.6);
+}
+.footer-heading::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,rgba(244,243,236,.24),transparent);
+  max-width:80px;
+}
+
+.footer-address{
+  font-size:13px;
+  line-height:2;
+  color:rgba(244,243,236,.82);
+  margin:0;
+}
+.footer-address strong{
+  display:inline-block;
+  font:700 12px/1 var(--mono);
+  letter-spacing:.2em;
+  color:#f4f3ec;
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(244,243,236,.22);
+}
+
+.footer-contact{display:flex;flex-direction:column;gap:16px}
+.footer-contact a{
+  position:relative;
+  display:inline-block;
+  width:fit-content;
+  font-size:13px;
+  line-height:1.5;
+  color:rgba(244,243,236,.86);
+  padding-bottom:3px;
+  cursor:pointer;
+  pointer-events:auto;
+  transition:color .3s ease;
+}
+.footer-contact a::after{
+  content:"";
+  position:absolute;left:0;bottom:0;
+  width:100%;height:1px;
+  background:var(--yellow);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .45s cubic-bezier(.16,1,.3,1);
+}
+.footer-contact a:hover{color:var(--yellow)}
+.footer-contact a:hover::after{transform:scaleX(1)}
+
+.footer-hours{
+  font:12px/1.9 var(--mono);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.72);
+  margin:0;
+}
+.footer-hours span{color:#f4f3ec}
+
+.socials{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
 .social{
-  width:38px;height:38px;
-  border:1px solid rgba(234,246,77,.34);
+  width:42px;height:42px;
+  border:1px solid rgba(234,246,77,.4);
   background:rgba(234,246,77,.05);
   color:var(--yellow);
   display:grid;place-items:center;
-  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease;
+  cursor:pointer;
+  transition:border-color .3s ease,background .3s ease,color .3s ease,transform .3s ease,box-shadow .3s ease;
 }
-.social svg{width:16px;height:16px;display:block;fill:currentColor}
+.social svg{width:17px;height:17px;display:block;fill:currentColor;pointer-events:none}
 .social:hover{
   border-color:var(--yellow);
-  background:rgba(234,246,77,.14);
-  box-shadow:0 0 16px rgba(234,246,77,.28);
+  background:var(--yellow);
+  color:#111;
   transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(234,246,77,.3);
 }
 
+/* Safety net for all interactive footer elements */
+.social, .footer-contact a, .footer-top-btn{
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ---------- BOTTOM STRIP ---------- */
 .footer-bottom{
-  max-width:1180px;
-  margin:0 auto;
-  padding:20px 7vw;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  font:7px/1.5 var(--mono);
-  letter-spacing:.12em;
+  position:relative;
+  z-index:2;
+  padding:26px 0;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:24px;
+  font:10px/1.5 var(--mono);
+  letter-spacing:.2em;
   text-transform:uppercase;
-  color:rgba(244,243,236,.36);
+  color:rgba(244,243,236,.6);
+  border-bottom:1px solid rgba(244,243,236,.1);
 }
+.footer-bottom > span:last-child{text-align:right}
 
+/* ---------- POWERED STRIP ---------- */
 .footer-powered{
-  padding:22px 7vw 26px;
+  position:relative;
+  z-index:2;
+  padding:12px 0 14px;
   text-align:center;
-  background:#0a0b0e;
-  border-top:1px solid rgba(234,246,77,.08);
+  background:rgba(0,0,0,.16);
+  border-top:1px solid rgba(234,246,77,.1);
 }
 .footer-powered span{
-  font:400 8px/1.4 var(--mono);
+  font:400 9px/1.4 var(--mono);
   letter-spacing:.42em;
   text-transform:uppercase;
   color:var(--yellow);
-  opacity:.85;
+  opacity:.9;
 }
 
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
@@ -453,11 +568,31 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   .brand-icon{font-size:34px}
   .brand-word{font-size:18px;letter-spacing:.34em}
   .brand-wordmark{gap:14px}
-  .brand-image{height:44px}
+  .brand-image{height:54px}
   .nav-right{right:22px}
 
-  .footer-grid{grid-template-columns:1fr;gap:34px;padding:50px 24px 34px}
-  .footer-bottom{flex-direction:column;padding:18px 24px}
+  .footer-hero{
+    grid-template-columns:1fr;
+    gap:36px;
+    padding:64px 0 52px;
+  }
+  .footer-statement{font-size:clamp(46px,12vw,84px)}
+  .footer-mark{font-size:52vw;top:-2vw;right:-6vw}
+
+  .footer-grid{grid-template-columns:1fr}
+  .footer-col{padding:44px 0 40px 0}
+  .footer-col + .footer-col{
+    padding-left:0;
+    border-left:0;
+    border-top:1px solid rgba(244,243,236,.12);
+  }
+
+  .footer-bottom{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:22px 0;
+  }
+  .footer-bottom > span:last-child{text-align:left}
 
   .hero{grid-template-columns:1fr;min-height:100svh}
   .hero-content{padding:110px 24px 40px 24px;min-height:72svh}
@@ -511,18 +646,25 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   .c-word-5{margin-left:-1%}
   .brand-icon{font-size:28px}
   .brand-word{font-size:15px;letter-spacing:.28em}
-  .brand-image{height:36px}
+  .brand-image{height:44px}
   .brand-wordmark{gap:12px}
   .nav-shell{height:58px;padding:0 18px}
   .nav-btn{padding:9px 12px;font-size:9px}
   .nav-right{right:18px}
 
-  .footer-grid{padding:42px 20px 30px}
+  .footer-statement{font-size:clamp(40px,13vw,68px)}
+  .footer-mark{font-size:62vw;top:0;right:-8vw}
+  .footer-live{font-size:11px;padding:14px 16px;letter-spacing:.14em}
+  .footer-status{font-size:8px;padding:10px 14px}
+  .footer-top-btn{font-size:10px;padding:16px 18px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   .kinetic-word,.contact-word{transition:none !important}
+  .footer-contact a::after{transition:none}
+  .footer-mark{animation:none}
+  .status-dot{animation:none}
 }
 </style>
 </head>
@@ -541,7 +683,7 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
         </a>
         <div class="nav-right" id="navRight">
           <span class="nav-meta">Mumbai · India</span>
-          <a class="nav-btn" href="#who">Who we are</a>
+          <a class="nav-btn" href="#who" id="navWhoBtn">Who we are</a>
         </div>
       </div>
     </header>
@@ -703,50 +845,95 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
     </main>
 
     <footer>
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand-col">DESIGN THE<br>SILENCE.</div>
-          <div class="footer-rule"></div>
-          <p class="footer-copy">Premium acoustic and soundproofing environments for Mumbai's most ambitious spaces.</p>
-        </div>
-        <div>
-          <div class="footer-heading">Visit us</div>
-          <p class="footer-address"><strong>F1 ACOUSTIC</strong><br><br>810, Opposite City Mall<br>Next to Global Junction<br>Veera Desai Industrial Estates<br>New Link Road, Andheri (W)<br>Mumbai - 400053</p>
-        </div>
-        <div>
-          <div class="footer-heading">Connect</div>
-          <div class="footer-contact">
-            <a href="tel:+912240232051">022 - 40232051 / 52 / 55</a>
-            <a href="tel:+919004455115">+91 90044 55115</a>
-            <a href="mailto:f1acoustic@gmail.com">f1acoustic@gmail.com</a>
+      <div class="footer-grid-bg" aria-hidden="true"></div>
+      <div class="footer-mark" aria-hidden="true">F1</div>
+
+      <div class="footer-shell">
+
+        <div class="footer-hero">
+          <div class="footer-hero-left">
+            <span class="footer-kicker">/ The quiet standard</span>
+            <h2 class="footer-statement">
+              JUST WHISPER <span class="footer-statement-accent">US.</span>
+            </h2>
           </div>
-          <div class="socials">
-            <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm7.846-10.405a1.441 1.441 0 01-2.88 0 1.44 1.44 0 012.88 0z"/>
-              </svg>
-            </a>
-            <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-            <a class="social" href="https://wa.me/919004455115" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
+
+          <div class="footer-hero-right">
+            <div class="footer-live" aria-label="Mumbai local time">
+              <span class="footer-live-label">Mumbai</span>
+              <span class="footer-live-time" id="footerClock">--:--:--</span>
+              <span class="footer-live-tz">IST</span>
+            </div>
+
+            <div class="footer-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>Currently taking projects</span>
+            </div>
+
+            <a class="footer-top-btn" href="#top" id="footerTopBtn">
+              <span>Back to top</span>
+              <span class="footer-top-arrow" aria-hidden="true">↑</span>
             </a>
           </div>
         </div>
-      </div>
 
-      <div class="footer-bottom">
-        <span>© 2026 F1 Acoustic. All rights reserved.</span>
-        <span>Mumbai · Acoustics · Soundproofing</span>
-      </div>
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-heading">Visit us</div>
+            <p class="footer-address">
+              <strong>F1 ACOUSTIC</strong><br>
+              810, Opposite City Mall<br>
+              Next to Global Junction<br>
+              Veera Desai Industrial Estates<br>
+              New Link Road, Andheri (W)<br>
+              Mumbai – 400053
+            </p>
+          </div>
 
-      <div class="footer-powered">
-        <span>POWERED BY SANTINOPOLE</span>
+          <div class="footer-col">
+            <div class="footer-heading">Connect</div>
+            <div class="footer-contact">
+              <a href="tel:+912240232051">022 – 4023 2051 / 52 / 55</a>
+              <a href="tel:+919004455115">+91 90044 55115</a>
+              <a href="mailto:f1acoustic@gmail.com">f1acoustic@gmail.com</a>
+            </div>
+            <div class="socials">
+              <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm7.846-10.405a1.441 1.441 0 01-2.88 0 1.44 1.44 0 012.88 0z"/>
+                </svg>
+              </a>
+              <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a class="social" href="https://wa.me/919004455115" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <div class="footer-heading">Studio hours</div>
+            <p class="footer-hours">
+              Mon – Sat &nbsp;·&nbsp; <span>10:00 – 19:00 IST</span><br>
+              Sunday &nbsp;·&nbsp; By appointment
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© 2026 F1 Acoustic · All rights reserved</span>
+          <span>Mumbai · Acoustics · Soundproofing</span>
+        </div>
+
+        <div class="footer-powered">
+          <span>POWERED BY SANTINOPOLE</span>
+        </div>
+
       </div>
     </footer>
   </div>
@@ -816,6 +1003,37 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
     document.querySelectorAll('.hero-cell').forEach(c => c.classList.remove('active'));
     cell.classList.add('active');
   }));
+
+  /* Smooth-scroll for the "Who we are" nav button */
+  (function(){
+    const btn = document.getElementById('navWhoBtn');
+    if (!btn) return;
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      const target = document.getElementById('who');
+      if (!target) return;
+      const y = target.getBoundingClientRect().top + window.scrollY - 90;
+      try {
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      } catch (err) {
+        window.scrollTo(0, y);
+      }
+    });
+  })();
+
+  /* Smooth-scroll for the footer "Back to top" button */
+  (function(){
+    const btn = document.getElementById('footerTopBtn');
+    if (!btn) return;
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      try {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (err) {
+        window.scrollTo(0, 0);
+      }
+    });
+  })();
 
   const shell    = document.getElementById('navShell');
   const brand    = document.getElementById('brandLogo');
@@ -890,6 +1108,23 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   window.addEventListener('resize', function(){ measure(); updateProgress(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measure(); updateProgress(); });
   window.addEventListener('load', function(){ measure(); updateProgress(); });
+
+  /* Live Mumbai clock */
+  (function(){
+    const el = document.getElementById('footerClock');
+    if (!el) return;
+    function tick(){
+      const now = new Date();
+      const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+      const ist = new Date(utc + (5.5 * 3600000));
+      const hh  = String(ist.getHours()).padStart(2, '0');
+      const mm  = String(ist.getMinutes()).padStart(2, '0');
+      const ss  = String(ist.getSeconds()).padStart(2, '0');
+      el.textContent = hh + ':' + mm + ':' + ss;
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
 })();
 </script>
 </body>
