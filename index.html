@@ -185,7 +185,7 @@ img{max-width:100%;display:block}
 }
 
 /* ============================================================
-   KINETIC — centered stack, echo dissipation on scroll
+   KINETIC
    ============================================================ */
 .kinetic{min-height:100vh;background:var(--blue);overflow:hidden}
 .kinetic-stage{
@@ -256,9 +256,6 @@ img{max-width:100%;display:block}
 .solution h3{margin:35px 0 14px;font:500 clamp(33px,4vw,61px)/.86 var(--serif);letter-spacing:-.045em;max-width:620px}
 .solution p{margin:0;max-width:390px;font-size:11px;line-height:1.6;color:rgba(244,243,236,.58)}
 
-/* ============================================================
-   PROCESS — clean label above headline
-   ============================================================ */
 .process-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:start}
 .process-title{margin:0;font:500 clamp(60px,7vw,112px)/.83 var(--serif);letter-spacing:-.055em}
 .process-list{border-top:1px solid var(--line)}
@@ -364,15 +361,41 @@ img{max-width:100%;display:block}
 .action:hover{transform:translateY(-2px)}
 
 /* ============================================================
-   FOOTER
+   FOOTER — original 3-column grid
    ============================================================ */
 footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(--line);overflow:hidden}
 
-.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:60px;max-width:1180px;margin:0 auto;padding:80px 7vw 50px;border-bottom:1px solid var(--line)}
-.footer-brand-col{font:500 clamp(38px,5vw,68px)/.84 var(--serif);color:var(--yellow);letter-spacing:-.05em}
-.footer-rule{width:74px;height:1px;background:var(--yellow);margin:22px 0}
-.footer-copy,.footer-address,.footer-contact a{font-size:11px;line-height:1.75;color:rgba(244,243,236,.58)}
-.footer-heading{margin-bottom:15px;font:8px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(244,243,236,.42)}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr .8fr;
+  gap:60px;
+  max-width:1180px;
+  margin:0 auto;
+  padding:80px 7vw 50px;
+  border-bottom:1px solid var(--line);
+}
+.footer-brand-col{
+  font:500 clamp(38px,5vw,68px)/.84 var(--serif);
+  color:var(--yellow);
+  letter-spacing:-.05em;
+}
+.footer-rule{
+  width:74px;height:1px;background:var(--yellow);
+  margin:22px 0;
+}
+.footer-copy,
+.footer-address,
+.footer-contact a{
+  font-size:11px;line-height:1.75;
+  color:rgba(244,243,236,.58);
+}
+.footer-heading{
+  margin-bottom:15px;
+  font:8px/1 var(--mono);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.42);
+}
 .footer-contact{display:flex;flex-direction:column;gap:8px}
 
 /* Social icons */
@@ -393,9 +416,19 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   transform:translateY(-2px);
 }
 
-.footer-bottom{max-width:1180px;margin:0 auto;padding:20px 7vw;display:flex;justify-content:space-between;gap:20px;font:7px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,236,.36)}
+.footer-bottom{
+  max-width:1180px;
+  margin:0 auto;
+  padding:20px 7vw;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  font:7px/1.5 var(--mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.36);
+}
 
-/* Powered by — the very last line in the footer */
 .footer-powered{
   padding:22px 7vw 26px;
   text-align:center;
@@ -445,8 +478,6 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   .numbers{grid-template-columns:1fr}
   .who{padding:78px 24px}
   .who-grid{grid-template-columns:1fr;gap:34px}
-  .who-sign{flex-direction:column;align-items:flex-start}
-  .who-sign-text{text-align:left}
 
   .kinetic-stage{min-height:520px;height:64vh}
   .kinetic-word{font-size:clamp(46px,13vw,120px)}
@@ -485,12 +516,13 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   .nav-shell{height:58px;padding:0 18px}
   .nav-btn{padding:9px 12px;font-size:9px}
   .nav-right{right:18px}
+
+  .footer-grid{padding:42px 20px 30px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .kinetic-word{transition:none !important}
-  .contact-word{transition:none !important}
+  .kinetic-word,.contact-word{transition:none !important}
 }
 </style>
 </head>
@@ -500,12 +532,12 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
 
     <header class="topbar">
       <div class="nav-shell" id="navShell">
-        <a class="brand" href="#top" id="brandLogo" aria-label="F1 Acoustic home">
+        <a class="brand has-image" href="#top" id="brandLogo" aria-label="F1 Acoustic home">
           <span class="brand-wordmark">
             <span class="brand-icon">F1</span>
             <span class="brand-word">Acoustic</span>
           </span>
-          <img class="brand-image" id="brandImage" alt="F1 Acoustic">
+          <img class="brand-image" id="brandImage" src="f1-logo.png" alt="F1 Acoustic">
         </a>
         <div class="nav-right" id="navRight">
           <span class="nav-meta">Mumbai · India</span>
@@ -683,7 +715,11 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
         </div>
         <div>
           <div class="footer-heading">Connect</div>
-          <div class="footer-contact"><a href="tel:+912240232051">022 - 40232051 / 52 / 55</a><a href="tel:+919004455115">+91 90044 55115</a><a href="mailto:f1acoustic@gmail.com">f1acoustic@gmail.com</a></div>
+          <div class="footer-contact">
+            <a href="tel:+912240232051">022 - 40232051 / 52 / 55</a>
+            <a href="tel:+919004455115">+91 90044 55115</a>
+            <a href="mailto:f1acoustic@gmail.com">f1acoustic@gmail.com</a>
+          </div>
           <div class="socials">
             <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -724,10 +760,9 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   reveals.forEach(el=>observer.observe(el));
   const stage=document.querySelector('[data-parallax]');
 
-  /* Dissipation effect for both kinetic and contact sections */
   const kineticStage = document.getElementById('kineticStage');
   const kineticWords = kineticStage ? [...kineticStage.querySelectorAll('.kinetic-word')] : [];
-  
+
   const contactStack = document.getElementById('contactStack');
   const contactWords = contactStack ? [...contactStack.querySelectorAll('.contact-word')] : [];
 
@@ -748,14 +783,12 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
 
   function updateKinetic(){
     const vh = window.innerHeight;
-
     if (kineticStage && kineticWords.length) {
       const r = kineticStage.getBoundingClientRect();
       const center = r.top + r.height / 2;
       const t = Math.max(0, Math.min(1, (vh / 2 - center) / (vh / 2)));
       applyDissipation(kineticStage, kineticWords, t);
     }
-
     if (contactStack && contactWords.length) {
       const r = contactStack.getBoundingClientRect();
       const center = r.top + r.height / 2;
@@ -784,9 +817,6 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
     cell.classList.add('active');
   }));
 
-  /* ============================================================
-     RUBBER NAV
-     ============================================================ */
   const shell    = document.getElementById('navShell');
   const brand    = document.getElementById('brandLogo');
   const navRight = document.getElementById('navRight');
@@ -794,12 +824,7 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
   const LERP         = 0.055;
   const CHROME_START = 0.45;
 
-  let MAX_W = 1400;
-  let MIN_W = 260;
-  let PAD_X = 28;
-  let SCROLL_RANGE = 900;
-  let H_FULL = 76;
-  let H_MINI = 60;
+  let MAX_W = 1400, MIN_W = 260, PAD_X = 28, SCROLL_RANGE = 900, H_FULL = 76, H_MINI = 60;
 
   function measure(){
     const vw = window.innerWidth;
@@ -813,13 +838,10 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
     SCROLL_RANGE = Math.max(500, window.innerHeight * 0.95);
   }
 
-  let scrollProgress = 0;
-  let smoothProgress = 0;
-  let running = false;
+  let scrollProgress = 0, smoothProgress = 0, running = false;
 
   function render(p){
     const eased = 1 - Math.pow(1 - p, 2);
-
     const w = MAX_W - (MAX_W - MIN_W) * eased;
     const h = H_FULL - (H_FULL - H_MINI) * eased;
     shell.style.maxWidth = w.toFixed(1) + 'px';
@@ -827,16 +849,12 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
     shell.style.borderRadius = (999 * eased).toFixed(1) + 'px';
 
     const chrome = Math.max(0, 1 - Math.max(0, (p - CHROME_START) / (1 - CHROME_START)));
-    const bg   = 0.22 * chrome;
-    const brd  = 0.16 * chrome;
-    const blur = 28 * chrome;
-    const sat  = 100 + 80 * chrome;
-
+    const bg = 0.22 * chrome, brd = 0.16 * chrome, blur = 28 * chrome, sat = 100 + 80 * chrome;
     shell.style.backgroundColor = 'rgba(18,20,24,' + bg.toFixed(3) + ')';
     shell.style.borderColor     = 'rgba(244,243,236,' + brd.toFixed(3) + ')';
     const bf = 'blur(' + blur.toFixed(1) + 'px) saturate(' + sat.toFixed(0) + '%)';
-    shell.style.backdropFilter        = bf;
-    shell.style.webkitBackdropFilter  = bf;
+    shell.style.backdropFilter = bf;
+    shell.style.webkitBackdropFilter = bf;
     shell.style.boxShadow = chrome > 0.01
       ? '0 ' + (14*chrome).toFixed(1) + 'px ' + (40*chrome).toFixed(1) + 'px rgba(0,0,0,' + (0.34*chrome).toFixed(3) + '), inset 0 1px 0 rgba(255,255,255,' + (0.05*chrome).toFixed(3) + ')'
       : 'none';
@@ -858,9 +876,7 @@ footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(-
     requestAnimationFrame(animate);
   }
 
-  function kick(){
-    if (!running){ running = true; requestAnimationFrame(animate); }
-  }
+  function kick(){ if (!running){ running = true; requestAnimationFrame(animate); } }
 
   function updateProgress(){
     const y = window.scrollY || 0;
