@@ -7,34 +7,18 @@
 <meta name="description" content="F1 Acoustic creates premium acoustic and soundproofing environments for Mumbai's most ambitious spaces.">
 <style>
 :root{
-  --bg: light-dark(#1b1b1b,#1b1b1b);
-  --ink: light-dark(#f4f3ec,#f4f3ec);
-  --muted: rgba(244,243,236,.64);
-  --line: rgba(244,243,236,.16);
-  --blue: #29447d;
-  --blue-2:#385996;
+  --bg:#1b1b1b;
+  --ink:#f4f3ec;
+  --muted:rgba(244,243,236,.64);
+  --line:rgba(244,243,236,.16);
+  --blue:#29447d;
   --yellow:#eaf64d;
-  --yellow-soft:#cbd238;
   --dark:#121316;
-  --panel:#24252a;
   --serif: Georgia, 'Times New Roman', serif;
   --sans: Arial, Helvetica, sans-serif;
   --mono: 'Courier New', monospace;
 
-  /* ============================================================
-     YOUR PHOTOS  —  CHANGE ONLY THESE LINES
-     ------------------------------------------------------------
-     HERO           → f1-hero.png   (same folder as this HTML)
-     PROJECT CARDS  → images/project-1.jpg … project-5.jpg
-                      (5 cards, 5 images)
-     ============================================================ */
-  --img-hero:      url("f1-hero.png");
-
-  --img-project-1: url("images/project-1.jpg");
-  --img-project-2: url("images/project-2.jpg");
-  --img-project-3: url("images/project-3.jpg");
-  --img-project-4: url("images/project-4.jpg");
-  --img-project-5: url("images/project-5.jpg");
+  --img-hero: url("f1-hero.png");
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:#1b1b1b}
@@ -44,23 +28,82 @@ button{font:inherit;color:inherit}
 ::selection{background:var(--yellow);color:#111}
 img{max-width:100%;display:block}
 
-.app{min-height:100vh;background-color:var(--bg);overflow:hidden}
+.app{min-height:100vh;background:#1b1b1b;overflow:hidden}
 .page{width:min(1440px,100%);margin:0 auto;background:#1b1b1b}
 
-/* Reference system: dark canvas / blue field / acid yellow editorial type / 1px grid */
-.topbar{position:fixed;inset:0 0 auto 0;height:66px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 20px;pointer-events:none;mix-blend-mode:normal}
-.topbar::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,27,27,.88),rgba(27,27,27,0));pointer-events:none}
-.brand{position:relative;display:flex;align-items:center;gap:11px;pointer-events:auto}
-.brand-mark{width:27px;height:27px;border:1px solid rgba(244,243,236,.55);border-radius:50%;display:grid;place-items:center;font-size:11px}
-.brand-name{font:600 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
-.nav-right{position:relative;display:flex;align-items:center;gap:10px;pointer-events:auto}
-.nav-meta{font:9px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,236,.54)}
-.nav-btn{border:1px solid rgba(244,243,236,.30);padding:9px 12px;border-radius:999px;font:9px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:rgba(27,27,27,.26);backdrop-filter:blur(8px)}
+/* ============================================================
+   TOPBAR / NAV-SHELL
+   ============================================================ */
+.topbar{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:14px 18px 0;
+  pointer-events:none;
+}
+.nav-shell{
+  pointer-events:auto;
+  position:relative;
+  width:100%;
+  max-width:1400px;
+  height:76px;
+  display:flex;align-items:center;
+  padding:0 28px;
+  border-radius:0px;
+  background-color:rgba(18,20,24,0);
+  border:1px solid rgba(244,243,236,0);
+  backdrop-filter:blur(0px) saturate(100%);
+  -webkit-backdrop-filter:blur(0px) saturate(100%);
+  box-shadow:0 0 0 rgba(0,0,0,0);
+  will-change:max-width,height,border-radius,background-color,border-color,backdrop-filter,box-shadow;
+}
+.brand{
+  display:inline-flex;align-items:center;
+  flex-shrink:0;
+  pointer-events:auto;
+}
+.brand-wordmark{display:inline-flex;align-items:center;gap:20px}
+.brand-icon{
+  font:700 44px/1 var(--mono);
+  color:var(--yellow);
+  letter-spacing:-.02em;
+  text-shadow:0 0 24px rgba(234,246,77,.48), 0 0 7px rgba(234,246,77,.4);
+}
+.brand-word{
+  font:500 24px/1 var(--serif);
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  color:#f4f3ec;
+  text-shadow:0 0 18px rgba(255,255,255,.18);
+}
+.brand-image{display:none;height:56px;width:auto}
+.brand.has-image .brand-wordmark{display:none}
+.brand.has-image .brand-image{display:block}
+
+.nav-right{
+  position:absolute;
+  right:28px;top:50%;
+  transform:translateY(-50%);
+  display:flex;align-items:center;gap:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  will-change:opacity,max-width;
+}
+.nav-right > *{flex-shrink:0}
+.nav-meta{font:10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,236,.62)}
+.nav-btn{
+  border:1px solid rgba(244,243,236,.28);padding:11px 18px;border-radius:999px;
+  font:10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(20,22,26,.4);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:border-color .3s ease,color .3s ease;
+}
 .nav-btn:hover{border-color:var(--yellow);color:var(--yellow)}
 
+/* ============================================================
+   REST OF PAGE
+   ============================================================ */
 .side-rail{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;align-items:center;gap:14px;color:rgba(244,243,236,.44);font:8px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;writing-mode:vertical-rl}
-.side-rail::before{content:"";width:1px;height:54px;background:var(--line);display:block}
-.side-rail::after{content:"";width:1px;height:54px;background:var(--line);display:block}
+.side-rail::before,.side-rail::after{content:"";width:1px;height:54px;background:var(--line);display:block}
 .progress{position:fixed;right:14px;top:50%;transform:translateY(-50%);width:2px;height:90px;background:rgba(244,243,236,.12);z-index:40}
 .progress span{display:block;width:100%;height:100%;background:var(--yellow);transform-origin:top;transform:scaleY(0)}
 
@@ -125,21 +168,6 @@ img{max-width:100%;display:block}
 .solution p{margin:0;max-width:390px;font-size:11px;line-height:1.6;color:rgba(244,243,236,.58)}
 .solution .num{position:absolute;right:18px;top:18px;font:8px/1 var(--mono);color:rgba(244,243,236,.34)}
 
-.projects{padding-top:0}
-.project-strip{display:grid;grid-template-columns:repeat(5,1fr);min-height:440px;border-top:1px solid rgba(20,22,25,.18);border-left:1px solid rgba(20,22,25,.18)}
-.project{position:relative;min-height:440px;padding:18px;border-right:1px solid rgba(20,22,25,.18);border-bottom:1px solid rgba(20,22,25,.18);overflow:hidden;background:#f1f0e9}
-.project-photo{--img:var(--img-project-1);position:absolute;inset:0;background-color:#3b4048;background-image:linear-gradient(160deg,rgba(241,240,233,.34),rgba(56,89,150,.15)),var(--img);background-size:cover;background-position:center;filter:saturate(.42) contrast(.95);opacity:.62;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .4s ease}
-.project:nth-child(2) .project-photo{--img:var(--img-project-2);background-position:68% 42%}
-.project:nth-child(3) .project-photo{--img:var(--img-project-3);background-position:38% 50%}
-.project:nth-child(4) .project-photo{--img:var(--img-project-4);background-position:84% 50%}
-.project:nth-child(5) .project-photo{--img:var(--img-project-5);background-position:52% 65%}
-.project:hover .project-photo{transform:scale(1.06);opacity:.82}
-.project::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,19,22,.56),transparent 66%)}
-.project-copy{position:absolute;inset:auto 18px 18px;z-index:2}
-.project-tag{font:8px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:rgba(17,18,22,.62)}
-.project h3{margin:10px 0 0;font:500 clamp(32px,3vw,58px)/.84 var(--serif);letter-spacing:-.05em;color:#f4f3ec}
-.project .pin{position:absolute;top:18px;right:18px;width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 4px rgba(234,246,77,.11)}
-
 .process-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:start}
 .process-title{margin:0;font:500 clamp(60px,7vw,112px)/.83 var(--serif);letter-spacing:-.055em}
 .process-list{border-top:1px solid var(--line)}
@@ -148,24 +176,79 @@ img{max-width:100%;display:block}
 .process-item h3{margin:0 0 9px;font:500 clamp(24px,3vw,42px)/.95 var(--serif);letter-spacing:-.03em}
 .process-item p{margin:0;max-width:560px;font-size:11px;line-height:1.65;color:rgba(244,243,236,.56)}
 
-.numbers{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(20,22,25,.16);border-left:1px solid rgba(20,22,25,.16)}
-.number{padding:26px;border-right:1px solid rgba(20,22,25,.16);border-bottom:1px solid rgba(20,22,25,.16);background:#f1f0e9}
-.number-value{font:500 clamp(62px,8vw,122px)/.82 var(--serif);color:var(--blue)}
-.number:nth-child(2) .number-value{color:#17181b}
-.number:nth-child(3) .number-value{color:#a5ad35}
-.number-label{margin-top:11px;font:8px/1.4 var(--mono);letter-spacing:.17em;text-transform:uppercase;color:rgba(20,22,25,.52)}
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.number{padding:26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.number-value{font:500 clamp(62px,8vw,122px)/.82 var(--serif);color:var(--yellow)}
+.number:nth-child(2) .number-value{color:#f4f3ec}
+.number:nth-child(3) .number-value{color:rgba(244,243,236,.72)}
+.number-label{margin-top:11px;font:8px/1.4 var(--mono);letter-spacing:.17em;text-transform:uppercase;color:rgba(244,243,236,.52)}
 
-.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px}
-.faq-title{margin:0;font:500 clamp(60px,7vw,112px)/.82 var(--serif);letter-spacing:-.055em}
-.faq-title span{color:var(--yellow)}
-.faq-list{border-top:1px solid var(--line)}
-details{border-bottom:1px solid var(--line);padding:18px 0}
-summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font:600 14px/1.35 var(--sans)}
-summary::-webkit-details-marker{display:none}
-.plus{font:12px/1 var(--mono);color:var(--yellow);transition:transform .2s ease}
-details[open] .plus{transform:rotate(45deg)}
-details p{margin:13px 0 0;max-width:690px;font-size:11px;line-height:1.65;color:rgba(244,243,236,.58)}
+/* ============================================================
+   WHO WE'RE
+   ============================================================ */
+.who{background:#f1f0e9;color:#17181b;padding:112px 7vw}
+.who .section-kicker{color:rgba(20,22,25,.48)}
+.who-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+.who-title{
+  margin:14px 0 40px;
+  font:500 clamp(52px,7.5vw,120px)/.84 var(--serif);
+  letter-spacing:-.05em;
+  color:#17181b;
+  max-width:960px;
+}
+.who-title em{
+  font-style:normal;
+  color:#29447d;
+}
+.who-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px 70px;
+  margin-top:20px;
+  padding-top:34px;
+  border-top:1px solid rgba(20,22,25,.18);
+}
+.who-block h3{
+  margin:0 0 12px;
+  font:500 22px/1.15 var(--serif);
+  letter-spacing:-.02em;
+  color:#2a3d70;
+}
+.who-block p{
+  margin:0;
+  font-size:13px;
+  line-height:1.78;
+  color:rgba(20,22,25,.68);
+}
+.who-sign{
+  margin-top:52px;
+  padding-top:24px;
+  border-top:1px solid rgba(20,22,25,.18);
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:22px;
+  flex-wrap:wrap;
+}
+.who-sign-mark{
+  font:700 30px/1 var(--mono);
+  color:#17181b;
+  letter-spacing:.02em;
+}
+.who-sign-mark span{
+  color:#29447d;
+  margin-right:4px;
+}
+.who-sign-text{
+  font:500 14px/1.5 var(--serif);
+  color:rgba(20,22,25,.6);
+  max-width:520px;
+  text-align:right;
+}
 
+/* ============================================================
+   CONTACT  —  "Let's discuss"
+   ============================================================ */
 .contact{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;background:#1b1b1b}
 .contact::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(244,243,236,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(244,243,236,.10) 1px,transparent 1px);background-size:70px 70px;opacity:.35}
 .contact-orbit{position:absolute;width:min(80vw,1000px);height:min(80vw,1000px);border:1px solid rgba(234,246,77,.11);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
@@ -178,23 +261,106 @@ details p{margin:13px 0 0;max-width:690px;font-size:11px;line-height:1.65;color:
 .action.primary{background:var(--yellow);border-color:var(--yellow);color:#151619}
 .action:hover{transform:translateY(-2px)}
 
-footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;border-top:1px solid var(--line)}
-.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:60px;max-width:1180px;margin:0 auto;padding-bottom:50px;border-bottom:1px solid var(--line)}
-.footer-brand{font:500 clamp(38px,5vw,68px)/.84 var(--serif);color:var(--yellow);letter-spacing:-.05em}
+/* ============================================================
+   FOOTER  —  tiny live-signature strip
+   ============================================================ */
+footer{background:#0f1014;color:rgba(244,243,236,.82);border-top:1px solid var(--line);overflow:hidden}
+
+/* Small signature strip that replaced the big frosted bar */
+.footer-sign{
+  position:relative;
+  padding:44px 7vw;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.footer-sign-glow{
+  position:absolute;
+  left:50%;top:50%;
+  width:min(60vw,520px);
+  height:min(20vw,140px);
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse at center,
+    rgba(234,246,77,.10) 0%,
+    rgba(234,246,77,.03) 45%,
+    transparent 75%);
+  pointer-events:none;
+  filter:blur(18px);
+}
+.footer-mini{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 20px;
+  border-radius:999px;
+  background:rgba(18,20,24,.28);
+  border:1px solid rgba(244,243,236,.12);
+  backdrop-filter:blur(20px) saturate(170%);
+  -webkit-backdrop-filter:blur(20px) saturate(170%);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,.32),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  font:10px/1 var(--mono);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.62);
+}
+.footer-mini-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--yellow);
+  box-shadow:0 0 10px rgba(234,246,77,.85);
+  animation:footerPulse 2.6s ease-in-out infinite;
+}
+@keyframes footerPulse{
+  0%,100%{opacity:.7;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.35)}
+}
+.footer-mini-place{
+  color:rgba(244,243,236,.88);
+  font-weight:700;
+}
+.footer-mini-sep{color:rgba(244,243,236,.22)}
+.footer-mini-time{
+  color:var(--yellow);
+  font-weight:700;
+  letter-spacing:.06em;
+  font-variant-numeric:tabular-nums;
+}
+.footer-mini-tz{color:rgba(244,243,236,.42)}
+.footer-mini-top{
+  margin-left:4px;
+  padding-left:14px;
+  border-left:1px solid rgba(244,243,236,.14);
+  color:rgba(244,243,236,.6);
+  transition:color .3s ease;
+}
+.footer-mini-top:hover{color:var(--yellow)}
+
+.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:60px;max-width:1180px;margin:0 auto;padding:70px 7vw 50px;border-bottom:1px solid var(--line)}
+.footer-brand-col{font:500 clamp(38px,5vw,68px)/.84 var(--serif);color:var(--yellow);letter-spacing:-.05em}
 .footer-rule{width:74px;height:1px;background:var(--yellow);margin:22px 0}
 .footer-copy,.footer-address,.footer-contact a{font-size:11px;line-height:1.75;color:rgba(244,243,236,.58)}
 .footer-heading{margin-bottom:15px;font:8px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(244,243,236,.42)}
-.footer-links{display:flex;flex-direction:column;gap:8px}
 .footer-contact{display:flex;flex-direction:column;gap:8px}
 .socials{display:flex;gap:8px;margin-top:17px}
-.social{width:38px;height:38px;border:1px solid rgba(244,243,236,.18);display:grid;place-items:center;font:9px/1 var(--mono)}
-.footer-bottom{max-width:1180px;margin:18px auto 0;display:flex;justify-content:space-between;gap:20px;font:7px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,236,.36)}
+.social{width:38px;height:38px;border:1px solid rgba(244,243,236,.18);display:grid;place-items:center;font:9px/1 var(--mono);transition:border-color .3s ease,color .3s ease}
+.social:hover{border-color:var(--yellow);color:var(--yellow)}
+.footer-bottom{max-width:1180px;margin:0 auto;padding:20px 7vw;display:flex;justify-content:space-between;gap:20px;font:7px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(244,243,236,.36)}
+.footer-marquee{position:relative;overflow:hidden;padding:20px 0;border-top:1px solid var(--line);background:#0a0b0e}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 38s linear infinite;will-change:transform}
+.marquee-track span{display:inline-block;padding-right:70px;font:500 clamp(20px,3vw,42px)/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(234,246,77,.68)}
+.marquee-track span em{font-style:normal;color:rgba(244,243,236,.28);padding:0 22px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal.is-in{opacity:1;transform:none}
 
 /* ============================================================
-   TEMPORARY IMAGE TESTER  —  REMOVE BEFORE LAUNCH
+   TEMPORARY IMAGE TESTER
    ============================================================ */
 .dev-panel{position:fixed;right:16px;bottom:16px;z-index:300;font-family:var(--mono)}
 .dev-toggle{display:inline-flex;align-items:center;gap:6px;background:#eaf64d;color:#141519;border:0;border-radius:999px;padding:9px 13px;font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.5)}
@@ -209,35 +375,42 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
 .dev-ok{width:100%;background:#eaf64d;color:#141519;border:0;border-radius:6px;padding:9px;font:700 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
 .dev-ok:hover{filter:brightness(1.05)}
 .dev-note{margin-top:10px;font:8px/1.5 var(--mono);color:rgba(244,243,236,.4);text-align:center}
+.dev-helper{font:8px/1.5 var(--mono);color:rgba(244,243,236,.5);margin:-4px 0 10px}
 
 @media (max-width:900px){
-  .topbar{padding:0 14px}
+  .topbar{padding:10px 14px 0}
+  .nav-shell{height:64px;padding:0 22px}
   .nav-meta{display:none}
-  .side-rail{display:none}
+  .brand-icon{font-size:34px}
+  .brand-word{font-size:18px;letter-spacing:.34em}
+  .brand-wordmark{gap:14px}
+  .brand-image{height:44px}
+  .nav-right{right:22px}
+
+  .footer-sign{padding:34px 20px}
+  .footer-grid{grid-template-columns:1fr;gap:34px;padding:50px 24px 34px}
+  .footer-bottom{flex-direction:column;padding:18px 24px}
+
   .hero{grid-template-columns:1fr;min-height:100svh}
   .hero-content{padding:110px 24px 40px 24px;min-height:72svh}
   .hero-title{font-size:clamp(60px,16vw,108px);max-width:650px}
   .hero-side{min-height:28svh;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);border-left:0;border-top:1px solid rgba(244,243,236,.22)}
   .hero-cell{padding:11px;font-size:18px}
   .hero-cell small{font-size:7px}
+  .hero-photo{
+    background-size:contain;background-position:center top;background-repeat:no-repeat;
+    background-color:#0e1424;
+    background-image:linear-gradient(180deg,rgba(10,12,16,.20) 0%,rgba(10,12,16,.10) 45%,rgba(10,12,16,.78) 100%),var(--img-hero);
+  }
   .section{padding:78px 24px}
   .section-head{grid-template-columns:1fr;gap:22px;margin-bottom:46px}
-  .manifesto-copy,.process-grid,.faq-grid{grid-template-columns:1fr;gap:36px}
+  .manifesto-copy,.process-grid{grid-template-columns:1fr;gap:36px}
   .solution-grid{grid-template-columns:1fr}
-  .project-strip{grid-template-columns:1fr 1fr}
-  .project{min-height:300px}
   .numbers{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr;gap:34px}
-  .footer-bottom{flex-direction:column}
-
-  /* ---------- MOBILE HERO FIX: show the full hero image without cropping ---------- */
-  .hero-photo{
-    background-size: contain;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-color: #0e1424;
-    background-image: linear-gradient(180deg, rgba(10,12,16,.20) 0%, rgba(10,12,16,.10) 45%, rgba(10,12,16,.78) 100%), var(--img-hero);
-  }
+  .who{padding:78px 24px}
+  .who-grid{grid-template-columns:1fr;gap:34px}
+  .who-sign{flex-direction:column;align-items:flex-start}
+  .who-sign-text{text-align:left}
   .dev-panel{left:16px;right:16px}
   .dev-toggle{width:100%;justify-content:center}
   .dev-body{width:auto}
@@ -247,25 +420,49 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
   .hero-side{grid-template-columns:1fr 1fr}
   .hero-cell{min-height:110px}
   .kinetic-stage{min-height:480px}
-  .word-1{left:0} .word-2{left:28%} .word-3{left:-2%} .word-4{left:25%}
-  .project-strip{grid-template-columns:1fr}
-  .project{min-height:370px}
+  .word-1{left:0}.word-2{left:28%}.word-3{left:-2%}.word-4{left:25%}
   .process-item{grid-template-columns:50px 1fr;gap:12px}
   .contact-title{font-size:clamp(58px,15vw,78px)}
+  .brand-icon{font-size:28px}
+  .brand-word{font-size:15px;letter-spacing:.28em}
+  .brand-image{height:36px}
+  .brand-wordmark{gap:12px}
+  .nav-shell{height:58px;padding:0 18px}
+  .nav-btn{padding:9px 12px;font-size:9px}
+  .nav-right{right:18px}
+
+  .footer-sign{padding:28px 14px}
+  .footer-mini{gap:9px;padding:9px 14px;font-size:9px;letter-spacing:.12em}
+  .footer-mini-top{padding-left:10px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
+  .marquee-track{animation:none}
+  .footer-mini-dot{animation:none}
 }
 </style>
 </head>
 <body>
 <div id="app" class="app">
   <div class="page">
+
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="F1 Acoustic home"><span class="brand-mark">F1</span><span class="brand-name">Acoustic</span></a>
-      <div class="nav-right"><span class="nav-meta">Mumbai · India</span><a class="nav-btn" href="#contact">Start a conversation</a></div>
+      <div class="nav-shell" id="navShell">
+        <a class="brand" href="#top" id="brandLogo" aria-label="F1 Acoustic home">
+          <span class="brand-wordmark">
+            <span class="brand-icon">F1</span>
+            <span class="brand-word">Acoustic</span>
+          </span>
+          <img class="brand-image" id="brandImage" alt="F1 Acoustic">
+        </a>
+        <div class="nav-right" id="navRight">
+          <span class="nav-meta">Mumbai · India</span>
+          <a class="nav-btn" href="#who">Who we're</a>
+        </div>
+      </div>
     </header>
+
     <div class="side-rail">scroll / f1 acoustic</div>
     <div class="progress" aria-hidden="true"><span></span></div>
 
@@ -273,7 +470,7 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
       <section class="hero">
         <div class="hero-photo" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-index"><strong>01</strong> / 08</div>
+        <div class="hero-index"><strong>01</strong> / 05</div>
         <div class="hero-content">
           <span class="eyebrow">Architectural soundproofing / Mumbai</span>
           <h1 class="hero-title">DESIGN<br><em>the</em> SILENCE.</h1>
@@ -332,20 +529,6 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
         </div>
       </section>
 
-      <section class="section light projects">
-        <div class="section-grid"></div>
-        <div class="wrap">
-          <div class="section-head"><div><div class="section-kicker">Project language</div><h2 class="section-title reveal">PROJECTS, <span style="color:#29447d">COMPOSED.</span></h2></div><p class="section-note reveal">A visual project index in the same editorial grid language as the reference: restrained, cinematic and typographic.</p></div>
-          <div class="project-strip">
-            <article class="project reveal"><div class="project-photo"></div><span class="pin"></span><div class="project-copy"><span class="project-tag">Luxury residential</span><h3>THE<br>QUIET<br>FLOOR</h3></div></article>
-            <article class="project reveal"><div class="project-photo"></div><span class="pin"></span><div class="project-copy"><span class="project-tag">Private cinema</span><h3>BLACK<br>BOX</h3></div></article>
-            <article class="project reveal"><div class="project-photo"></div><span class="pin"></span><div class="project-copy"><span class="project-tag">Developer amenities</span><h3>THE<br>CLUB<br>LEVEL</h3></div></article>
-            <article class="project reveal"><div class="project-photo"></div><span class="pin"></span><div class="project-copy"><span class="project-tag">Luxury hospitality</span><h3>THE<br>PRIVATE<br>SUITE</h3></div></article>
-            <article class="project reveal"><div class="project-photo"></div><span class="pin"></span><div class="project-copy"><span class="project-tag">Entertainment &amp; lifestyle</span><h3>THE<br>SOUND<br>LOUNGE</h3></div></article>
-          </div>
-        </div>
-      </section>
-
       <section class="section dark">
         <div class="section-grid"></div>
         <div class="wrap">
@@ -361,7 +544,7 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
         </div>
       </section>
 
-      <section class="section light">
+      <section class="section blue">
         <div class="section-grid"></div>
         <div class="wrap">
           <div class="numbers">
@@ -372,18 +555,36 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
         </div>
       </section>
 
-      <section class="section blue">
+      <section class="section who" id="who">
         <div class="section-grid"></div>
-        <div class="wrap">
-          <div class="faq-grid">
-            <h2 class="faq-title reveal">THE<br><span>quiet</span><br>DETAILS.</h2>
-            <div class="faq-list reveal">
-              <details open><summary>Is F1 Acoustic only for luxury homes?<span class="plus">+</span></summary><p>No. The system thinking scales from individual rooms to premium residences, hospitality, offices, amenities and developer portfolios.</p></details>
-              <details><summary>What is the difference between soundproofing and acoustic treatment?<span class="plus">+</span></summary><p>Soundproofing stops sound from entering or leaving a space (isolation), while acoustic treatment controls how sound behaves inside a room (absorption, diffusion). We design both as a unified system.</p></details>
-              <details><summary>Can soundproofing be invisible?<span class="plus">+</span></summary><p>Acoustic assemblies can be coordinated into walls, ceilings, doors and junction details so performance supports rather than competes with the architecture.</p></details>
-              <details><summary>Do you work with architects and project teams?<span class="plus">+</span></summary><p>Yes. Acoustic performance depends on coordination across design, services, material transitions and execution.</p></details>
-              <details><summary>Where do you operate?<span class="plus">+</span></summary><p>F1 Acoustic is Mumbai-based, with the positioning and experience focused on premium architectural and real-estate projects.</p></details>
+        <div class="who-inner">
+          <div class="section-kicker">Who we're</div>
+          <h2 class="who-title reveal">
+            WE ENGINEER <em>QUIET</em><br>INTO THE ROOMS<br>PEOPLE ACTUALLY LIVE IN.
+          </h2>
+
+          <div class="who-grid reveal">
+            <div class="who-block">
+              <h3>What we do</h3>
+              <p>F1 Acoustic designs and delivers soundproofing and acoustic treatment for premium spaces. We stop unwanted sound from entering or leaving a room, and we shape how sound behaves inside it — so it feels natural, private and calm.</p>
             </div>
+            <div class="who-block">
+              <h3>Who we work with</h3>
+              <p>Homeowners, architects, interior designers and developers. Whether it's a single bedroom, a private cinema, a work studio or an entire building standard — the approach scales.</p>
+            </div>
+            <div class="who-block">
+              <h3>How we work</h3>
+              <p>We start by understanding the site — the structure, adjacencies and how the room will be used. Then we specify a layered system of walls, ceilings, doors, floors and details that work together, not in isolation.</p>
+            </div>
+            <div class="who-block">
+              <h3>What makes us different</h3>
+              <p>We treat acoustics as part of the architecture, not an add-on. The result is performance you can measure, with a finish you'd want to live with — invisible where it should be, purposeful where it matters.</p>
+            </div>
+          </div>
+
+          <div class="who-sign reveal">
+            <div class="who-sign-mark"><span>F1</span>ACOUSTIC</div>
+            <div class="who-sign-text">Based in Mumbai. Working with clients across premium residential, hospitality, workplace and developer projects.</div>
           </div>
         </div>
       </section>
@@ -391,7 +592,7 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
       <section class="contact" id="contact">
         <div class="contact-orbit" aria-hidden="true"></div>
         <div class="contact-content">
-          <div class="eyebrow">Start a conversation</div>
+          <div class="eyebrow">Let's discuss</div>
           <h2 class="contact-title reveal">LET'S MAKE<br><em>ROOM FOR</em> SILENCE.</h2>
           <p class="contact-sub reveal">Tell us what the space is, who it is for and what you need it to feel like.</p>
           <div class="contact-actions reveal"><a class="action primary" href="mailto:fizzainteriorsign@gmail.com">Begin enquiry ↗</a><a class="action" href="#top">Return to top ↑</a></div>
@@ -400,9 +601,22 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
     </main>
 
     <footer>
+      <!-- Small signature strip — replaces the big frosted bar -->
+      <div class="footer-sign">
+        <div class="footer-sign-glow" aria-hidden="true"></div>
+        <div class="footer-mini">
+          <span class="footer-mini-dot" aria-hidden="true"></span>
+          <span class="footer-mini-place">Mumbai</span>
+          <span class="footer-mini-sep">·</span>
+          <span class="footer-mini-time" id="footerClock">--:--:--</span>
+          <span class="footer-mini-tz">IST</span>
+          <a class="footer-mini-top" href="#top">Top ↑</a>
+        </div>
+      </div>
+
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">F1<br>ACOUSTIC.</div>
+          <div class="footer-brand-col">DESIGN THE<br>SILENCE.</div>
           <div class="footer-rule"></div>
           <p class="footer-copy">Premium acoustic and soundproofing environments for Mumbai's most ambitious spaces.</p>
         </div>
@@ -416,13 +630,24 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
           <div class="socials"><a class="social" href="#" aria-label="Instagram">IG</a><a class="social" href="#" aria-label="LinkedIn">IN</a><a class="social" href="#" aria-label="WhatsApp">WA</a></div>
         </div>
       </div>
-      <div class="footer-bottom"><span>© 2026 F1 Acoustic. All rights reserved.</span><span>Mumbai · Acoustics · Soundproofing</span></div>
+
+      <div class="footer-bottom">
+        <span>© 2026 F1 Acoustic. All rights reserved.</span>
+        <span>Mumbai · Acoustics · Soundproofing</span>
+      </div>
+
+      <div class="footer-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>F1 ACOUSTIC <em>—</em> DESIGN THE SILENCE <em>—</em> MUMBAI <em>—</em>&nbsp;</span>
+          <span>F1 ACOUSTIC <em>—</em> DESIGN THE SILENCE <em>—</em> MUMBAI <em>—</em>&nbsp;</span>
+        </div>
+      </div>
     </footer>
   </div>
 </div>
 
 <!-- ============================================================
-     TEMPORARY IMAGE TESTER  —  DELETE THIS ENTIRE BLOCK BEFORE LAUNCH
+     TEMPORARY IMAGE TESTER  —  DELETE BEFORE LAUNCH
      ============================================================ -->
 <div class="dev-panel" id="devPanel">
   <button class="dev-toggle" id="devToggle" type="button">🖼 Upload Images</button>
@@ -430,13 +655,14 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
     <div class="dev-head">Quick Image Test</div>
 
     <div class="dev-row">
-      <label>1. Hero image</label>
-      <input type="file" accept="image/*" id="devHero">
+      <label>1. Logo (PNG with transparency)</label>
+      <input type="file" accept="image/*" id="devLogo">
     </div>
+    <div class="dev-helper">→ Appears in nav only.</div>
 
     <div class="dev-row">
-      <label>2. Project images (up to 5)</label>
-      <input type="file" accept="image/*" multiple id="devOthers">
+      <label>2. Hero image</label>
+      <input type="file" accept="image/*" id="devHero">
     </div>
 
     <button class="dev-ok" id="devOk" type="button">OK</button>
@@ -451,45 +677,169 @@ footer{background:#111216;color:rgba(244,243,236,.82);padding:70px 7vw 24px;bord
   const observer=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-in')}),{threshold:.12});
   reveals.forEach(el=>observer.observe(el));
   const stage=document.querySelector('[data-parallax]');
+
   function onScroll(){
-    const y=window.scrollY||0, max=document.body.scrollHeight-window.innerHeight;
-    progress.style.transform='scaleY('+Math.max(0,Math.min(1,y/Math.max(1,max)))+')';
-    if(stage){const r=stage.getBoundingClientRect(),p=1-Math.min(1,Math.max(0,(r.top+ r.height)/(window.innerHeight+r.height))); stage.style.transform='translateY('+(p*18-9)+'px)';}
+    const y = window.scrollY || 0;
+    const max = document.body.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleY(' + Math.max(0, Math.min(1, y / Math.max(1, max))) + ')';
+    if (stage) {
+      const r = stage.getBoundingClientRect();
+      const p = 1 - Math.min(1, Math.max(0, (r.top + r.height) / (window.innerHeight + r.height)));
+      stage.style.transform = 'translateY(' + (p * 18 - 9) + 'px)';
+    }
   }
-  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-  document.querySelectorAll('.hero-cell').forEach(cell=>cell.addEventListener('mouseenter',()=>{document.querySelectorAll('.hero-cell').forEach(c=>c.classList.remove('active'));cell.classList.add('active')}));
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  document.querySelectorAll('.hero-cell').forEach(cell => cell.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.hero-cell').forEach(c => c.classList.remove('active'));
+    cell.classList.add('active');
+  }));
+
+  /* ============================================================
+     RUBBER NAV
+     ============================================================ */
+  const shell    = document.getElementById('navShell');
+  const brand    = document.getElementById('brandLogo');
+  const navRight = document.getElementById('navRight');
+
+  const LERP         = 0.055;
+  const CHROME_START = 0.45;
+
+  let MAX_W = 1400;
+  let MIN_W = 260;
+  let PAD_X = 28;
+  let SCROLL_RANGE = 900;
+  let H_FULL = 76;
+  let H_MINI = 60;
+
+  function measure(){
+    const vw = window.innerWidth;
+    MAX_W = Math.min(1400, vw - 36);
+    const cs = getComputedStyle(shell);
+    PAD_X = parseFloat(cs.paddingLeft) || 28;
+    const padR = parseFloat(cs.paddingRight) || 28;
+    MIN_W = Math.max(120, Math.ceil(brand.offsetWidth + PAD_X + padR));
+    H_FULL = parseFloat(cs.height) || 76;
+    H_MINI = Math.max(46, H_FULL - 16);
+    SCROLL_RANGE = Math.max(500, window.innerHeight * 0.95);
+  }
+
+  let scrollProgress = 0;
+  let smoothProgress = 0;
+  let running = false;
+
+  function render(p){
+    const eased = 1 - Math.pow(1 - p, 2);
+
+    const w = MAX_W - (MAX_W - MIN_W) * eased;
+    const h = H_FULL - (H_FULL - H_MINI) * eased;
+    shell.style.maxWidth = w.toFixed(1) + 'px';
+    shell.style.height   = h.toFixed(1) + 'px';
+    shell.style.borderRadius = (999 * eased).toFixed(1) + 'px';
+
+    const chrome = Math.max(0, 1 - Math.max(0, (p - CHROME_START) / (1 - CHROME_START)));
+    const bg   = 0.22 * chrome;
+    const brd  = 0.16 * chrome;
+    const blur = 28 * chrome;
+    const sat  = 100 + 80 * chrome;
+
+    shell.style.backgroundColor = 'rgba(18,20,24,' + bg.toFixed(3) + ')';
+    shell.style.borderColor     = 'rgba(244,243,236,' + brd.toFixed(3) + ')';
+    const bf = 'blur(' + blur.toFixed(1) + 'px) saturate(' + sat.toFixed(0) + '%)';
+    shell.style.backdropFilter        = bf;
+    shell.style.webkitBackdropFilter  = bf;
+    shell.style.boxShadow = chrome > 0.01
+      ? '0 ' + (14*chrome).toFixed(1) + 'px ' + (40*chrome).toFixed(1) + 'px rgba(0,0,0,' + (0.34*chrome).toFixed(3) + '), inset 0 1px 0 rgba(255,255,255,' + (0.05*chrome).toFixed(3) + ')'
+      : 'none';
+
+    const nr = Math.max(0, 1 - eased * 1.35);
+    navRight.style.opacity  = nr.toFixed(3);
+    navRight.style.maxWidth = (600 * nr).toFixed(0) + 'px';
+  }
+
+  function animate(){
+    smoothProgress += (scrollProgress - smoothProgress) * LERP;
+    if (Math.abs(scrollProgress - smoothProgress) < 0.0008){
+      smoothProgress = scrollProgress;
+      render(smoothProgress);
+      running = false;
+      return;
+    }
+    render(smoothProgress);
+    requestAnimationFrame(animate);
+  }
+
+  function kick(){
+    if (!running){ running = true; requestAnimationFrame(animate); }
+  }
+
+  function updateProgress(){
+    const y = window.scrollY || 0;
+    scrollProgress = Math.max(0, Math.min(1, y / SCROLL_RANGE));
+    kick();
+  }
+
+  measure();
+  render(0);
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', function(){ measure(); updateProgress(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measure(); updateProgress(); });
+  window.addEventListener('load', function(){ measure(); updateProgress(); });
+
+  /* ============================================================
+     LIVE MUMBAI CLOCK — small signature strip
+     ============================================================ */
+  (function(){
+    const el = document.getElementById('footerClock');
+    if (!el) return;
+
+    function tick(){
+      // Always show Mumbai time (IST = UTC+5:30), no matter where the visitor is
+      const now  = new Date();
+      const utc  = now.getTime() + now.getTimezoneOffset() * 60000;
+      const ist  = new Date(utc + (5.5 * 3600000));
+      const hh   = String(ist.getHours()).padStart(2, '0');
+      const mm   = String(ist.getMinutes()).padStart(2, '0');
+      const ss   = String(ist.getSeconds()).padStart(2, '0');
+      el.textContent = hh + ':' + mm + ':' + ss;
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
 
   /* ============================================================
      TEMPORARY IMAGE TESTER  —  REMOVE BEFORE LAUNCH
      ============================================================ */
   (function(){
-    const panel  = document.getElementById('devPanel');
+    const panel = document.getElementById('devPanel');
     if(!panel) return;
-    const toggle = document.getElementById('devToggle');
-    const body   = document.getElementById('devBody');
-    const heroIn = document.getElementById('devHero');
-    const othIn  = document.getElementById('devOthers');
-    const okBtn  = document.getElementById('devOk');
+    const toggle  = document.getElementById('devToggle');
+    const body    = document.getElementById('devBody');
+    const logoIn  = document.getElementById('devLogo');
+    const heroIn  = document.getElementById('devHero');
+    const okBtn   = document.getElementById('devOk');
 
-    toggle.addEventListener('click', function(){
-      body.classList.toggle('open');
-    });
+    const navBrand = document.getElementById('brandLogo');
+    const navImg   = document.getElementById('brandImage');
+
+    toggle.addEventListener('click', function(){ body.classList.toggle('open'); });
 
     okBtn.addEventListener('click', function(){
-      // Hero
+      const logoFile = logoIn.files && logoIn.files[0];
+      if(logoFile){
+        const url = URL.createObjectURL(logoFile);
+        navImg.src = url;
+        navBrand.classList.add('has-image');
+        navImg.onload = function(){ measure(); updateProgress(); };
+      }
       const heroFile = heroIn.files && heroIn.files[0];
       if(heroFile){
         root.style.setProperty('--img-hero', 'url("' + URL.createObjectURL(heroFile) + '")');
       }
-
-      // Project images (up to 5) → project-1 … project-5
-      const others = othIn.files ? Array.from(othIn.files).slice(0, 5) : [];
-      others.forEach(function(file, i){
-        root.style.setProperty('--img-project-' + (i + 1), 'url("' + URL.createObjectURL(file) + '")');
-      });
-
-      // Close the panel after applying
       body.classList.remove('open');
+      measure(); updateProgress();
     });
   })();
 })();
