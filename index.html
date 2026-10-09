@@ -76,10 +76,10 @@ img{max-width:100%;display:block}
   text-shadow:0 0 18px rgba(255,255,255,.18);
 }
 
-/* LOGO — bigger + shinier */
+/* LOGO — bumped up a pinch more */
 .brand-image{
   display:none;
-  height:92px;
+  height:100px;
   width:auto;
   filter:saturate(1.7) contrast(1.16) brightness(1.14)
          drop-shadow(0 0 10px rgba(234,246,77,.42))
@@ -570,7 +570,7 @@ footer::before{
   .brand-icon{font-size:34px}
   .brand-word{font-size:18px;letter-spacing:.34em}
   .brand-wordmark{gap:14px}
-  .brand-image{height:76px}
+  .brand-image{height:82px}
   .nav-right{right:22px}
 
   .footer-hero{
@@ -648,7 +648,7 @@ footer::before{
   .c-word-5{margin-left:-1%}
   .brand-icon{font-size:28px}
   .brand-word{font-size:15px;letter-spacing:.28em}
-  .brand-image{height:64px}
+  .brand-image{height:70px}
   .brand-wordmark{gap:12px}
   .nav-shell{height:58px;padding:0 18px}
   .nav-btn{padding:9px 12px;font-size:9px}
@@ -1065,7 +1065,6 @@ footer::before{
 
     const chrome = Math.max(0, 1 - Math.max(0, (p - CHROME_START) / (1 - CHROME_START)));
 
-    /* Blackish tint — same .22 alpha as the previous white tint */
     const bgAlpha = 0.22 * chrome;
     shell.style.backgroundColor = 'rgba(18,20,24,' + bgAlpha.toFixed(3) + ')';
 
