@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>F1 Acoustic — Design the Silence</title>
-<meta name="description" content="F1 Acoustic creates premium acoustic and soundproofing environments for Mumbai's most ambitious spaces.">
+<meta name="description" content="F1 Acoustic — site-specific acoustic design, specification and delivery for Mumbai's most demanding spaces. Designed to ISO 11654, ASTM C423 and NBC 2016.">
 <style>
 :root{
   --bg:#1b1b1b;
@@ -134,6 +134,8 @@ img{max-width:100%;display:block}
 .hero-title{margin:22px 0 26px;font:500 clamp(78px,10.4vw,178px)/.82 var(--serif);letter-spacing:-.055em;max-width:760px;color:var(--yellow);text-wrap:balance}
 .hero-title em{font-style:normal;color:#f2f2e8}
 .hero-sub{max-width:330px;font-size:11px;line-height:1.55;color:rgba(244,243,236,.74)}
+.hero-meta{margin:20px 0 0;font:9px/1.5 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(244,243,236,.5);max-width:420px}
+.hero-meta b{color:var(--yellow);font-weight:400}
 .hero-index{position:absolute;left:2px;bottom:66px;writing-mode:vertical-rl;font:8px/1 var(--mono);letter-spacing:.18em;color:rgba(244,243,236,.5)}
 .hero-index strong{font-weight:400;color:var(--yellow)}
 .hero-side{position:relative;z-index:3;border-left:1px solid rgba(244,243,236,.22);display:grid;grid-template-rows:repeat(6,1fr);min-height:100vh}
@@ -193,16 +195,17 @@ img{max-width:100%;display:block}
 .process-no::before{content:"";display:inline-block;width:22px;height:1px;background:var(--yellow)}
 .process-item h3{margin:0 0 10px;font:500 clamp(24px,3vw,42px)/.95 var(--serif);letter-spacing:-.03em}
 .process-item p{margin:0;max-width:560px;font-size:11px;line-height:1.7;color:rgba(244,243,236,.56)}
+.process-deliverable{display:inline-block;margin-top:18px;padding:7px 14px;border:1px solid rgba(234,246,77,.3);font:8px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);border-radius:999px;background:rgba(234,246,77,.04)}
 
-.numbers{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.number{padding:26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
-.number-value{font:500 clamp(62px,8vw,122px)/.82 var(--serif);color:var(--yellow)}
-.number:nth-child(2) .number-value{color:#f4f3ec}
-.number:nth-child(3) .number-value{color:rgba(244,243,236,.72)}
-.number-label{margin-top:11px;font:8px/1.4 var(--mono);letter-spacing:.17em;text-transform:uppercase;color:rgba(244,243,236,.52)}
+/* STANDARDS */
+.standards-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.standard{padding:34px 26px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015);display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+.standard-value{font:500 clamp(22px,2.4vw,34px)/1.1 var(--serif);letter-spacing:-.02em;color:var(--yellow);margin:0 0 18px}
+.standard:nth-child(2) .standard-value{color:#f4f3ec}
+.standard-label{margin:0;font:11px/1.7 var(--sans);color:rgba(244,243,236,.6);max-width:280px}
 
 /* ============================================================
-   WHO WE ARE — FROSTED GLASS CARDS (NAV BAR EFFECT)
+   WHO WE ARE — FROSTED GLASS CARDS
    ============================================================ */
 .who{background:#f1f0e9;color:#17181b;padding:120px 7vw;position:relative;overflow:hidden}
 .who .section-kicker{color:rgba(20,22,25,.48)}
@@ -210,7 +213,6 @@ img{max-width:100%;display:block}
 .who-title{margin:14px 0 60px;font:500 clamp(52px,7.5vw,120px)/.84 var(--serif);letter-spacing:-.05em;color:#17181b;max-width:960px}
 .who-title em{font-style:normal;color:#29447d}
 
-/* Give the backdrop-filter something to blur */
 .who .section-grid{
   background-image:linear-gradient(rgba(20,22,25,.06) 1px,transparent 1px),
                    linear-gradient(90deg,rgba(20,22,25,.06) 1px,transparent 1px);
@@ -222,7 +224,6 @@ img{max-width:100%;display:block}
 .who-block{
   position:relative;
   padding:48px 40px 44px 40px;
-  /* FROSTED GLASS — matching the nav bar exactly */
   background:rgba(255,255,255,.35);
   border:1px solid rgba(255,255,255,.7);
   backdrop-filter:blur(16px) saturate(140%);
@@ -240,7 +241,6 @@ img{max-width:100%;display:block}
   border-color:rgba(41,68,125,.3);
   background:rgba(255,255,255,.5);
 }
-/* top accent line */
 .who-block::after{
   content:"";
   position:absolute;top:0;left:0;right:0;
@@ -259,7 +259,7 @@ img{max-width:100%;display:block}
   padding-left:22px;
   font:500 clamp(26px,3vw,38px)/1.1 var(--serif);
   letter-spacing:-.03em;
-  color:var(--blue); /* Changed to blue for visibility */
+  color:var(--blue);
   z-index:2;
 }
 .who-block h3::before{
@@ -286,7 +286,7 @@ img{max-width:100%;display:block}
 .contact{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;background:#1b1b1b}
 .contact::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(244,243,236,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(244,243,236,.10) 1px,transparent 1px);background-size:70px 70px;opacity:.35}
 .contact-orbit{position:absolute;width:min(80vw,1000px);height:min(80vw,1000px);border:1px solid rgba(234,246,77,.11);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
-.contact-content{position:relative;z-index:2;max-width:950px;padding:80px 20px;text-align:center}
+.contact-content{position:relative;z-index:2;max-width:980px;padding:80px 20px;text-align:center;width:100%}
 .contact-stack{display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;margin-bottom:18px}
 .contact-word{display:block;font:500 clamp(68px,9vw,150px)/.82 var(--serif);letter-spacing:-.06em;white-space:nowrap;will-change:opacity,transform,filter;transform-origin:center center}
 .contact-word.c-word-1{color:#f4f3ec; margin-left:-5%}
@@ -294,11 +294,188 @@ img{max-width:100%;display:block}
 .contact-word.c-word-3{color:#f4f3ec; margin-left:-3%}
 .contact-word.c-word-4{color:var(--yellow); margin-left:4%}
 .contact-word.c-word-5{color:#f4f3ec; margin-left:-2%}
-.contact-sub{max-width:460px;margin:0 auto;color:rgba(244,243,236,.62);font-size:12px;line-height:1.65}
-.contact-actions{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
-.action{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:12px 17px;border:1px solid rgba(244,243,236,.24);font:8px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase}
-.action.primary{background:var(--yellow);border-color:var(--yellow);color:#151619}
-.action:hover{transform:translateY(-2px)}
+.contact-sub{max-width:520px;margin:0 auto;color:rgba(244,243,236,.72);font-size:14px;line-height:1.7}
+.contact-response{margin:26px auto 0;font:10.5px/1.5 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);display:inline-flex;align-items:center;gap:10px}
+.contact-response::before{content:"";display:inline-block;width:22px;height:1px;background:var(--yellow)}
+
+/* ============================================================
+   INQUIRY FORM — technical dossier panel
+   ============================================================ */
+.inquiry-form{
+  position:relative;
+  max-width:760px;
+  margin:56px auto 0;
+  padding:44px 44px 38px;
+  text-align:left;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(244,243,236,.13);
+  backdrop-filter:blur(6px) saturate(120%);
+  -webkit-backdrop-filter:blur(6px) saturate(120%);
+}
+/* corner brackets — fresh, architectural accent */
+.inquiry-form::before,
+.inquiry-form::after{
+  content:"";
+  position:absolute;
+  width:16px;height:16px;
+  border:1px solid var(--yellow);
+  pointer-events:none;
+  z-index:2;
+}
+.inquiry-form::before{
+  top:-1px;left:-1px;
+  border-right:0;border-bottom:0;
+}
+.inquiry-form::after{
+  bottom:-1px;right:-1px;
+  border-left:0;border-top:0;
+}
+
+.form-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:20px;
+  padding-bottom:22px;
+  margin-bottom:32px;
+  border-bottom:1px solid rgba(244,243,236,.14);
+}
+.form-head-label{
+  font:9px/1 var(--mono);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--yellow);
+}
+.form-head-meta{
+  font:9px/1 var(--mono);
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.42);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px 32px;
+}
+
+.field{display:flex;flex-direction:column;position:relative}
+.field.full{grid-column:1 / -1}
+
+.field label{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font:9px/1 var(--mono);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(244,243,236,.5);
+  margin-bottom:14px;
+}
+.field label .num{
+  color:var(--yellow);
+  font-weight:400;
+  letter-spacing:.08em;
+  opacity:.9;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  background:transparent;
+  border:0;
+  border-bottom:1px solid rgba(244,243,236,.22);
+  padding:8px 0 12px;
+  color:var(--ink);
+  font:400 14px/1.4 var(--sans);
+  outline:none;
+  transition:border-color .35s ease;
+  font-family:inherit;
+  border-radius:0;
+  position:relative;
+  z-index:1;
+}
+.field textarea{resize:vertical;min-height:82px;line-height:1.6}
+
+/* animated yellow underline that draws from left on focus */
+.field::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  bottom:0;
+  height:1px;
+  background:var(--yellow);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .55s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;
+  z-index:2;
+}
+.field:focus-within::after{transform:scaleX(1)}
+
+.field input::placeholder,
+.field textarea::placeholder{
+  color:rgba(244,243,236,.28);
+}
+.field select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'><path d='M1 1l4.5 4.5L10 1' stroke='%23eaf64d' stroke-width='1.2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 2px center;
+  padding-right:26px;
+  cursor:pointer;
+}
+.field select option{
+  background:#1b1b1b;
+  color:#f4f3ec;
+}
+.field select:invalid{
+  color:rgba(244,243,236,.32);
+}
+
+.form-foot{
+  grid-column:1 / -1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  margin-top:14px;
+  padding-top:30px;
+  border-top:1px solid rgba(244,243,236,.12);
+}
+.submit-btn{
+  min-height:50px;
+  padding:16px 40px;
+  background:var(--yellow);
+  border:1px solid var(--yellow);
+  color:#151619;
+  font:10px/1 var(--mono);
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
+  font-family:inherit;
+}
+.submit-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(234,246,77,.28);
+}
+.form-note{
+  margin:0;
+  font:12.5px/1.6 var(--sans);
+  color:rgba(244,243,236,.6);
+  text-align:right;
+}
+.form-note a{
+  color:var(--yellow);
+  border-bottom:1px solid rgba(234,246,77,.35);
+  padding-bottom:1px;
+  transition:border-color .3s ease;
+}
+.form-note a:hover{border-color:var(--yellow)}
 
 /* ============================================================
    FOOTER
@@ -673,7 +850,8 @@ footer::before{
   .manifesto-copy{grid-template-columns:1fr;gap:36px;margin-top:56px}
   .process-grid{grid-template-columns:1fr;gap:36px}
   .solution-grid{grid-template-columns:1fr}
-  .numbers{grid-template-columns:1fr}
+  .standards-grid{grid-template-columns:1fr}
+  .standard{min-height:0;padding:26px 22px}
   .who{padding:78px 24px}
   .who-grid{grid-template-columns:1fr;gap:20px}
   .who-block{padding:36px 24px 32px 24px}
@@ -693,6 +871,15 @@ footer::before{
   .c-word-3{margin-left:-2%}
   .c-word-4{margin-left:3%}
   .c-word-5{margin-left:-2%}
+}
+@media (max-width:640px){
+  .inquiry-form{padding:32px 22px 28px;margin-top:42px}
+  .form-grid{grid-template-columns:1fr;gap:22px}
+  .form-head{padding-bottom:18px;margin-bottom:26px}
+  .form-head-meta{display:none}
+  .form-foot{flex-direction:column;align-items:stretch;gap:16px;padding-top:24px}
+  .submit-btn{width:100%}
+  .form-note{text-align:center}
 }
 @media (max-width:560px){
   .hero-title{font-size:clamp(54px,17vw,82px)}
@@ -729,6 +916,7 @@ footer::before{
   .reveal{opacity:1;transform:none;transition:none}
   .kinetic-word,.contact-word{transition:none !important}
   .footer-contact a::after{transition:none}
+  .field::after{transition:none}
   .footer-mark{animation:none}
   .status-dot{animation:none}
 }
@@ -765,6 +953,7 @@ footer::before{
           <span class="eyebrow">Architectural soundproofing / Mumbai</span>
           <h1 class="hero-title">DESIGN<br><em>the</em> SILENCE.</h1>
           <p class="hero-sub">Premium acoustic systems for residences, cinemas, workspaces, hospitality and developer-scale environments.</p>
+          <p class="hero-meta">Site-specific design · Measured to <b>ISO 11654</b> / <b>ASTM C423</b> · Mumbai</p>
         </div>
         <div class="hero-side">
           <div class="hero-cell active"><span>Private<br>residence</span></div>
@@ -831,21 +1020,25 @@ footer::before{
                 <span class="process-no">Listen</span>
                 <h3>Measure the room.</h3>
                 <p>We read the site, structure, adjacencies, intended use and unwanted transmission paths before specifying.</p>
+                <span class="process-deliverable">Deliverable — Site acoustic report</span>
               </article>
               <article class="process-item reveal">
                 <span class="process-no">Isolate</span>
                 <h3>Stop the transmission.</h3>
                 <p>Walls, ceilings, doors, floors and penetrations are treated as one acoustic system.</p>
+                <span class="process-deliverable">Deliverable — Transmission path analysis</span>
               </article>
               <article class="process-item reveal">
                 <span class="process-no">Tune</span>
                 <h3>Shape the experience.</h3>
                 <p>Absorption, diffusion and reflection are balanced so the room remains natural and emotionally engaging.</p>
+                <span class="process-deliverable">Deliverable — Material specification schedule</span>
               </article>
               <article class="process-item reveal">
                 <span class="process-no">Deliver</span>
                 <h3>Coordinate the invisible.</h3>
                 <p>Acoustic intent meets architecture, MEP, materials and execution at the required finish standard.</p>
+                <span class="process-deliverable">Deliverable — Installation drawings &amp; site verification</span>
               </article>
             </div>
           </div>
@@ -855,10 +1048,19 @@ footer::before{
       <section class="section blue">
         <div class="section-grid"></div>
         <div class="wrap">
-          <div class="numbers">
-            <div class="number reveal"><div class="number-value">01</div><div class="number-label">Site-first thinking</div></div>
-            <div class="number reveal"><div class="number-value">24/7</div><div class="number-label">Privacy mindset</div></div>
-            <div class="number reveal"><div class="number-value">∞</div><div class="number-label">Less compromise</div></div>
+          <div class="standards-grid">
+            <div class="standard reveal">
+              <div class="standard-value">ISO · ASTM · NBC</div>
+              <p class="standard-label">Every specification is engineered to international acoustic standards and India's National Building Code — not to guesswork.</p>
+            </div>
+            <div class="standard reveal">
+              <div class="standard-value">RT60 · STC · NRC</div>
+              <p class="standard-label">We design to measurable targets. Every system is defined by its numbers before a single panel is fixed.</p>
+            </div>
+            <div class="standard reveal">
+              <div class="standard-value">24 HR</div>
+              <p class="standard-label">Specification requests, material schedules and drawings returned within one working day.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -886,7 +1088,7 @@ footer::before{
             </div>
             <div class="who-block">
               <h3>What makes us different</h3>
-              <p>We treat acoustics as part of the architecture, not an add-on. The result is performance you can measure, with a finish you'd want to live with — invisible where it should be, purposeful where it matters.</p>
+              <p>We treat acoustics as part of the architecture, not an add-on. Every system is specified to measurable performance targets — NRC, STC, RT60 — and verified on site. The result is performance you can prove, with a finish you'd want to live with.</p>
             </div>
           </div>
         </div>
@@ -904,7 +1106,55 @@ footer::before{
             <div class="contact-word c-word-5">SILENCE.</div>
           </div>
           <p class="contact-sub reveal">Tell us what the space is, who it is for and what you need it to feel like.</p>
-          <div class="contact-actions reveal"><a class="action primary" href="mailto:f1acoustic@gmail.com">Begin enquiry ↗</a><a class="action" href="#top">Return to top ↑</a></div>
+          <div class="contact-response reveal">Every enquiry receives a response within 24 hours.</div>
+
+          <form class="inquiry-form reveal" id="inquiryForm" novalidate>
+            <div class="form-head">
+              <span class="form-head-label">/ Project enquiry</span>
+              <span class="form-head-meta">F1 · Acoustic</span>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="fName"><span class="num">01</span> Name</label>
+                <input id="fName" name="Name" type="text" required placeholder="Your full name">
+              </div>
+              <div class="field">
+                <label for="fPhone"><span class="num">02</span> Phone</label>
+                <input id="fPhone" name="Phone" type="tel" required placeholder="+91 ...">
+              </div>
+              <div class="field">
+                <label for="fEmail"><span class="num">03</span> Email</label>
+                <input id="fEmail" name="Email" type="email" required placeholder="you@example.com">
+              </div>
+              <div class="field">
+                <label for="fLocation"><span class="num">04</span> Location</label>
+                <input id="fLocation" name="Location" type="text" placeholder="Mumbai / project site">
+              </div>
+              <div class="field full">
+                <label for="fType"><span class="num">05</span> Project type</label>
+                <select id="fType" name="Project type" required>
+                  <option value="" selected>Select one</option>
+                  <option>Private residence</option>
+                  <option>Media &amp; cinema / home theatre</option>
+                  <option>Workspace / office</option>
+                  <option>Luxury hospitality</option>
+                  <option>Developer scale</option>
+                  <option>Sound lounge / studio</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="fMessage"><span class="num">06</span> About the space</label>
+                <textarea id="fMessage" name="Message" rows="3" placeholder="Room size, structure, what you need it to feel like..."></textarea>
+              </div>
+
+              <div class="form-foot">
+                <button type="submit" class="submit-btn">Send enquiry ↗</button>
+                <p class="form-note">Or call directly — <a href="tel:+919004455115">+91 90044 55115</a></p>
+              </div>
+            </div>
+          </form>
         </div>
       </section>
     </main>
@@ -992,7 +1242,7 @@ footer::before{
 
         <div class="footer-bottom">
           <span>© 2026 F1 Acoustic · All rights reserved</span>
-          <span>Mumbai · Acoustics · Soundproofing</span>
+          <span>Designed to ISO 11654 · ASTM C423 · NBC 2016</span>
         </div>
 
         <div class="footer-powered">
@@ -1089,6 +1339,41 @@ footer::before{
       e.preventDefault();
       try { window.scrollTo({ top: 0, behavior: 'smooth' }); }
       catch (err) { window.scrollTo(0, 0); }
+    });
+  })();
+
+  /* Inquiry form — builds a formatted mailto with all field values */
+  (function(){
+    const form = document.getElementById('inquiryForm');
+    if (!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = form.fName.value.trim();
+      const phone = form.fPhone.value.trim();
+      const email = form.fEmail.value.trim();
+      const location = form.fLocation.value.trim();
+      const type = form.fType.value;
+      const message = form.fMessage.value.trim();
+
+      if (!name || !phone || !email || !type) {
+        alert('Please fill in your name, phone, email and project type.');
+        return;
+      }
+
+      const subject = 'Enquiry — ' + type + (location ? ' — ' + location : '');
+      const body = [
+        'Name: ' + name,
+        'Phone: ' + phone,
+        'Email: ' + email,
+        'Location: ' + (location || '—'),
+        'Project type: ' + type,
+        '',
+        'Message:',
+        (message || '—')
+      ].join('\n');
+
+      window.location.href = 'mailto:f1acoustic@gmail.com?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     });
   })();
 
